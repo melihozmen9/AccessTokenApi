@@ -8,6 +8,16 @@
 
 import UIKit
 
+extension Date {
+
+    var stringDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMMM yyyy"
+        return formatter.string(from: self)
+    }
+
+}
+
 enum FormatType:String {
     case longFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
     case longWithoutZone = "yyyy-MM-dd'T'HH:mm:ss"

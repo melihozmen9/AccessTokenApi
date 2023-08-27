@@ -13,7 +13,6 @@ class VisitCell: UITableViewCell {
     private lazy var imageview: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
-        iv.image = UIImage(named: "amsterdam")
         return iv
     }()
     
@@ -28,27 +27,28 @@ class VisitCell: UITableViewCell {
         let l = UILabel()
         l.font = Font.regular16.chooseFont
         l.textColor = Color.white.chooseColor
-        l.text = "Amsterdam"
         return l
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
     }
     
-    func configure(travelItem: TravelItem) {
-        Lbl.text = travelItem.location
-        guard let safeUrl = travelItem.image_url else {return}
+    override func layoutSubviews() {
+        self.imageview.roundCorners(corners: [.topLeft,.topRight,.bottomLeft], radius: 16)
+    }
+    
+    func configure(item: VisitPlace) {
+        Lbl.text = item.title
+        guard let safeUrl = item.cover_image_url else {return}
         let url = URL(string: safeUrl)
         imageview.kf.setImage(with: url)
-        }
+        imageview.kf.indicatorType = .activity
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    override func layoutSubviews() {
-        self.imageview.roundCorners(corners: [.topLeft,.topRight,.bottomLeft], radius: 16)
     }
     
     private func setupView() {
@@ -57,6 +57,7 @@ class VisitCell: UITableViewCell {
         imageview.addSubViews(Lbl,iconView)
         setupLayout()
     }
+    
     private func setupLayout() {
         imageview.edgesToSuperview(insets: .bottom(16))
         

@@ -59,26 +59,36 @@ class SignUpVC: UIViewController {
         btn.addTarget(self, action: #selector(registerTapped), for: .touchUpInside)
         return btn
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       setupView()
-       isEnabled()
+        setupView()
+        isEnabled()
     }
-   
-//    func initVM() {
-//        viewModal.closure = {
-//            self.showAlert()
-//        }
-//    }
+    
+    @objc func registerTapped() {
+        guard let name = usernameView.Tf.text, let email = emailView.Tf.text, let password1 = pass1View.Tf.text,let _ = pass2View.Tf.text else {return}
+        
+        let body = ["full_name":name,"email":email,"password":password1]
+        
+        viewModal.register(params: body, handler: { response in
+            if response.status == "fail" {
+                self.showErrorAlert(message: """
+                                        Lütfen tüm bilgileri doldurunuz.
+                                        Email formatına ve şifrenizin en az altı
+                                        karakterden oluşmasına dikkat edin.
+                                        """)
+            } else {
+                self.showAlert()
+            }
+        })
+    }
     
     override func viewDidLayoutSubviews() {
         view1.roundCorners(corners: .topLeft, radius: 80)
     }
-   
     
     private func setupView() {
-       
         view.backgroundColor = Color.systemGreen.chooseColor
         view.addSubViews(view1)
         view1.addSubViews(stackView,lgnBtn)
@@ -90,18 +100,11 @@ class SignUpVC: UIViewController {
         navBarDesign()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        let height: CGFloat = 100 //whatever height you want to add to the existing height
-//            let bounds = self.navigationController!.navigationBar.bounds
-//            self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height + height)
-//    }
-   
-    
     func navBarDesign() {
         title = "Sign Up"
         self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: Font.bold36.chooseFont,
                                                                         .foregroundColor: Color.white.chooseColor
-                                                                        ]
+        ]
         let leftButton = UIBarButtonItem(image: UIImage(named: "vector"), style: .plain, target: self, action: #selector(registerTapped))
         leftButton.tintColor = Color.white.chooseColor
         self.navigationItem.leftBarButtonItem  = leftButton
@@ -116,25 +119,7 @@ class SignUpVC: UIViewController {
         lgnBtn.edgesToSuperview( excluding: [.top],insets: .left(24) + .right(24) + .bottom(23))
     }
     
-    @objc func registerTapped() {
-        guard let name = usernameView.Tf.text, let email = emailView.Tf.text, let password1 = pass1View.Tf.text,let _ = pass2View.Tf.text else {return}
-        
-         let body = ["full_name":name,"email":email,"password":password1]
-        
-        viewModal.register(params: body, handler: { response in
-            if response.status == "fail" {
-                self.showErrorAlert(message: """
-                                        Lütfen tüm bilgileri doldurunuz.
-                                        Email formatına ve şifrenizin en az altı
-                                        karakterden oluşmasına dikkat edin.
-                                        """)
-            } else {
-                self.showAlert()
-            }
-           
-        })
-
-    }
+ 
     
     
     func isEnabled() {
@@ -150,7 +135,7 @@ class SignUpVC: UIViewController {
     func showAlert() { // bunun olumsuz fonksiyonu'da yaz. gelen error'u string olarak mesaja yazdır.
         let alert = UIAlertController(title: "Tebrikler, Kaydoldunuz", message: "Şimdi sisteme giriş yapabilirsin.", preferredStyle: .alert)
         let action = UIAlertAction(title: "Login sayfasına git", style: .default, handler: {_ in
-                self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
         })
         alert.addAction(action)
         present(alert, animated: true)
@@ -161,7 +146,7 @@ class SignUpVC: UIViewController {
         alert.addAction(action)
         present(alert, animated: true)
     }
-
+    
 }
 
 extension SignUpVC : UITextFieldDelegate {

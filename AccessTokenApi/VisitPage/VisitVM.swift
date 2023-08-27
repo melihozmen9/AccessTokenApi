@@ -14,27 +14,33 @@ class VisitVM {
         self.apiService = apiService
     }
     
-    var travelArray: [TravelItem]?
+    var travelArray: [Visits]?
     var reloadTableView: (()->())?
+    var onDataFetch: ((Bool) -> Void)?
     
     func fetchTravels() {
-        apiService.makeRequest(from: EndPoint.listTravel.apiUrl, method: .get, params: [:], token: getTokenFromChain()) { (result:Result<TravelData,Error>) in
+        
+       
+        self.onDataFetch?(true)
+        apiService.makeRequest(urlConvertible: Router.myAllVisits) { (result:Result<TravelData,Error>) in
+            
             switch result {
             case .success(let success):
-                print(success.data.travels[0].location)
-                self.travelArray = success.data.travels
-                self.reloadTableView!()
+               
+                self.travelArray = success.data.visits
+                guard let reloadTableView = self.reloadTableView else { return}
+                sleep(1)
+                reloadTableView()
+                self.onDataFetch?(false)
             case .failure(let failure):
                 print(failure)
+                self.onDataFetch?(false)
             }
         }
     }
+
     
-    func getTokenFromChain()->String {
-        guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return""}
-        guard let tokenstr = String(data: token, encoding: .utf8) else {return""}
-        return tokenstr
-    }
+  
     
     
     
@@ -51,9 +57,8 @@ class VisitVM {
         return travelArray.count
     }
     
-    func getCellForRowAt(indexpath: IndexPath) -> TravelItem? {
+    func getObjectForRowAt(indexpath: IndexPath) -> VisitPlace? {
         guard let travelArray = travelArray else {  return nil  }
-
-        return travelArray[indexpath.row]
+        return travelArray[indexpath.row].place
     }
 }

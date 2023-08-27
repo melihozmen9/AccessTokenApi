@@ -10,7 +10,7 @@ import UIKit
 
 import TinyConstraints
 
-class ViewController: UIViewController {
+class LoginVC: UIViewController {
     
     let viewModal = LoginVM()
     
@@ -48,12 +48,14 @@ class ViewController: UIViewController {
         let v = CustomView()
         v.Lbl.text = "Password"
         v.Tf.text = "123456"
+        v.Tf.isSecureTextEntry = true
         v.Tf.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
         return v
     }()
     
     private lazy var lgnBtn: CustomButton = {
         let btn = CustomButton()
+        btn.setTitle("Login", for: .normal)
         btn.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return btn
     }()
@@ -66,17 +68,29 @@ class ViewController: UIViewController {
         l.textAlignment = .center
         return l
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
     
+    @objc func signLblTapped(_ sender: UITapGestureRecognizer) {
+        let signVC = SignUpVC()
+        navigationController?.pushViewController(signVC, animated: true)
+    }
+    
+    @objc func loginTapped() {
+        guard let email = emailView.Tf.text, let password = passwordView.Tf.text else {return}
+        let body = ["email":email,"password":password]
+        viewModal.login(params: body) {
+            let vc = MainTabBarController()
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         view1.roundCorners(corners: .topLeft, radius: 80)
     }
-
-  
     
     private func setupView() {
         view.backgroundColor = Color.systemGreen.chooseColor
@@ -84,11 +98,11 @@ class ViewController: UIViewController {
         view1.addSubViews(emailView,passwordView,welcomeLbl,lgnBtn,signLbl)
         setupLayout()
         signUpGesture()
-        
     }
+    
     private func setupLayout() {
         imageview.edgesToSuperview( insets: .top(44) + .right(121) + .left(120) + .bottom(622))
-      
+        
         view1.topToBottom(of: imageview ,offset: 24)
         view1.edgesToSuperview(excluding: [.top])
         
@@ -110,23 +124,8 @@ class ViewController: UIViewController {
         self.signLbl.isUserInteractionEnabled = true
         self.signLbl.addGestureRecognizer(signUpTapped)
     }
-
-    @objc func signLblTapped(_ sender: UITapGestureRecognizer) {
-        let signVC = SignUpVC()
-        navigationController?.pushViewController(signVC, animated: true)
-    }
     
-
-    
-    @objc func loginTapped() {
-        guard let email = emailView.Tf.text, let password = passwordView.Tf.text else {return}
-        let body = ["email":email,"password":password]
-        viewModal.login(params: body,handler: {
-            let vc = MainTabBarController()
-            self.navigationController?.pushViewController(vc, animated: true)
-        })
-        
-    }
+   
     
 }
 

@@ -25,7 +25,6 @@ class CustomButton: UIButton {
     override func layoutSubviews() {
         self.roundCorners(corners: [.topLeft,.topRight,.bottomLeft], radius: 16)
         super.layoutSubviews()
-        self.setTitle("Login", for: .normal)
         self.setTitleColor(.white, for: .normal)
     }
 

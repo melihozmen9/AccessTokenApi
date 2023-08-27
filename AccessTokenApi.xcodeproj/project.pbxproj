@@ -39,18 +39,28 @@
 		214310DE2A8F8C6C004B81A9 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310DD2A8F8C6C004B81A9 /* CustomButton.swift */; };
 		214310E02A8F9323004B81A9 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310DF2A8F9323004B81A9 /* SignUpVC.swift */; };
 		214310E22A8FA0DB004B81A9 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310E12A8FA0DB004B81A9 /* RegisterVM.swift */; };
+		216616A92A949CF200E0E3B9 /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216616A82A949CF200E0E3B9 /* MapVM.swift */; };
+		216616AB2A94B28B00E0E3B9 /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216616AA2A94B28B00E0E3B9 /* CustomCollectionCell.swift */; };
+		216616AD2A94CACB00E0E3B9 /* GalleryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216616AC2A94CACB00E0E3B9 /* GalleryData.swift */; };
+		216616B02A94E41E00E0E3B9 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 216616AF2A94E41E00E0E3B9 /* NVActivityIndicatorView */; };
+		216A05E02A95D7BE001DC3D5 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05DF2A95D7BE001DC3D5 /* NavigationHelper.swift */; };
+		216A05E22A95D91C001DC3D5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E12A95D91B001DC3D5 /* Extension.swift */; };
+		216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E32A95E21C001DC3D5 /* PlacesModal.swift */; };
+		216A05E82A9610BC001DC3D5 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 216A05E72A9610BC001DC3D5 /* JWTDecode */; };
+		216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E92A961422001DC3D5 /* MapCollectionCell.swift */; };
+		216A05EC2A9623AC001DC3D5 /* AddTravelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05EB2A9623AC001DC3D5 /* AddTravelCollectionCell.swift */; };
+		21793EB52A98D42D001CA74D /* UploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21793EB42A98D42D001CA74D /* UploadResponse.swift */; };
 		217D7A472A8E345D00274A30 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217D7A462A8E345D00274A30 /* KeychainHelper.swift */; };
 		217D7A492A8E3F7900274A30 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217D7A482A8E3F7900274A30 /* DetailVC.swift */; };
 		217D7A4B2A8E44B100274A30 /* DetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217D7A4A2A8E44B100274A30 /* DetailVM.swift */; };
 		218C34AB2A8E0AFE008AC00B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34AA2A8E0AFE008AC00B /* AppDelegate.swift */; };
 		218C34AD2A8E0AFE008AC00B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34AC2A8E0AFE008AC00B /* SceneDelegate.swift */; };
-		218C34AF2A8E0AFE008AC00B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34AE2A8E0AFE008AC00B /* ViewController.swift */; };
+		218C34AF2A8E0AFE008AC00B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34AE2A8E0AFE008AC00B /* LoginVC.swift */; };
 		218C34B42A8E0B00008AC00B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 218C34B32A8E0B00008AC00B /* Assets.xcassets */; };
 		218C34B72A8E0B00008AC00B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 218C34B52A8E0B00008AC00B /* LaunchScreen.storyboard */; };
 		218C34C22A8E0B01008AC00B /* AccessTokenApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34C12A8E0B01008AC00B /* AccessTokenApiTests.swift */; };
 		218C34CC2A8E0B01008AC00B /* AccessTokenApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34CB2A8E0B01008AC00B /* AccessTokenApiUITests.swift */; };
 		218C34CE2A8E0B01008AC00B /* AccessTokenApiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34CD2A8E0B01008AC00B /* AccessTokenApiUITestsLaunchTests.swift */; };
-		218C34DB2A8E0C43008AC00B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34DA2A8E0C43008AC00B /* Extension.swift */; };
 		218C34DE2A8E0CB0008AC00B /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 218C34DD2A8E0CB0008AC00B /* TinyConstraints */; };
 		218C34E12A8E0CC4008AC00B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 218C34E02A8E0CC4008AC00B /* Alamofire */; };
 		218C34E32A8E0DFE008AC00B /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34E22A8E0DFE008AC00B /* ApiService.swift */; };
@@ -61,6 +71,7 @@
 		21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642D2A9375590047CB92 /* VisitVM.swift */; };
 		21B764302A9378380047CB92 /* TravelModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642F2A9378380047CB92 /* TravelModal.swift */; };
 		21B764332A937C8B0047CB92 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21B764322A937C8B0047CB92 /* Kingfisher */; };
+		21F804782A93D7D40068CDAF /* TravelID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F804772A93D7D40068CDAF /* TravelID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,13 +124,22 @@
 		214310DD2A8F8C6C004B81A9 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		214310DF2A8F9323004B81A9 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		214310E12A8FA0DB004B81A9 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
+		216616A82A949CF200E0E3B9 /* MapVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVM.swift; sourceTree = "<group>"; };
+		216616AA2A94B28B00E0E3B9 /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
+		216616AC2A94CACB00E0E3B9 /* GalleryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryData.swift; sourceTree = "<group>"; };
+		216A05DF2A95D7BE001DC3D5 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
+		216A05E12A95D91B001DC3D5 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		216A05E32A95E21C001DC3D5 /* PlacesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesModal.swift; sourceTree = "<group>"; };
+		216A05E92A961422001DC3D5 /* MapCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionCell.swift; sourceTree = "<group>"; };
+		216A05EB2A9623AC001DC3D5 /* AddTravelCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelCollectionCell.swift; sourceTree = "<group>"; };
+		21793EB42A98D42D001CA74D /* UploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResponse.swift; sourceTree = "<group>"; };
 		217D7A462A8E345D00274A30 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		217D7A482A8E3F7900274A30 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		217D7A4A2A8E44B100274A30 /* DetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVM.swift; sourceTree = "<group>"; };
 		218C34A72A8E0AFE008AC00B /* AccessTokenApi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AccessTokenApi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		218C34AA2A8E0AFE008AC00B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		218C34AC2A8E0AFE008AC00B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		218C34AE2A8E0AFE008AC00B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		218C34AE2A8E0AFE008AC00B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		218C34B32A8E0B00008AC00B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		218C34B62A8E0B00008AC00B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		218C34B82A8E0B00008AC00B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,7 +148,6 @@
 		218C34C72A8E0B01008AC00B /* AccessTokenApiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AccessTokenApiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		218C34CB2A8E0B01008AC00B /* AccessTokenApiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenApiUITests.swift; sourceTree = "<group>"; };
 		218C34CD2A8E0B01008AC00B /* AccessTokenApiUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenApiUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		218C34DA2A8E0C43008AC00B /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		218C34E22A8E0DFE008AC00B /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		218C34E82A8E112A008AC00B /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		218C34EA2A8E135F008AC00B /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
@@ -136,6 +155,7 @@
 		21B15DB82A913DE70021938F /* AddTravelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelVM.swift; sourceTree = "<group>"; };
 		21B7642D2A9375590047CB92 /* VisitVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitVM.swift; sourceTree = "<group>"; };
 		21B7642F2A9378380047CB92 /* TravelModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelModal.swift; sourceTree = "<group>"; };
+		21F804772A93D7D40068CDAF /* TravelID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +163,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				216616B02A94E41E00E0E3B9 /* NVActivityIndicatorView in Frameworks */,
 				21B764332A937C8B0047CB92 /* Kingfisher in Frameworks */,
 				218C34DE2A8E0CB0008AC00B /* TinyConstraints in Frameworks */,
+				216A05E82A9610BC001DC3D5 /* JWTDecode in Frameworks */,
 				218C34E12A8E0CC4008AC00B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,9 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				213FD1162A8FDD73004D2024 /* MainTabBarController.swift */,
-				213FD1192A8FDE34004D2024 /* VisitVC.swift */,
 				213FD11B2A8FDEEE004D2024 /* HomeVC.swift */,
-				213FD11D2A8FE141004D2024 /* MapVC.swift */,
 				213FD11F2A8FE155004D2024 /* MenuVC.swift */,
 			);
 			name = TabBarVC;
@@ -184,7 +204,6 @@
 				214310AC2A8F57AA004B81A9 /* CustomView.swift */,
 				214310D62A8F5CC9004B81A9 /* CustomLabel.swift */,
 				214310DD2A8F8C6C004B81A9 /* CustomButton.swift */,
-				213FD1212A8FEF5C004D2024 /* VisitCell.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -232,6 +251,70 @@
 			path = "Extensions Enums";
 			sourceTree = "<group>";
 		};
+		216A05DA2A95D68B001DC3D5 /* VisitPage */ = {
+			isa = PBXGroup;
+			children = (
+				213FD1212A8FEF5C004D2024 /* VisitCell.swift */,
+				213FD1192A8FDE34004D2024 /* VisitVC.swift */,
+				21B7642D2A9375590047CB92 /* VisitVM.swift */,
+				21B7642F2A9378380047CB92 /* TravelModal.swift */,
+			);
+			path = VisitPage;
+			sourceTree = "<group>";
+		};
+		216A05DB2A95D6B1001DC3D5 /* MapPage */ = {
+			isa = PBXGroup;
+			children = (
+				216616A82A949CF200E0E3B9 /* MapVM.swift */,
+				213FD11D2A8FE141004D2024 /* MapVC.swift */,
+				216A05E32A95E21C001DC3D5 /* PlacesModal.swift */,
+				216A05E92A961422001DC3D5 /* MapCollectionCell.swift */,
+			);
+			path = MapPage;
+			sourceTree = "<group>";
+		};
+		216A05DC2A95D6F0001DC3D5 /* DetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				216616AA2A94B28B00E0E3B9 /* CustomCollectionCell.swift */,
+				216616AC2A94CACB00E0E3B9 /* GalleryData.swift */,
+				21F804772A93D7D40068CDAF /* TravelID.swift */,
+				217D7A482A8E3F7900274A30 /* DetailVC.swift */,
+				217D7A4A2A8E44B100274A30 /* DetailVM.swift */,
+			);
+			path = DetailPage;
+			sourceTree = "<group>";
+		};
+		216A05DD2A95D72B001DC3D5 /* LoginPage */ = {
+			isa = PBXGroup;
+			children = (
+				218C34EA2A8E135F008AC00B /* Modal.swift */,
+				218C34AE2A8E0AFE008AC00B /* LoginVC.swift */,
+				218C34E82A8E112A008AC00B /* LoginVM.swift */,
+			);
+			path = LoginPage;
+			sourceTree = "<group>";
+		};
+		216A05DE2A95D75D001DC3D5 /* SignUpPage */ = {
+			isa = PBXGroup;
+			children = (
+				214310DF2A8F9323004B81A9 /* SignUpVC.swift */,
+				214310E12A8FA0DB004B81A9 /* RegisterVM.swift */,
+			);
+			path = SignUpPage;
+			sourceTree = "<group>";
+		};
+		216A05E52A95F20D001DC3D5 /* AddNewVisitPage */ = {
+			isa = PBXGroup;
+			children = (
+				21B15DB62A913DBD0021938F /* AddTravelVC.swift */,
+				21B15DB82A913DE70021938F /* AddTravelVM.swift */,
+				216A05EB2A9623AC001DC3D5 /* AddTravelCollectionCell.swift */,
+				21793EB42A98D42D001CA74D /* UploadResponse.swift */,
+			);
+			path = AddNewVisitPage;
+			sourceTree = "<group>";
+		};
 		218C349E2A8E0AFE008AC00B = {
 			isa = PBXGroup;
 			children = (
@@ -255,19 +338,24 @@
 		218C34A92A8E0AFE008AC00B /* AccessTokenApi */ = {
 			isa = PBXGroup;
 			children = (
-				214310D82A8F6154004B81A9 /* Extensions Enums */,
-				214310AE2A8F5878004B81A9 /* Resources */,
-				214310AB2A8F5775004B81A9 /* CustomClasses */,
-				218C34E72A8E0E36008AC00B /* Modal */,
-				218C34E62A8E0E2E008AC00B /* View */,
-				218C34E52A8E0E12008AC00B /* ApiService */,
-				218C34E42A8E0E03008AC00B /* ViewModal */,
 				218C34AA2A8E0AFE008AC00B /* AppDelegate.swift */,
 				218C34AC2A8E0AFE008AC00B /* SceneDelegate.swift */,
-				218C34B32A8E0B00008AC00B /* Assets.xcassets */,
+				216A05E52A95F20D001DC3D5 /* AddNewVisitPage */,
+				216A05DD2A95D72B001DC3D5 /* LoginPage */,
+				216A05DE2A95D75D001DC3D5 /* SignUpPage */,
+				216A05DA2A95D68B001DC3D5 /* VisitPage */,
+				216A05DB2A95D6B1001DC3D5 /* MapPage */,
+				216A05DC2A95D6F0001DC3D5 /* DetailPage */,
+				218C34E62A8E0E2E008AC00B /* View */,
+				218C34E52A8E0E12008AC00B /* ApiService */,
+				214310D82A8F6154004B81A9 /* Extensions Enums */,
+				214310AB2A8F5775004B81A9 /* CustomClasses */,
+				214310AE2A8F5878004B81A9 /* Resources */,
 				218C34B52A8E0B00008AC00B /* LaunchScreen.storyboard */,
+				218C34B32A8E0B00008AC00B /* Assets.xcassets */,
 				218C34B82A8E0B00008AC00B /* Info.plist */,
-				218C34DA2A8E0C43008AC00B /* Extension.swift */,
+				216A05DF2A95D7BE001DC3D5 /* NavigationHelper.swift */,
+				216A05E12A95D91B001DC3D5 /* Extension.swift */,
 			);
 			path = AccessTokenApi;
 			sourceTree = "<group>";
@@ -289,18 +377,6 @@
 			path = AccessTokenApiUITests;
 			sourceTree = "<group>";
 		};
-		218C34E42A8E0E03008AC00B /* ViewModal */ = {
-			isa = PBXGroup;
-			children = (
-				218C34E82A8E112A008AC00B /* LoginVM.swift */,
-				214310E12A8FA0DB004B81A9 /* RegisterVM.swift */,
-				217D7A4A2A8E44B100274A30 /* DetailVM.swift */,
-				21B15DB82A913DE70021938F /* AddTravelVM.swift */,
-				21B7642D2A9375590047CB92 /* VisitVM.swift */,
-			);
-			path = ViewModal;
-			sourceTree = "<group>";
-		};
 		218C34E52A8E0E12008AC00B /* ApiService */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,21 +390,8 @@
 			isa = PBXGroup;
 			children = (
 				213FD1182A8FDDCF004D2024 /* TabBarVC */,
-				218C34AE2A8E0AFE008AC00B /* ViewController.swift */,
-				214310DF2A8F9323004B81A9 /* SignUpVC.swift */,
-				217D7A482A8E3F7900274A30 /* DetailVC.swift */,
-				21B15DB62A913DBD0021938F /* AddTravelVC.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		218C34E72A8E0E36008AC00B /* Modal */ = {
-			isa = PBXGroup;
-			children = (
-				218C34EA2A8E135F008AC00B /* Modal.swift */,
-				21B7642F2A9378380047CB92 /* TravelModal.swift */,
-			);
-			path = Modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +414,8 @@
 				218C34DD2A8E0CB0008AC00B /* TinyConstraints */,
 				218C34E02A8E0CC4008AC00B /* Alamofire */,
 				21B764322A937C8B0047CB92 /* Kingfisher */,
+				216616AF2A94E41E00E0E3B9 /* NVActivityIndicatorView */,
+				216A05E72A9610BC001DC3D5 /* JWTDecode */,
 			);
 			productName = AccessTokenApi;
 			productReference = 218C34A72A8E0AFE008AC00B /* AccessTokenApi.app */;
@@ -428,6 +493,8 @@
 				218C34DC2A8E0CB0008AC00B /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 				218C34DF2A8E0CC4008AC00B /* XCRemoteSwiftPackageReference "Alamofire" */,
 				21B764312A937C8B0047CB92 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				216616AE2A94E41E00E0E3B9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				216A05E62A9610BC001DC3D5 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 			);
 			productRefGroup = 218C34A82A8E0AFE008AC00B /* Products */;
 			projectDirPath = "";
@@ -490,30 +557,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				218C34AF2A8E0AFE008AC00B /* ViewController.swift in Sources */,
+				218C34AF2A8E0AFE008AC00B /* LoginVC.swift in Sources */,
+				216616A92A949CF200E0E3B9 /* MapVM.swift in Sources */,
+				216A05E02A95D7BE001DC3D5 /* NavigationHelper.swift in Sources */,
 				213FD11C2A8FDEEE004D2024 /* HomeVC.swift in Sources */,
 				21B764302A9378380047CB92 /* TravelModal.swift in Sources */,
 				218C34E32A8E0DFE008AC00B /* ApiService.swift in Sources */,
 				213FD1172A8FDD73004D2024 /* MainTabBarController.swift in Sources */,
+				21793EB52A98D42D001CA74D /* UploadResponse.swift in Sources */,
+				216A05E22A95D91C001DC3D5 /* Extension.swift in Sources */,
 				213FD11E2A8FE141004D2024 /* MapVC.swift in Sources */,
 				218C34E92A8E112A008AC00B /* LoginVM.swift in Sources */,
 				217D7A472A8E345D00274A30 /* KeychainHelper.swift in Sources */,
+				21F804782A93D7D40068CDAF /* TravelID.swift in Sources */,
 				218C34AB2A8E0AFE008AC00B /* AppDelegate.swift in Sources */,
 				217D7A492A8E3F7900274A30 /* DetailVC.swift in Sources */,
+				216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */,
 				214310AD2A8F57AA004B81A9 /* CustomView.swift in Sources */,
 				214310DA2A8F616E004B81A9 /* Enums.swift in Sources */,
 				214310E02A8F9323004B81A9 /* SignUpVC.swift in Sources */,
 				21B15DB72A913DBD0021938F /* AddTravelVC.swift in Sources */,
+				216A05EC2A9623AC001DC3D5 /* AddTravelCollectionCell.swift in Sources */,
 				214310D72A8F5CC9004B81A9 /* CustomLabel.swift in Sources */,
 				218C34EB2A8E135F008AC00B /* Modal.swift in Sources */,
 				218C34AD2A8E0AFE008AC00B /* SceneDelegate.swift in Sources */,
-				218C34DB2A8E0C43008AC00B /* Extension.swift in Sources */,
+				216616AD2A94CACB00E0E3B9 /* GalleryData.swift in Sources */,
 				213FD1222A8FEF5C004D2024 /* VisitCell.swift in Sources */,
 				214310E22A8FA0DB004B81A9 /* RegisterVM.swift in Sources */,
 				213FD1202A8FE155004D2024 /* MenuVC.swift in Sources */,
 				21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */,
+				216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */,
 				217D7A4B2A8E44B100274A30 /* DetailVM.swift in Sources */,
 				214310DC2A8F66F1004B81A9 /* Extensions.swift in Sources */,
+				216616AB2A94B28B00E0E3B9 /* CustomCollectionCell.swift in Sources */,
 				214310DE2A8F8C6C004B81A9 /* CustomButton.swift in Sources */,
 				21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */,
 				213FD11A2A8FDE34004D2024 /* VisitVC.swift in Sources */,
@@ -852,6 +928,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		216616AE2A94E41E00E0E3B9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		216A05E62A9610BC001DC3D5 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		218C34DC2A8E0CB0008AC00B /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/roberthein/TinyConstraints";
@@ -879,6 +971,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		216616AF2A94E41E00E0E3B9 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 216616AE2A94E41E00E0E3B9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		216A05E72A9610BC001DC3D5 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 216A05E62A9610BC001DC3D5 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
+		};
 		218C34DD2A8E0CB0008AC00B /* TinyConstraints */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 218C34DC2A8E0CB0008AC00B /* XCRemoteSwiftPackageReference "TinyConstraints" */;

@@ -7,8 +7,23 @@
 
 import UIKit
 import TinyConstraints
+import NVActivityIndicatorView
 class VisitVC: UIViewController {
+    
     let viewModal = VisitVM()
+    
+//    private lazy var activity: UIActivityIndicatorView = {
+//          let spinner = UIActivityIndicatorView(style: .large)
+//          spinner.color = #colorLiteral(red: 0.370555222, green: 0.3705646992, blue: 0.3705595732, alpha: 1)
+//          spinner.hidesWhenStopped = true
+//          return spinner
+//      }()
+    
+    private lazy var activity: NVActivityIndicatorView = {
+        let activity = NVActivityIndicatorView(frame: .zero, type: .pacman, color: Color.systemGreen.chooseColor, padding: 0)
+        return activity
+    }()
+    
     
     private lazy var topLbl: UILabel = {
         let l = UILabel()
@@ -22,17 +37,17 @@ class VisitVC: UIViewController {
     private lazy var addBtn: UIButton = {
         let btn = UIButton()
         btn.layer.cornerRadius = 3
-        btn.setImage(UIImage(systemName: "plus"), for: .normal)
-        btn.setTitleColor(.black, for: .normal)
+        btn.setImage(UIImage(named: "addNew"), for: .normal)
         btn.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
         return btn
     }()
-
+    
     private lazy var view1: UIView = {
         let v = UIView()
         v.backgroundColor = Color.systemWhite.chooseColor
         return v
     }()
+    
     
     private lazy var tableView : UITableView = {
         let tv = UITableView()
@@ -46,28 +61,48 @@ class VisitVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      setupView()
+        setupView()
         initVM()
-    }
-    
-    func initVM() {
-        viewModal.fetchTravels()
-        viewModal.reloadTableView = {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
     }
     
     override func viewDidLayoutSubviews() {
         view1.roundCorners(corners: .topLeft, radius: 80)
     }
     
-    private func setupView() {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    @objc func addTapped() {
+        let vc = AddTravelVC(latitude: 0, longitude: 0)
+        present(vc, animated: true)
+    }
+    
+    func initVM() {
+        viewModal.onDataFetch = { [weak self] isLoading in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self?.activity.startAnimating()
+                    print("started")
+                } else {
+                    self?.activity.stopAnimating()
+                    print("ended")
+                }
+            }
+        }
+
+        viewModal.fetchTravels()
+        viewModal.reloadTableView = {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
+    }
+    
+    private func setupView() {
         self.view.backgroundColor = Color.systemGreen.chooseColor
-        view.addSubViews(view1,topLbl,addBtn)
+        view.addSubViews(view1,topLbl,addBtn,activity)
         view1.addSubViews(tableView)
         setupLayout()
     }
@@ -76,20 +111,26 @@ class VisitVC: UIViewController {
         topLbl.height(52)
         topLbl.width(165)
         
-        addBtn.edgesToSuperview(excluding:[.bottom,.left], insets: .right(24) + .top(24),usingSafeArea: true)
-        addBtn.width(30)
-        addBtn.height(30)
+        activity.centerInSuperview()
+        activity.height(40)
+        activity.width(40)
+        
+        addBtn.edgesToSuperview(excluding:[.top,.left], insets: .right(16) + .bottom(29),usingSafeArea: true)
+        addBtn.width(50)
+        addBtn.height(50)
+        
         view1.edgesToSuperview( insets: .top(129))
         
         tableView.edgesToSuperview( insets: .top(45) + .right(22) + .left(22) + .bottom(0), usingSafeArea: true)
     }
     
-    @objc func addTapped() {
-        let vc = AddTravelVC()
-        present(vc, animated: true)
+    func pushNav(item: VisitPlace) {
+        let detailVC = DetailVC()
+        detailVC.viewModal = DetailVM(id: item.id)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
-
-
+    
+    
 }
 
 
@@ -100,10 +141,10 @@ extension VisitVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailVC = DetailVC()
-        guard let item = viewModal.getCellForRowAt(indexpath: indexPath) else {return}
-        detailVC.configure(travelItem: item)
-        navigationController?.pushViewController(detailVC, animated: true)
+        
+        guard let item = viewModal.getObjectForRowAt(indexpath: indexPath) else {return}
+        pushNav(item: item)
+        
     }
 }
 
@@ -114,8 +155,9 @@ extension VisitVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VisitCell", for: indexPath) as? VisitCell else {return UITableViewCell()}
-        guard let item = viewModal.getCellForRowAt(indexpath: indexPath) else {return UITableViewCell()}
-        cell.configure(travelItem: item)
+        guard let item = viewModal.getObjectForRowAt(indexpath: indexPath) else {return UITableViewCell()}
+        let value = item
+        cell.configure(item: item)
         return cell
     }
     

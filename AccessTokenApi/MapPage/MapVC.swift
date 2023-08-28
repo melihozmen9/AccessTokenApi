@@ -141,6 +141,8 @@ extension MapVC: MKMapViewDelegate {
         }
         
         return annotationView
+        
+        print("deneme")
     }
 
 

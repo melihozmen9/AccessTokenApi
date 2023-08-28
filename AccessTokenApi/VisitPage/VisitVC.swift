@@ -63,6 +63,7 @@ class VisitVC: UIViewController {
         super.viewDidLoad()
         setupView()
         initVM()
+        print("git eklendi")
     }
     
     override func viewDidLayoutSubviews() {

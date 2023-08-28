@@ -16,7 +16,6 @@
 import UIKit
 import Alamofire
 
-
 enum Router: URLRequestConvertible {
     //Auth
     case register(params:Parameters)
@@ -32,7 +31,7 @@ enum Router: URLRequestConvertible {
     case places
     
     var baseURL: URL {
-           return URL(string: "https://api.iosclass.live/")!
+           return URL(string: "https://api.iosclass.live/")! // API'nin temel URL'sini belirtir. Bu temel URL, tüm isteklerin başına eklenir.
        }
     
     var path: String {

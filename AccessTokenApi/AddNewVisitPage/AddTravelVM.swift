@@ -24,16 +24,16 @@ class AddTravelVM {
     func uploadImage(image: UIImage){
         
         //FIXME: - Bu apiservice'te bir fonksiyona dönüştürülmeli. andler'ı oalcak. ve handler'ını burada cağırarak success ce fail' göre veriyi al. ardından gidip bunun için ayrı router yazarsın. 
-        let headers : HTTPHeaders =  ["Authorization": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJNZWxpaG96bSIsImlkIjoiNWZiMWExYjYtOWVjNi00N2Y5LWEwODAtNGMxYzFlYzAzOWJmIiwicm9sZSI6InVzZXIiLCJleHAiOjE2OTI5NzU5MTl9.78mLFvSf1A-tQYu0Zb4u0yMnFmDsLcxrPI1SdKeTBBw",
-                        "Accept": "application/json"]
+//        let headers : HTTPHeaders =  ["Authorization": "Basic eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmdWxsX25hbWUiOiJNZWxpaG96bSIsImlkIjoiNWZiMWExYjYtOWVjNi00N2Y5LWEwODAtNGMxYzFlYzAzOWJmIiwicm9sZSI6InVzZXIiLCJleHAiOjE2OTI5NzU5MTl9.78mLFvSf1A-tQYu0Zb4u0yMnFmDsLcxrPI1SdKeTBBw",
+//                        "Accept": "application/json"]
         AF.upload(multipartFormData: { multipart in
             if let imageData = image.jpegData(compressionQuality: 0.5) {
-                           multipart.append(imageData, withName: "file", fileName: "helsinki.jpg", mimeType: "image/jpeg")
+                           multipart.append(imageData, withName: "file", fileName: "helsinki2.jpg", mimeType: "image/jpeg")
                        }
             
-        }, to: "https://api.iosclass.live/v1/upload",
-                  method: .post,
-                  headers: headers).responseDecodable(of:UploadResponse.self) { response in
+        }, to: "https://api.iosclass.live/upload",
+                  method: .post
+        ).responseDecodable(of:UploadResponse.self) { response in
             switch response.result {
                 
             case .success:

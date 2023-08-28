@@ -187,6 +187,8 @@ extension AddTravelVC: UIImagePickerControllerDelegate & UINavigationControllerD
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage?  {
             guard let image = image else {return}
             tempImage = image
+//            let imagePath = info[UIImagePickerController.InfoKey.originalImage] as! URL
+//                print(imagePath)
         }
         
         picker.dismiss(animated: true, completion: nil)

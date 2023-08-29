@@ -57,4 +57,13 @@ class MapVM {
 
     }
     
+    func getAllArray() -> [String]? {
+        guard let placeItems = placeItems else { return nil }
+        var titleArray = [String]()
+        for place in placeItems {
+            titleArray.append(place.title)
+        }
+        return titleArray
+    }
+    
 }

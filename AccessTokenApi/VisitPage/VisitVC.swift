@@ -75,7 +75,7 @@ class VisitVC: UIViewController {
     }
     
     @objc func addTapped() {
-        let vc = AddTravelVC(latitude: 0, longitude: 0)
+        let vc = AddTravelVC()
         present(vc, animated: true)
     }
     

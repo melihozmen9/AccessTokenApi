@@ -17,7 +17,7 @@ class AddTravelVC: UIViewController{
     var longitude: Double? = nil
     
     var currentIndex: IndexPath?
-    
+    var delegate: Reloader?
     var tempImage = [UIImage()] {
         didSet {
             guard let imageClosure = imageClosure else { return}
@@ -26,15 +26,6 @@ class AddTravelVC: UIViewController{
     }
     
     var reloadMapVC: (()->())?
-    
-//    init(latitude:Double,longitude:Double) {
-//        self.latitude = latitude
-//        self.longitude = longitude
-//        super.init(nibName: nil, bundle: nil)
-//        self.getCityAndCountryName(latitude: latitude, longitude: longitude)
-//    }
-    
-
     
     private lazy var placeView: CustomView = {
         let v = CustomView()
@@ -107,8 +98,11 @@ class AddTravelVC: UIViewController{
     
     func iniVM() {
         viewModal.dismiss = {
+           
+          
             self.dismiss(animated: true) {
-               
+              
+                self.delegate?.reloadMap()
             }
         }
     }
@@ -176,7 +170,7 @@ extension AddTravelVC: UICollectionViewDelegateFlowLayout {
         vc.delegate = self
         vc.allowsEditing = true
         currentIndex = indexPath
-        if tempImage.count < 3 {
+        if tempImage.count < 4 {
             present(vc, animated: true)
         } else {
             showAlert()

@@ -26,6 +26,7 @@ enum Router: URLRequestConvertible {
     case myAllVisits
     case travelID (id:String)
     case postPlace(params:Parameters)
+    case postGallery(params:Parameters)
     // gallery Map
     case galleryID(id:String)
     case places
@@ -54,12 +55,14 @@ enum Router: URLRequestConvertible {
             return  "v1/places"
         case .postPlace:
             return  "v1/places"
+        case .postGallery:
+            return "v1/galleries"
         }
     }
     // query parametreler sorgu yapar.
     var method: HTTPMethod {
           switch self {
-          case .login, .register, .upload,.postPlace :
+          case .login, .register, .upload,.postPlace, .postGallery :
               return .post
           case .me,.myAllVisits,.places,.travelID, .galleryID :
               return .get
@@ -68,7 +71,7 @@ enum Router: URLRequestConvertible {
     
     var parameters: Parameters {
             switch self {
-            case .login(let params), .register(let params), .postPlace(let params):
+            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params):
                 return params
             default:
                 return [:]

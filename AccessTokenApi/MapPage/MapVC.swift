@@ -11,7 +11,7 @@ import TinyConstraints
 class MapVC: UIViewController {
     
     let viewModal = MapVM()
-    
+    let addTravelVC = AddTravelVC()
     
     
     private lazy var mapView: MKMapView = {
@@ -43,6 +43,9 @@ class MapVC: UIViewController {
         super.viewDidLoad()
         setupView()
         initVM()
+        initAddTravelVC()
+        
+    // FIXME: - alltaki iki satırı viewDidload'dan çıkar.
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         mapView.addGestureRecognizer(longPressGesture)
     }
@@ -56,7 +59,9 @@ class MapVC: UIViewController {
                   let touchPoint = sender.location(in: mapView)
                   let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
             
-            let vc = AddTravelVC(latitude: touchCoordinate.latitude, longitude: touchCoordinate.longitude)
+            let vc = AddTravelVC()
+            vc.latitude = touchCoordinate.latitude
+            vc.longitude = touchCoordinate.longitude
             present(vc, animated: true)
               }
     }
@@ -73,9 +78,15 @@ class MapVC: UIViewController {
             }
         }
         
+       
         
     }
     
+    func initAddTravelVC() {
+        addTravelVC.reloadMapVC = {
+            self.initVM()
+        }
+    }
      
     
     func configure(locations: [PlaceItem]) {

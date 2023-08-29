@@ -13,26 +13,28 @@ class AddTravelVC: UIViewController{
     var imageClosure: (()->())?
     
     let viewModal = AddTravelVM()
-    let latitude: Double?
-    let longitude: Double?
+    var latitude: Double? = nil
+    var longitude: Double? = nil
     
-    var tempImage = UIImage() {
+    var currentIndex: IndexPath?
+    
+    var tempImage = [UIImage()] {
         didSet {
             guard let imageClosure = imageClosure else { return}
             imageClosure()
         }
     }
     
-    init(latitude:Double,longitude:Double) {
-        self.latitude = latitude
-        self.longitude = longitude
-        super.init(nibName: nil, bundle: nil)
-        self.getCityAndCountryName(latitude: latitude, longitude: longitude)
-    }
+    var reloadMapVC: (()->())?
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    init(latitude:Double,longitude:Double) {
+//        self.latitude = latitude
+//        self.longitude = longitude
+//        super.init(nibName: nil, bundle: nil)
+//        self.getCityAndCountryName(latitude: latitude, longitude: longitude)
+//    }
+    
+
     
     private lazy var placeView: CustomView = {
         let v = CustomView()
@@ -80,22 +82,35 @@ class AddTravelVC: UIViewController{
         super.viewDidLoad()
         
         setupView()
+        guard let latitude = latitude, let longitude = longitude else { return}
+
+        getCityAndCountryName(latitude: latitude, longitude: longitude)
+        iniVM()
         
     }
     
     @objc func addTapped() {
-        viewModal.uploadImage(image: tempImage)
-//        var body = [String:Any]()
-//        guard let place = countryView.Tf.text, let title = placeView.Tf.text, let desc = descView.Tf.text else {return}
-//
-//        body["place"] = place
-//        body["title"] = title
-//        body["description"] = desc
-//        body["cover_image_url"] = "https://i2.milimaj.com/i/milliyet/75/0x0/5c8e330a45d2a097ac0f94ae.jpg"
-//        body["latitude"] = latitude
-//        body["longitude"] = longitude
-//
-//        viewModal.addTravel(body: body)
+        viewModal.uploadImage(images: tempImage)
+        var body = [String:Any]()
+        guard let place = countryView.Tf.text, let title = placeView.Tf.text, let desc = descView.Tf.text else {return}
+
+        body["place"] = place
+        body["title"] = title
+        body["description"] = desc
+        body["cover_image_url"] = "https://i2.milimaj.com/i/milliyet/75/0x0/5c8e330a45d2a097ac0f94ae.jpg"
+        body["latitude"] = latitude
+        body["longitude"] = longitude
+
+        viewModal.body = body
+        
+    }
+    
+    func iniVM() {
+        viewModal.dismiss = {
+            self.dismiss(animated: true) {
+               
+            }
+        }
     }
     
     func getCityAndCountryName(latitude: Double, longitude: Double) {
@@ -105,8 +120,6 @@ class AddTravelVC: UIViewController{
         geocoder.reverseGeocodeLocation(location) { placemarks, error in
             if let error = error {
             } else if let placemark = placemarks?.first {
-                
-                // You can access different parts of the placemark to get city and country information
                 
                 let city = placemark.locality ?? ""
                 let country = placemark.country ?? ""
@@ -142,6 +155,14 @@ class AddTravelVC: UIViewController{
         addBtn.height(54)
     }
     
+    func showAlert() {
+        let alert = UIAlertController(title: "Attention", message: "You can upload up to 3 pictures to gallery.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default)
+        
+        alert.addAction(action)
+        
+        present(alert, animated: true)
+    }
 
 
 
@@ -154,8 +175,12 @@ extension AddTravelVC: UICollectionViewDelegateFlowLayout {
         vc.sourceType = .photoLibrary
         vc.delegate = self
         vc.allowsEditing = true
-        present(vc, animated: true)
-        print("cell'e tıklandı.")
+        currentIndex = indexPath
+        if tempImage.count < 3 {
+            present(vc, animated: true)
+        } else {
+            showAlert()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {// size vermemiz gereikyor çünkkü ve genişlik ve yükseklik değerlerinie ihiyacımız var.
@@ -171,13 +196,9 @@ extension AddTravelVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addTravel", for: indexPath) as? AddTravelCollectionCell else {return UICollectionViewCell()}
-        imageClosure = {
-            cell.configure(image: self.tempImage)
-        }
+
         return cell
     }
-    
-    
 }
 
 
@@ -186,14 +207,20 @@ extension AddTravelVC: UIImagePickerControllerDelegate & UINavigationControllerD
         print(info)
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage?  {
             guard let image = image else {return}
-            tempImage = image
-//            let imagePath = info[UIImagePickerController.InfoKey.originalImage] as! URL
-//                print(imagePath)
+           
+            tempImage.append(image)
+            
+            guard let cell = collectionView.cellForItem(at: currentIndex!) as? AddTravelCollectionCell else { return }
+            cell.configure(image: tempImage.last!)
+            
+            
+
         }
-        
+
         picker.dismiss(animated: true, completion: nil)
 
     }
+
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

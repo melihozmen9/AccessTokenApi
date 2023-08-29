@@ -14,3 +14,8 @@ struct UploadResponse: Codable {
         var urls: [String]
      
 }
+
+struct GalleryResponse: Codable {
+    var message: String
+    var status: String
+}

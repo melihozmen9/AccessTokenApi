@@ -8,9 +8,18 @@
 import UIKit
 import MapKit
 import TinyConstraints
-class MapVC: UIViewController {
-    
+
+protocol Reloader: AnyObject {
+    func reloadMap()
+}
+
+class MapVC: UIViewController{
+   
     let viewModal = MapVM()
+<<<<<<< HEAD
+=======
+    let addTravelVC = AddTravelVC()
+>>>>>>> Sprint1/addTravel
     
     private lazy var mapView: MKMapView = {
         let mv = MKMapView()
@@ -21,6 +30,8 @@ class MapVC: UIViewController {
         return mv
     }()
     
+    
+    
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
@@ -30,10 +41,11 @@ class MapVC: UIViewController {
         cv.register(MapCollectionCell.self, forCellWithReuseIdentifier: "map")
         cv.delegate = self
         cv.dataSource = self
-        cv.isPagingEnabled = true
+        cv.isPagingEnabled = false
         cv.showsHorizontalScrollIndicator = false
         cv.contentInsetAdjustmentBehavior = .never
         cv.backgroundColor = .clear
+        cv.layoutIfNeeded()
         return cv
     }()
     
@@ -41,8 +53,9 @@ class MapVC: UIViewController {
         super.viewDidLoad()
         setupView()
         initVM()
-        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        mapView.addGestureRecognizer(longPressGesture)
+        
+        longPress()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,37 +64,44 @@ class MapVC: UIViewController {
     
     @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
         if sender.state == .began {
-                  let touchPoint = sender.location(in: mapView)
-                  let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+            let touchPoint = sender.location(in: mapView)
+            let touchCoordinate = mapView.convert(touchPoint, toCoordinateFrom: mapView)
             
-            let vc = AddTravelVC(latitude: touchCoordinate.latitude, longitude: touchCoordinate.longitude)
+            let vc = AddTravelVC()
+            vc.latitude = touchCoordinate.latitude
+            vc.longitude = touchCoordinate.longitude
+            vc.delegate = self
             present(vc, animated: true)
-              }
+        }
+    }
+    
+    func longPress() {
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        mapView.addGestureRecognizer(longPressGesture)
     }
     
     func initVM() {
+        
         viewModal.getLocations()
+        
         viewModal.fillMapp = { locations in
             
             self.configure(locations: locations)
         }
+        
         viewModal.reloadCell = {
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
         
-        
     }
-    
-     
     
     func configure(locations: [PlaceItem]) {
         for location in locations {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
             annotation.title = location.title
-            
             mapView.addAnnotation(annotation)
         }
     }
@@ -113,6 +133,11 @@ extension MapVC: MKMapViewDelegate {
         if let customAnnotation = view.annotation as? MKPointAnnotation {
             let region = MKCoordinateRegion(center: customAnnotation.coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)
             mapView.setRegion(region, animated: false)
+            guard let collectionData = viewModal.getAllArray() else {return}
+            if let index = collectionData.firstIndex(of: customAnnotation.title ?? "") {
+                let indexPath = IndexPath(item: index, section: 0)
+                collectionView.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+            }
         }
     }
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -133,28 +158,12 @@ extension MapVC: MKMapViewDelegate {
             
             // Set the custom annotation image
             annotationView.image = UIImage(named: "mapIcon")
-            
-            let button = UIButton(type: .detailDisclosure)
-            annotationView.rightCalloutAccessoryView = button
         }
         
         return annotationView
-        
-        print("deneme")
     }
-
-
-
-
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-           if let annotation = view.annotation as? MKAnnotation {
-               print("İşaretin başlığı: \(annotation.title ?? "")")
-               print("İşaretin alt başlığı: \(annotation.subtitle ?? "")")
-               // Burada yapmak istediğiniz eylemi gerçekleştirebilirsiniz
-           }
-       }
-
-
+    
+    
 }
 
 
@@ -165,7 +174,7 @@ extension MapVC: UICollectionViewDelegateFlowLayout {
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = viewModal.getObjectForRow(indexpath: indexPath) else {return}
-       pushNav(item: item)
+        pushNav(item: item)
     }
 }
 
@@ -176,12 +185,18 @@ extension MapVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "map", for: indexPath) as? MapCollectionCell else {return UICollectionViewCell()}
-
+        
         guard let object = viewModal.getObjectForRow(indexpath: indexPath) else { return cell}
         cell.configure(item: object)
-    
+        
         return cell
     }
     
     
+}
+
+extension MapVC: Reloader {
+    func reloadMap() {
+        initVM()
+    }
 }

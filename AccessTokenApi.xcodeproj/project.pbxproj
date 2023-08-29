@@ -69,6 +69,7 @@
 		219039662A9DECD9007AE38C /* SecuritySettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219039652A9DECD9007AE38C /* SecuritySettingsVC.swift */; };
 		219039682A9DF03F007AE38C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219039672A9DF03F007AE38C /* Router.swift */; };
 		2190396A2A9DFF7F007AE38C /* CustomSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219039692A9DFF7F007AE38C /* CustomSwitchView.swift */; };
+		2190396D2A9E1583007AE38C /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190396C2A9E1583007AE38C /* EditProfileVC.swift */; };
 		21B15DB72A913DBD0021938F /* AddTravelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB62A913DBD0021938F /* AddTravelVC.swift */; };
 		21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB82A913DE70021938F /* AddTravelVM.swift */; };
 		21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642D2A9375590047CB92 /* VisitVM.swift */; };
@@ -157,6 +158,7 @@
 		219039652A9DECD9007AE38C /* SecuritySettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritySettingsVC.swift; sourceTree = "<group>"; };
 		219039672A9DF03F007AE38C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		219039692A9DFF7F007AE38C /* CustomSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchView.swift; sourceTree = "<group>"; };
+		2190396C2A9E1583007AE38C /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		21B15DB62A913DBD0021938F /* AddTravelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelVC.swift; sourceTree = "<group>"; };
 		21B15DB82A913DE70021938F /* AddTravelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelVM.swift; sourceTree = "<group>"; };
 		21B7642D2A9375590047CB92 /* VisitVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitVM.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			children = (
 				218C34AA2A8E0AFE008AC00B /* AppDelegate.swift */,
 				218C34AC2A8E0AFE008AC00B /* SceneDelegate.swift */,
+				2190396B2A9E1552007AE38C /* EditProfile */,
 				219039642A9DEC7D007AE38C /* SecuritySettingPage */,
 				216A05E52A95F20D001DC3D5 /* AddNewVisitPage */,
 				216A05DD2A95D72B001DC3D5 /* LoginPage */,
@@ -409,6 +412,14 @@
 				219039652A9DECD9007AE38C /* SecuritySettingsVC.swift */,
 			);
 			path = SecuritySettingPage;
+			sourceTree = "<group>";
+		};
+		2190396B2A9E1552007AE38C /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				2190396C2A9E1583007AE38C /* EditProfileVC.swift */,
+			);
+			path = EditProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -604,6 +615,7 @@
 				216616AD2A94CACB00E0E3B9 /* GalleryData.swift in Sources */,
 				213FD1222A8FEF5C004D2024 /* VisitCell.swift in Sources */,
 				214310E22A8FA0DB004B81A9 /* RegisterVM.swift in Sources */,
+				2190396D2A9E1583007AE38C /* EditProfileVC.swift in Sources */,
 				213FD1202A8FE155004D2024 /* MenuVC.swift in Sources */,
 				21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */,
 				216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */,

@@ -41,7 +41,6 @@ class DetailVM {
     
     func getGalleryItems() {
         guard let travelID = travelID else { return }
-         print(EndPoint.travelID(id: travelID).apiUrl)
         apiService.makeRequest(urlConvertible: Router.galleryID(id: travelID)) { (result:Result<GalleryData,Error>) in
             
             switch result {

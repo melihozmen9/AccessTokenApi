@@ -67,7 +67,7 @@ class CustomView: UIView {
         
         Lbl.edgesToSuperview(excluding: [.bottom,.right], insets: .left(12) + .top(8))
         Lbl.height(21)
-        Lbl.width(150)
+        Lbl.width(250)
         
         Tf.topToBottom(of: Lbl,offset: 8)
         Tf.left(to: Lbl)

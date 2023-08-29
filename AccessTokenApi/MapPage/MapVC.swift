@@ -12,8 +12,6 @@ class MapVC: UIViewController {
     
     let viewModal = MapVM()
     
-    
-    
     private lazy var mapView: MKMapView = {
         let mv = MKMapView()
         mv.mapType = MKMapType.standard

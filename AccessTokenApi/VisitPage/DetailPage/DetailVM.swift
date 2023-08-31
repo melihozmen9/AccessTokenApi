@@ -8,47 +8,56 @@
 import Foundation
 import Alamofire
 import UIKit
+
+
 class DetailVM {
     
-   
-    let travelID :String?
     let apiService: ApiServiceProtocol
     
-    init(apiService: ApiServiceProtocol = ApiService(),id:String){
+    init(apiService: ApiServiceProtocol = ApiService()){
         self.apiService = apiService
-        self.travelID = id
-        getTravelItemByID()
-        getGalleryItems()
     }
     
     var galleryImagesItem: [ImageItem]?
     
-    var fillDetails: ((PlaceItem)->())?
-    var reloadCollection: (()->())?
-    
-    func getTravelItemByID() {
-       guard let travelID = travelID else { return   }
-        apiService.makeRequest(urlConvertible: Router.travelID(id: travelID)) { (result:Result<TravelID,Error>) in
+    func getTravelItemByID (placeId:String, callback: @escaping (Place)->Void) {
+        apiService.makeRequest(urlConvertible: Router.travelID(placeId: placeId)) { (result:Result<PlaceData,Error>) in
             switch result {
-            case .success(let success):
-                guard let fillDetails = self.fillDetails else { return}
-                fillDetails(success.data.place)
+            case .success(let data):
+                callback(data.data.place)
             case .failure(let failure):
                 print(failure)
             }
         }
     }
     
+<<<<<<< HEAD:AccessTokenApi/DetailPage/DetailVM.swift
     func getGalleryItems() {
         guard let travelID = travelID else { return }
         apiService.makeRequest(urlConvertible: Router.galleryID(id: travelID)) { (result:Result<GalleryData,Error>) in
             
+=======
+    func getGalleryItems(placeId:String, callback: @escaping () -> Void) {
+        apiService.makeRequest(urlConvertible: Router.galleryID(placeId: placeId)) { (result:Result<GalleryData,Error>) in
+>>>>>>> Sprint1/VisitAddButtonConfigure:AccessTokenApi/VisitPage/DetailPage/DetailVM.swift
             switch result {
             case .success(let success):
                 let value = success.data.images
                 self.galleryImagesItem = value
-                guard let reloadCollection = self.reloadCollection else {return}
-                reloadCollection()
+                callback()
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    func deleteVisitItem(visitId:String, callback: @escaping ()->Void) {
+        apiService.makeRequest(urlConvertible: Router.deletePlace(visitId: visitId)) { (result:Result<DeleteVisitResponse,Error>) in
+            switch result {
+            case .success(let success):
+                if success.status == "success"{
+                    callback()
+                }
             case .failure(let failure):
                 print(failure)
             }
@@ -56,11 +65,9 @@ class DetailVM {
     }
     
     
-    
     //MARK: - Datasource Fonksiyonları
-    
     func getNumberOfRowsInSection() -> Int{
-        guard let galleryImagesItem = galleryImagesItem else { return 0}
+        guard let galleryImagesItem = galleryImagesItem else { return 0 }
         return galleryImagesItem.count
     }
     
@@ -69,4 +76,5 @@ class DetailVM {
         let value = galleryImagesItem[indexpath.row]
         return value
     }
+    
 }

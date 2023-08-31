@@ -25,6 +25,8 @@ struct PlaceItem: Codable {
     let cover_image_url: String?
     let latitude: Double
     let longitude: Double
+    let created_at: String
+    let updated_at: String
 }
 
 

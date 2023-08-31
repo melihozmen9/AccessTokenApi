@@ -39,7 +39,7 @@ class LoginVC: UIViewController {
     private lazy var emailView: CustomView = {
         let v = CustomView()
         v.Lbl.text = "Email"
-        v.Tf.text = "melih3@gmail.com"
+        v.Tf.text = "furk@nik.com"
         v.Tf.attributedPlaceholder = NSAttributedString(string: "developer@bilgeadam.com", attributes: v.attributes)
         return v
     }()
@@ -47,7 +47,7 @@ class LoginVC: UIViewController {
     private lazy var passwordView: CustomView = {
         let v = CustomView()
         v.Lbl.text = "Password"
-        v.Tf.text = "123456"
+        v.Tf.text = "123123123"
         v.Tf.isSecureTextEntry = true
         v.Tf.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
         return v

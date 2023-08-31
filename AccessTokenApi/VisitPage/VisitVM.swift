@@ -50,8 +50,8 @@ class VisitVM {
         return travelArray.count
     }
     
-    func getObjectForRowAt(indexpath: IndexPath) -> VisitPlace? {
+    func getObjectForRowAt(indexpath: IndexPath) -> Visits? {
         guard let travelArray = travelArray else {  return nil  }
-        return travelArray[indexpath.row].place
+        return travelArray[indexpath.row]
     }
 }

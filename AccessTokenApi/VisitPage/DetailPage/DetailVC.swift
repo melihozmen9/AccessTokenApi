@@ -10,7 +10,8 @@ import TinyConstraints
 import MapKit
 class DetailVC: UIViewController {
     
-    var visitId: String?
+    var visitId:String?
+    var placeId:String?
     
     let detailViewModal = DetailVM()
     
@@ -215,13 +216,12 @@ class DetailVC: UIViewController {
     }
     
     @objc func backBtnTapped() {
-        self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
     }
     
     @objc func removeButtonClicked () {
-        
             guard let visitId = visitId else { return }
-            self.detailViewModal.deleteVisitItem(visitId: visitId){
+            self.detailViewModal.deleteVisitItem(visitId: visitId ){
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                 }
@@ -230,12 +230,12 @@ class DetailVC: UIViewController {
    
     func initVM() {
         
-        guard let visitId = visitId else { return }
-        detailViewModal.getTravelItemByID(id: visitId) { item in
-            self.configure(placeItem: item)
+        guard let placeId = placeId else { return }
+        detailViewModal.getTravelItemByID(placeId: placeId) { place in
+            self.configure(place: place)
         }
 
-        detailViewModal.getGalleryItems(id: visitId ) {
+        detailViewModal.getGalleryItems(placeId:placeId) {
             let count = self.detailViewModal.getNumberOfRowsInSection()
             self.pageControl.numberOfPages = count
             DispatchQueue.main.async {
@@ -244,21 +244,21 @@ class DetailVC: UIViewController {
         }
     }
     
-    func configure(placeItem: PlaceItem) {
-        cityLabel.text = placeItem.title
-        descriptionLabel.text = placeItem.description
+    func configure(place: Place) {
+        cityLabel.text = place.title
+        descriptionLabel.text = place.description
         
-        let date = convertDateString(placeItem.updated_at)
+        let date = convertDateString(place.updated_at)
         dateLabel.text = date
         
-        creatorLabel.text = "added by @\(placeItem.creator)"
-        configureMapView(placeItem: placeItem)
+        creatorLabel.text = "added by @\(place.creator)"
+        configureMapView(place: place)
     }
     
-    func configureMapView(placeItem: PlaceItem) {
+    func configureMapView(place: Place) {
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: placeItem.latitude, longitude: placeItem.longitude)
-        annotation.title = placeItem.title
+        annotation.coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+        annotation.title = place.title
         mapView.addAnnotation(annotation)
         
         let region = MKCoordinateRegion(center: annotation.coordinate, latitudinalMeters: 3000, longitudinalMeters: 3000)
@@ -303,7 +303,6 @@ extension DetailVC: UICollectionViewDataSource {
         cell.configure(imageUrl: imageItem.image_url)
         return cell
     }
-    
 }
 
 extension DetailVC: UIPageViewControllerDelegate {

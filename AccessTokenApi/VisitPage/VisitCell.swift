@@ -48,7 +48,7 @@ class VisitCell: UITableViewCell {
         imageview.kf.setImage(with: url)
         imageview.kf.indicatorType = .activity
         
-        
+
     }
     
     required init?(coder: NSCoder) {

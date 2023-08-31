@@ -118,12 +118,11 @@ class VisitVC: UIViewController {
         tableView.edgesToSuperview( insets: .top(45) + .right(22) + .left(22) + .bottom(0), usingSafeArea: true)
     }
     
-    func pushNav(itemID: String) {
+    func pushNav(visitId:String, placeId: String) {
         let detailVC = DetailVC()
-        detailVC.visitId = itemID
+        detailVC.visitId = visitId
+        detailVC.placeId = placeId
         navigationController?.pushViewController(detailVC, animated: true)
-        
-        print("x")
     }
 }
 
@@ -135,8 +134,8 @@ extension VisitVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let item = visitViewModal.getObjectForRowAt(indexpath: indexPath) else {return}
-        pushNav(itemID: item.id)
+        guard let visitInfo = visitViewModal.getObjectForRowAt(indexpath: indexPath) else {return}
+        pushNav(visitId:visitInfo.id ,placeId: visitInfo.place_id)
         
     }
 }
@@ -149,7 +148,7 @@ extension VisitVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "VisitCell", for: indexPath) as? VisitCell else {return UITableViewCell()}
         guard let item = visitViewModal.getObjectForRowAt(indexpath: indexPath) else {return UITableViewCell()}
-        cell.configure(item: item)
+        cell.configure(item: item.place)
         return cell
     }
     

@@ -20,22 +20,19 @@ class DetailVM {
     
     var galleryImagesItem: [ImageItem]?
     
-    var fillDetails: ((PlaceItem)->())?
-    
-    func getTravelItemByID (id:String, callback: @escaping (PlaceItem)->Void) {
-        apiService.makeRequest(urlConvertible: Router.travelID(id: id)) { (result:Result<TravelID,Error>) in
+    func getTravelItemByID (placeId:String, callback: @escaping (Place)->Void) {
+        apiService.makeRequest(urlConvertible: Router.travelID(placeId: placeId)) { (result:Result<PlaceData,Error>) in
             switch result {
-            case .success(let success):
-                let place = success.data.place
-                callback(place)
+            case .success(let data):
+                callback(data.data.place)
             case .failure(let failure):
                 print(failure)
             }
         }
     }
     
-    func getGalleryItems(id:String, callback: @escaping () -> Void) {
-        apiService.makeRequest(urlConvertible: Router.galleryID(id: id)) { (result:Result<GalleryData,Error>) in
+    func getGalleryItems(placeId:String, callback: @escaping () -> Void) {
+        apiService.makeRequest(urlConvertible: Router.galleryID(placeId: placeId)) { (result:Result<GalleryData,Error>) in
             switch result {
             case .success(let success):
                 let value = success.data.images
@@ -62,9 +59,8 @@ class DetailVM {
     
     
     //MARK: - Datasource Fonksiyonları
-    
     func getNumberOfRowsInSection() -> Int{
-        guard let galleryImagesItem = galleryImagesItem else { return 0}
+        guard let galleryImagesItem = galleryImagesItem else { return 0 }
         return galleryImagesItem.count
     }
     
@@ -73,4 +69,5 @@ class DetailVM {
         let value = galleryImagesItem[indexpath.row]
         return value
     }
+    
 }

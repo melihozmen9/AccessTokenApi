@@ -270,6 +270,7 @@
 				213FD1192A8FDE34004D2024 /* VisitVC.swift */,
 				21B7642D2A9375590047CB92 /* VisitVM.swift */,
 				21B7642F2A9378380047CB92 /* TravelModal.swift */,
+				216A05DC2A95D6F0001DC3D5 /* DetailPage */,
 			);
 			path = VisitPage;
 			sourceTree = "<group>";
@@ -359,7 +360,6 @@
 				216A05DE2A95D75D001DC3D5 /* SignUpPage */,
 				216A05DA2A95D68B001DC3D5 /* VisitPage */,
 				216A05DB2A95D6B1001DC3D5 /* MapPage */,
-				216A05DC2A95D6F0001DC3D5 /* DetailPage */,
 				218C34E62A8E0E2E008AC00B /* View */,
 				218C34E52A8E0E12008AC00B /* ApiService */,
 				214310D82A8F6154004B81A9 /* Extensions Enums */,

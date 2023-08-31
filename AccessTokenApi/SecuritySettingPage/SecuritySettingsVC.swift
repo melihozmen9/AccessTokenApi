@@ -7,6 +7,8 @@
 
 import UIKit
 import TinyConstraints
+import AVFoundation
+
 class SecuritySettingsVC: UIViewController {
     
     private lazy var view1: UIView = {
@@ -63,6 +65,7 @@ class SecuritySettingsVC: UIViewController {
     private lazy var cameraPermission: CustomSwitchView = {
         let v = CustomSwitchView()
         v.Lbl.text = "Camera"
+        v.switchView.addTarget(self, action: #selector(cameraToggled), for: .valueChanged)
         return v
     }()
     
@@ -101,6 +104,46 @@ class SecuritySettingsVC: UIViewController {
     @objc func saveTapped() {
         
     }
+    
+    @objc func cameraToggled() {
+//        let alert = UIAlertController(title: "Permission required", message: "We need your permission to access your 'Camera'.", preferredStyle: .alert)
+//        let action = UIAlertAction(title: "Allow", style: .default, handler: nil)
+        
+      
+        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+            //already authorized
+        } else {
+            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                if granted {
+                    //access allowed
+                } else {
+                    //access denied
+                }
+            })
+        }
+    }
+    
+//    func requestCameraPermission() {
+//         switch AVCaptureDevice.authorizationStatus(for: .video) {
+//         case .authorized:
+//             // Kullanıcı zaten izni verdi. Kamera işlemlerini gerçekleştirin.
+//             break
+//         case .notDetermined:
+//             AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
+//                 if granted {
+//                     // Kullanıcı izni verdi. Kamera işlemlerini gerçekleştirin.
+//                 } else {
+//                     // Kullanıcı izni vermedi. Uygulama içinde uygun işlemleri yapabilirsiniz.
+//                 }
+//                 self?.cameraPermission.switchView = true
+//             }
+//         case .denied, .restricted:
+//             // Kullanıcı izni reddetti veya kısıtladı. Uygulama içinde uygun işlemleri yapabilirsiniz.
+//             break
+//         @unknown default:
+//             break
+//         }
+//     }
    
     private func setupView() {
         self.navigationController?.isNavigationBarHidden = true

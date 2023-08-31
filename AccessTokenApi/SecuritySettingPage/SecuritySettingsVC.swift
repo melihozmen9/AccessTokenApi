@@ -8,8 +8,12 @@
 import UIKit
 import TinyConstraints
 import AVFoundation
+import Photos
+import CoreLocation
 
-class SecuritySettingsVC: UIViewController {
+class SecuritySettingsVC: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
     
     private lazy var view1: UIView = {
         let v = UIView()
@@ -72,12 +76,14 @@ class SecuritySettingsVC: UIViewController {
     private lazy var libraryPermission: CustomSwitchView = {
         let v = CustomSwitchView()
         v.Lbl.text = "Photo Library"
+        v.switchView.addTarget(self, action: #selector(libraryToggled), for: .valueChanged)
         return v
     }()
     
     private lazy var locationPermission: CustomSwitchView = {
         let v = CustomSwitchView()
         v.Lbl.text = "Location"
+        v.switchView.addTarget(self, action: #selector(locationToggled), for: .valueChanged)
         return v
     }()
     
@@ -93,8 +99,9 @@ class SecuritySettingsVC: UIViewController {
         super.viewDidLoad()
 
         setupView()
-        
-        
+        //setLibraryPermissionToggle()
+        checkCameraPermission()
+        checkLocationPermission()
     }
     
     override func viewDidLayoutSubviews() {
@@ -105,46 +112,80 @@ class SecuritySettingsVC: UIViewController {
         
     }
     
-    @objc func cameraToggled() {
-//        let alert = UIAlertController(title: "Permission required", message: "We need your permission to access your 'Camera'.", preferredStyle: .alert)
-//        let action = UIAlertAction(title: "Allow", style: .default, handler: nil)
+    @objc func cameraToggled(sender: UISwitch) {
         
-      
-        if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
-            //already authorized
-        } else {
-            AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
-                if granted {
-                    //access allowed
-                } else {
-                    //access denied
-                }
-            })
-        }
     }
     
-//    func requestCameraPermission() {
-//         switch AVCaptureDevice.authorizationStatus(for: .video) {
-//         case .authorized:
-//             // Kullanıcı zaten izni verdi. Kamera işlemlerini gerçekleştirin.
-//             break
-//         case .notDetermined:
-//             AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
-//                 if granted {
-//                     // Kullanıcı izni verdi. Kamera işlemlerini gerçekleştirin.
-//                 } else {
-//                     // Kullanıcı izni vermedi. Uygulama içinde uygun işlemleri yapabilirsiniz.
-//                 }
-//                 self?.cameraPermission.switchView = true
-//             }
-//         case .denied, .restricted:
-//             // Kullanıcı izni reddetti veya kısıtladı. Uygulama içinde uygun işlemleri yapabilirsiniz.
-//             break
-//         @unknown default:
-//             break
-//         }
-//     }
-   
+    @objc func libraryToggled(sender: UISwitch) {
+//        if sender.isOn {
+//                  requestLibraryPermission()
+//              } else {
+//                  openAppSettings()
+//              }
+    }
+    
+    @objc func locationToggled(sender: UISwitch) {
+        
+    }
+    func checkLocationPermission() {
+        let authorizationStatus = CLLocationManager.authorizationStatus()
+        var isLocationPermissionGranted = false
+        switch authorizationStatus {
+        case .authorizedWhenInUse, .authorizedAlways:
+            print("Kullanıcı konum izni verdi.")
+            isLocationPermissionGranted = true
+        case .denied:
+            print("Kullanıcı konum izni vermedi.")
+            isLocationPermissionGranted = true
+        case .restricted:
+            print("Konum izni kısıtlandı.")
+        case .notDetermined:
+            print("Konum izni henüz seçilmedi.")
+        @unknown default:
+            print("Bilinmeyen izin durumu.")
+        }
+    }
+
+    func checkCameraPermission() {
+        let authorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        
+        switch authorizationStatus {
+        case .authorized:
+            print("Kullanıcı kamera izni verdi.")
+            cameraPermission.switchView.isOn = true
+        case .denied:
+            print("Kullanıcı kamera izni vermedi.")
+        case .restricted:
+            print("Kamera izni kısıtlandı.")
+        case .notDetermined:
+            print("Kamera izni henüz seçilmedi.")
+        @unknown default:
+            print("Bilinmeyen izin durumu.")
+        }
+    }
+//    func requestLibraryPermission() {
+//           PHPhotoLibrary.requestAuthorization { status in
+//               DispatchQueue.main.async {
+//                   let isAuthorized = status == .authorized
+//                   UserDefaults.standard.set(isAuthorized, forKey: "LibraryPermission")
+//                   self.libraryPermission.switchView.isOn = isAuthorized
+//               }
+//           }
+//       }
+//
+//    func setLibraryPermissionToggle() {
+//          let isLibraryPermissionGranted = UserDefaults.standard.bool(forKey: "LibraryPermission")
+//        libraryPermission.switchView.isOn = isLibraryPermissionGranted
+//      }
+    
+    func openAppSettings() {
+           if let appSettingsURL = URL(string: UIApplication.openSettingsURLString) {
+               if UIApplication.shared.canOpenURL(appSettingsURL) {
+                   UIApplication.shared.open(appSettingsURL, options: [:], completionHandler: nil)
+               }
+           }
+       }
+    
     private func setupView() {
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Color.systemGreen.chooseColor

@@ -4,8 +4,10 @@
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please allow to access your library.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We need your permission to acces your &apos;Location&apos;.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>We need your permission to access your &apos;camera&apos;.</string>
+	<string>We need your permission to acces your &apos;Camera&apos;.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Bold.ttf</string>

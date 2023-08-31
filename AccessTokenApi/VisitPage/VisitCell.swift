@@ -33,18 +33,22 @@ class VisitCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        
+       
     }
     
-    override func layoutSubviews() {
-        self.imageview.roundCorners(corners: [.topLeft,.topRight,.bottomLeft], radius: 16)
-    }
-    
+   
     func configure(item: VisitPlace) {
+        
+        imageview.layoutIfNeeded()
+        imageview.roundCorners(corners: [.topLeft,.topRight,.bottomLeft], radius: 16)
         Lbl.text = item.title
         guard let safeUrl = item.cover_image_url else {return}
         let url = URL(string: safeUrl)
         imageview.kf.setImage(with: url)
         imageview.kf.indicatorType = .activity
+        
+        
     }
     
     required init?(coder: NSCoder) {
@@ -60,6 +64,7 @@ class VisitCell: UITableViewCell {
     
     private func setupLayout() {
         imageview.edgesToSuperview(insets: .bottom(16))
+       
         
         iconView.edgesToSuperview(excluding: [.top,.right], insets: .bottom(8) + .left(10))
         iconView.height(20)

@@ -27,6 +27,8 @@ enum Router: URLRequestConvertible {
     case myAllVisits
     case travelID (id:String)
     case postPlace(params:Parameters)
+    case deletePlace(visitId:String)
+    case isTraveled(placeId:String)
     // gallery Map
     case galleryID(id:String)
     case places
@@ -55,6 +57,10 @@ enum Router: URLRequestConvertible {
             return  "v1/places"
         case .postPlace:
             return  "v1/places"
+        case .deletePlace(let visitId):
+            return "v1/visits" + "/\(visitId)"
+        case .isTraveled(let placeId):
+            return "v1/visits/user" + "\(placeId)"
         }
     }
     // query parametreler sorgu yapar.
@@ -62,8 +68,10 @@ enum Router: URLRequestConvertible {
           switch self {
           case .login, .register, .upload,.postPlace :
               return .post
-          case .me,.myAllVisits,.places,.travelID, .galleryID :
+          case .me,.myAllVisits,.places,.travelID, .galleryID, .isTraveled :
               return .get
+          case .deletePlace:
+              return .delete
           }
       }
     
@@ -78,13 +86,13 @@ enum Router: URLRequestConvertible {
     
     var headers: HTTPHeaders {
         switch self {
-        case .login,.register:
+        case .login,.register, .isTraveled:
             return [:]
         default:
-            return ["Authorization": "Basic \(getTokenFromChain())",
-            "Accept": "application/json"]
+            return ["Authorization": "Bearer \(getTokenFromChain())"]
         }
     }
+    
     func getTokenFromChain()->String {
         guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return""}
         guard let tokenstr = String(data: token, encoding: .utf8) else {return""}
@@ -179,37 +187,3 @@ enum Color {
     }
 }
 
-
-enum EndPoint {
-    static let baseUrl = "https://api.iosclass.live/"
-    
-    case register
-    case login
-    case me
-    case addTravel
-    case listTravel
-    case travelID (id:String = "")
-    case galleryID(id:String = "")
-    case places
-    var apiUrl: String {
-        switch self {
-        case .register:
-            return EndPoint.baseUrl + "v1/auth/register"
-        case .login:
-            return EndPoint.baseUrl + "v1/auth/login"
-        case .me:
-            return EndPoint.baseUrl + "v1/me"
-        case .addTravel:
-            return EndPoint.baseUrl + "v1/travels"
-        case .listTravel:
-            return EndPoint.baseUrl + "v1/travels?page=1&limit=10"
-        case .travelID(let id):
-            return EndPoint.baseUrl + "v1/travels/" + "\(id)"
-        case .galleryID(id: let id):
-            return EndPoint.baseUrl + "v1/galleries/" + "\(id)"
-        case .places:
-            return EndPoint.baseUrl + "v1/places"
-        }
-    }
-}
-///v1/galleries/travelId

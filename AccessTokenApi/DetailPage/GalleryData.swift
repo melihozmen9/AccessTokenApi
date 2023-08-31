@@ -24,3 +24,7 @@ struct ImageItem:Codable {
     var updated_at: String
 }
 
+struct DeleteVisitResponse:Codable {
+      var message: String
+      var status: String
+}

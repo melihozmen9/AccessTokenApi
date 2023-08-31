@@ -15,22 +15,15 @@ class VisitVM {
     }
     
     var travelArray: [Visits]?
-    var reloadTableView: (()->())?
     var onDataFetch: ((Bool) -> Void)?
     
-    func fetchTravels() {
-        
-       
+    func fetchTravels(callback: @escaping ()->Void) {
         self.onDataFetch?(true)
         apiService.makeRequest(urlConvertible: Router.myAllVisits) { (result:Result<TravelData,Error>) in
-            
             switch result {
             case .success(let success):
-               
                 self.travelArray = success.data.visits
-                guard let reloadTableView = self.reloadTableView else { return}
-                sleep(1)
-                reloadTableView()
+                callback()
                 self.onDataFetch?(false)
             case .failure(let failure):
                 print(failure)

@@ -20,41 +20,22 @@ class AddTravelVM {
     var urlArrays: [String]?
     
     var dismiss: (()->())?
-    func uploadImage(images: [UIImage]){
+    func uploadImage(images: [Data]) {
+        apiService.uploadImage(route: Router.upload(image: images)) { (result:Result<UploadResponse,Error>) in
+            switch result {
+            case .success(let success):
+                self.urlArrays = success.urls
+                //url geldi. ilk görseli post place olarak atayacagız.
+                guard let urlArrays = self.urlArrays else { return}
 
-        AF.upload(multipartFormData: { multipart in
-            for image in images {
-                if let imageData = image.jpegData(compressionQuality: 0.5) {
-                               multipart.append(imageData, withName: "file", fileName: "file.jpg", mimeType: "image/jpeg")
-                           }
-            }
-         
-        }, to: "https://api.iosclass.live/upload",
-                  method: .post
-        ).responseDecodable(of:UploadResponse.self) { response in
-            switch response.result {
-            case .success:
-                if let data = response.data {
-                    do {
-                        let decodedData = try JSONDecoder().decode(UploadResponse.self, from: data)
-                        self.urlArrays = decodedData.urls
-                        //url geldi. ilk görseli post place olarak atayacagız.
-                        guard let urlArrays = self.urlArrays else { return}
-
-                        self.body?["cover_image_url"] = urlArrays.first
-                        self.addTravel(body: self.body ?? ["":""])
-                        
-
-                        
-                    } catch {
-                        print("Error: \(error)")
-                    }
-                }
-            case .failure(let error):
-                print(error)
+                self.body?["cover_image_url"] = urlArrays.first
+                self.addTravel(body: self.body ?? ["":""])
+            case .failure(let failure):
+                print(failure.localizedDescription)
             }
         }
     }
+    
     
     func addTravel(body: [String:Any]) {
         apiService.makeRequest(urlConvertible: Router.postPlace(params: body)) {

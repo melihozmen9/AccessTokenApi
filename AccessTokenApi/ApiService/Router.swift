@@ -14,7 +14,7 @@ enum Router: URLRequestConvertible {
     case login(params:Parameters)
     case me
     //Travel
-    case upload
+    case upload(image: [Data])
     case myAllVisits
     case travelID (id:String)
     case postPlace(params:Parameters)
@@ -36,7 +36,7 @@ enum Router: URLRequestConvertible {
         case .me:
             return  "v1/me"
         case .upload:
-            return  "v1/upload"
+            return  "upload"
         case .myAllVisits:
             return  "v1/visits"
         case .travelID(let id):
@@ -74,11 +74,30 @@ enum Router: URLRequestConvertible {
         switch self {
         case .login,.register:
             return [:]
+        case .upload:
+            return ["Content-Type": "multipart/form-data"]
         default:
             return ["Authorization": "Basic \(getTokenFromChain())",
             "Accept": "application/json"]
         }
     }
+    
+    var multipartFormData: MultipartFormData {
+        let formData = MultipartFormData()
+        switch self {
+        
+        case .upload(let imagedata):
+            imagedata.forEach { image in
+                formData.append(image, withName: "file", fileName: "image.jpg",
+                                mimeType: "image/jpeg")
+            }
+            return formData
+        default:
+            break
+        }
+        return formData
+    }
+    
     func getTokenFromChain()->String {
         guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return""}
         guard let tokenstr = String(data: token, encoding: .utf8) else {return""}

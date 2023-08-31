@@ -81,7 +81,10 @@ class AddTravelVC: UIViewController{
     }
     
     @objc func addTapped() {
-        viewModal.uploadImage(images: tempImage)
+        // resimleri secerken tempImage arrayine image tipinde attık. CollectionCell'lerini doldurabilmek için. burada da tek satır kodla hızlıca data tipinde bir array'e dönüştürdük.  ve uploadImage fonksiyonuna data tipinde atmış olduk.
+        let imageData = tempImage.compactMap { $0.jpegData(compressionQuality:0.5)}
+        
+        viewModal.uploadImage(images: imageData)
         var body = [String:Any]()
         guard let place = countryView.Tf.text, let title = placeView.Tf.text, let desc = descView.Tf.text else {return}
 
@@ -201,7 +204,7 @@ extension AddTravelVC: UIImagePickerControllerDelegate & UINavigationControllerD
         print(info)
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage?  {
             guard let image = image else {return}
-           
+            let data = image.jpegData(compressionQuality: 0.5)
             tempImage.append(image)
             
             guard let cell = collectionView.cellForItem(at: currentIndex!) as? AddTravelCollectionCell else { return }

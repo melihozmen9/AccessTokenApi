@@ -24,6 +24,7 @@ enum Font {
     case semibold24
     case semibold16
     case semibold14
+    case semibold12
     case bold36
     case bold32
     case bold30
@@ -45,6 +46,8 @@ enum Font {
             return UIFont(name: "Poppins-SemiBold", size: 16)!
         case .semibold14:
             return UIFont(name: "Poppins-SemiBold", size: 14)!
+        case .semibold12:
+            return UIFont(name: "Poppins-SemiBold", size: 12)!
         case .bold36:
             return UIFont(name: "Poppins-Bold", size: 36)!
         case .bold30:
@@ -57,6 +60,7 @@ enum Font {
             return UIFont(name: "Poppins-Bold", size: 16)!
         case .bold32:
             return UIFont(name: "Poppins-Bold", size: 32)!
+        
         }
     }
 }

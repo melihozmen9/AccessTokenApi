@@ -56,17 +56,21 @@ class EditProfileVC: UIViewController {
         return l
     }()
     
-    private lazy var dateView: UIView = {
-        let v = UIView()
+    private lazy var dateView: InfoCustomView = {
+        let v = InfoCustomView()
         v.layer.cornerRadius = 16
         v.backgroundColor = .blue
+        v.imageview.image = UIImage(named: "dateIcon")
+        v.Lbl.text = "30 Haziran 2023"
         return v
     }()
     
-    private lazy var positionView: UIView = {
-        let v = UIView()
+    private lazy var positionView: InfoCustomView = {
+        let v = InfoCustomView()
         v.layer.cornerRadius = 16
-        v.backgroundColor = .blue
+        v.backgroundColor = Color.white.chooseColor
+        v.imageview.image = UIImage(named: "positionIcon")
+        v.Lbl.text = "Admin"
         return v
     }()
     

@@ -16,10 +16,11 @@ enum Router: URLRequestConvertible {
     //Travel
     case upload(image: [Data])
     case myAllVisits
-    case travelID (id:String)
+    case travelID (placeId:String)
     case postPlace(params:Parameters)
+    case deletePlace(visitId:String)
     // gallery Map
-    case galleryID(id:String)
+    case galleryID(placeId:String)
     case places
     case postGallery(params:Parameters)
     
@@ -45,6 +46,8 @@ enum Router: URLRequestConvertible {
             return "v1/galleries/" + "\(id)"
         case .places:
             return  "v1/places"
+        case .deletePlace(let visitId):
+            return "v1/visits" + "/\(visitId)"
         case .postPlace:
             return  "v1/places"
         case .postGallery(params: let params):
@@ -58,6 +61,8 @@ enum Router: URLRequestConvertible {
               return .post
           case .me,.myAllVisits,.places,.travelID, .galleryID :
               return .get
+          case .deletePlace:
+              return .delete
           }
       }
     

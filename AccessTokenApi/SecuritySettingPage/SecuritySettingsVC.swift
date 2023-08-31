@@ -102,6 +102,8 @@ class SecuritySettingsVC: UIViewController, CLLocationManagerDelegate {
         //setLibraryPermissionToggle()
         checkCameraPermission()
         checkLocationPermission()
+       
+       
     }
     
     override func viewDidLayoutSubviews() {
@@ -136,47 +138,54 @@ class SecuritySettingsVC: UIViewController, CLLocationManagerDelegate {
             isLocationPermissionGranted = true
         case .denied:
             print("Kullanıcı konum izni vermedi.")
-            isLocationPermissionGranted = true
+            isLocationPermissionGranted = false
         case .restricted:
             print("Konum izni kısıtlandı.")
+            isLocationPermissionGranted = false
         case .notDetermined:
             print("Konum izni henüz seçilmedi.")
+            isLocationPermissionGranted = false
         @unknown default:
             print("Bilinmeyen izin durumu.")
+            isLocationPermissionGranted = false
         }
+        UserDefaults.standard.set(isLocationPermissionGranted, forKey: "LocationPermission")
+        setLocationPermissionToggle()
     }
+    func setLocationPermissionToggle() {
+           let isLocationPermissionGranted = UserDefaults.standard.bool(forKey: "LocationPermission")
+        locationPermission.switchView
+            .isOn = isLocationPermissionGranted
+       }
 
     func checkCameraPermission() {
         let authorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
-        
+        var isCameraPermissionGranted = false
         switch authorizationStatus {
         case .authorized:
             print("Kullanıcı kamera izni verdi.")
-            cameraPermission.switchView.isOn = true
+            isCameraPermissionGranted = true
         case .denied:
             print("Kullanıcı kamera izni vermedi.")
+            isCameraPermissionGranted = false
         case .restricted:
             print("Kamera izni kısıtlandı.")
+            isCameraPermissionGranted = false
         case .notDetermined:
             print("Kamera izni henüz seçilmedi.")
+            isCameraPermissionGranted = false
         @unknown default:
             print("Bilinmeyen izin durumu.")
+            isCameraPermissionGranted = false
         }
+        UserDefaults.standard.set(isCameraPermissionGranted, forKey: "CameraPermission")
+        setCameraPermissionToggle()
     }
-//    func requestLibraryPermission() {
-//           PHPhotoLibrary.requestAuthorization { status in
-//               DispatchQueue.main.async {
-//                   let isAuthorized = status == .authorized
-//                   UserDefaults.standard.set(isAuthorized, forKey: "LibraryPermission")
-//                   self.libraryPermission.switchView.isOn = isAuthorized
-//               }
-//           }
-//       }
-//
-//    func setLibraryPermissionToggle() {
-//          let isLibraryPermissionGranted = UserDefaults.standard.bool(forKey: "LibraryPermission")
-//        libraryPermission.switchView.isOn = isLibraryPermissionGranted
-//      }
+    func setCameraPermissionToggle() {
+           let isCameraPermissionGranted = UserDefaults.standard.bool(forKey: "CameraPermission")
+        cameraPermission.switchView
+            .isOn = isCameraPermissionGranted
+       }
     
     func openAppSettings() {
            if let appSettingsURL = URL(string: UIApplication.openSettingsURLString) {

@@ -13,62 +13,62 @@ class MenuVC: UIViewController {
     
     let viewModel = MenuVM()
     
-    private lazy var view1: UIView = {
-        let view = UIView()
-        view.backgroundColor = Color.systemWhite.chooseColor
-        return view
+    private lazy var InsideWhiteView: UIView = {
+        let WhiteView = UIView()
+        WhiteView.backgroundColor = Color.systemWhite.chooseColor
+        return WhiteView
     }()
     
-    private lazy var imageView:UIImageView = {
-        let imageView = UIImageView(frame: CGRect(x: 135, y: 149, width: 120, height: 120))
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.kf.setImage(with: URL(string: "https://cdn.britannica.com/48/194248-050-4EE825CF/Bruce-Willis-2013.jpg"))
+    private lazy var BrucesImage:UIImageView = {
+        let BruceWillsImage = UIImageView(frame: CGRect(x: 135, y: 149, width: 120, height: 120))
+        BruceWillsImage.layer.cornerRadius = BruceWillsImage.frame.size.width / 2
+        BruceWillsImage.layer.masksToBounds = true
+        BruceWillsImage.contentMode = .scaleAspectFill
+        BruceWillsImage.kf.setImage(with: URL(string: "https://cdn.britannica.com/48/194248-050-4EE825CF/Bruce-Willis-2013.jpg"))
         
-        return imageView
+        return BruceWillsImage
     }()
     
-    private lazy var label:CustomLabel = {
-        let label = CustomLabel()
-        label.text = "Bruce Wills"
-        label.textColor = .black
-     //   label.fontType.chooseFont
+    private lazy var BrucesName:CustomLabel = {
+        let BrucesNameSurname = CustomLabel()
+        BrucesNameSurname.text = "Bruce Wills"
+        BrucesNameSurname.font = Font.semibold16.chooseFont
         
-        return label
+        return BrucesNameSurname
     }()
     
-    private lazy var difButton:UIButton = {
-        let difButton = UIButton()
-        difButton.setTitleColor(#colorLiteral(red: 0, green: 0.7960889935, blue: 0.9382097721, alpha: 1), for: .normal)
-        difButton.setTitle("Edit Profile", for: .normal)
-        difButton.titleLabel?.font = Font.regular12.chooseFont
-       
-        return difButton
+    private lazy var editProfileButton:UIButton = {
+        let editProfile = UIButton()
+        editProfile.setTitleColor(#colorLiteral(red: 0, green: 0.7960889935, blue: 0.9382097721, alpha: 1), for: .normal)
+        editProfile.setTitle("Edit Profile", for: .normal)
+        editProfile.titleLabel?.font = Font.regular12.chooseFont
+        editProfile.addTarget(self, action: #selector(editProfilePage), for: .touchUpInside)
+    
+        return editProfile
     }()
     
     private lazy var collectionView:UICollectionView = {
        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-   //     layout.minimumLineSpacing = 2
-        layout.minimumInteritemSpacing = 2
-        let cv = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+    //    layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
-  //      cv.backgroundColor = .clear
-        cv.backgroundColor = .gray
+        cv.backgroundColor = .clear
         cv.register(CustomCvCell.self, forCellWithReuseIdentifier: "CustomCell")
         
         return cv
     }()
     
-    private lazy var titlelbl:UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.text = "Settings"
-        titleLabel.textColor = .white
-        titleLabel.font = UIFont(name: Font.bold30.chooseFont.fontName, size: Font.bold30.chooseFont.pointSize)
+    private lazy var settingsLabel:UILabel = {
+        let settings = UILabel()
+        settings.text = "Settings"
+        settings.textColor = .white
+        settings.font = UIFont(name: Font.bold30.chooseFont.fontName, size: Font.bold30.chooseFont.pointSize)
         
-        return titleLabel
+        return settings
     }()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,49 +87,51 @@ class MenuVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         
-        view1.roundCorners(corners: .topLeft, radius: 80)
+        InsideWhiteView.roundCorners(corners: .topLeft, radius: 80)
         
     }
     
     func setupView() {
         
-        self.view.addSubviews(titlelbl,view1)
-        view1.addSubviews(imageView, label, difButton, collectionView)
+        self.view.addSubviews(settingsLabel,InsideWhiteView)
+        InsideWhiteView.addSubviews(BrucesImage, BrucesName, editProfileButton, collectionView)
         setupLayout()
     }
 
     func setupLayout() {
         
-//        titlelbl.leading(to: view.safeAreaLayoutGuide, offset: 20)
-//        titlelbl.top(to: view.safeAreaLayoutGuide, offset: 23)
-        titlelbl.edgesToSuperview(excluding: [.bottom, .right], insets: .left(20) + .top(23), usingSafeArea: true)
-        titlelbl.height(48)
-        titlelbl.width(134)
+        settingsLabel.edgesToSuperview(excluding: [.bottom, .right], insets: .left(20) + .top(23), usingSafeArea: true)
+        settingsLabel.height(48)
+        settingsLabel.width(134)
         
-        view1.edgesToSuperview(insets: .top(125), usingSafeArea: true)
-    //  view1.topToBottom(of: titlelbl, offset: 54)
+        InsideWhiteView.edgesToSuperview(insets: .top(170))
+        InsideWhiteView.topToBottom(of: settingsLabel, offset: 54)
         
+        BrucesImage.top(to: InsideWhiteView, offset: 24)
+        BrucesImage.height(120)
+        BrucesImage.width(120)
+        BrucesImage.centerXToSuperview()
         
-        imageView.top(to: view1, offset: 24)
-        imageView.height(120)
-        imageView.width(120)
-        imageView.centerXToSuperview()
+        BrucesName.topToBottom(of: BrucesImage, offset: 8)
+        BrucesName.centerXToSuperview()
+        BrucesName.height(24)
+        BrucesName.width(94)
         
-        label.topToBottom(of: imageView, offset: 8)
-        label.centerXToSuperview()
-        label.height(24)
-        label.width(94)
+        editProfileButton.topToBottom(of: BrucesName)
+        editProfileButton.centerXToSuperview()
+        editProfileButton.height(18)
+        editProfileButton.width(62)
         
-        difButton.topToBottom(of: label)
-        difButton.centerXToSuperview()
-        difButton.height(18)
-        difButton.width(62)
-        
-        collectionView.topToBottom(of: difButton, offset: 16)
-        collectionView.bottomToSuperview(offset: -54)
+        collectionView.topToBottom(of: editProfileButton, offset: 16)
+        collectionView.bottomToSuperview(offset: -48)
         collectionView.leftToSuperview(offset:16)
-        collectionView.trailingToSuperview(offset:16)
+        collectionView.trailingToSuperview(offset: -16)
+    }
+    
+    @objc func editProfilePage() {
         
+//        let vc = editProfile()
+//        self.present(vc, animated: true)
     }
 
 }
@@ -137,37 +139,39 @@ class MenuVC: UIViewController {
 extension MenuVC:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.labels.count
+        return viewModel.collectionViewCellsLabels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CustomCell", for: indexPath) as? CustomCvCell else  {return UICollectionViewCell()}
         
-        let images = viewModel.getImageForRow(indexpath: indexPath)
-        let labels = viewModel.getLabelForRow(indexpath: indexPath)
-        let images2 = viewModel.getImageForRow2(indexpath: indexPath)
+        let leftImagesAtRow = viewModel.getLeftImageForRow(indexpath: indexPath)
+        let labelsAtRow = viewModel.getLabelForRow(indexpath: indexPath)
+        let rightImagesAtRow = viewModel.getRightImageForRow(indexpath: indexPath)
         
-        cell.configure(imgView1: images, lbl: labels, imgView2: images2)
+        cell.configure(cellLeftImage: leftImagesAtRow, cellLabel: labelsAtRow, cellRightImage: rightImagesAtRow)
         
         return cell
     }
     
     
 }
-extension MenuVC:UICollectionViewDelegate {
+extension MenuVC:UICollectionViewDelegateFlowLayout {
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 9, left: 16, bottom: 0, right: 16)
-//    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let nav = SettingsProfile()
-//        navigationController?.pushViewController(nav, animated: true)
+        let labelsAtRow = viewModel.getLabelForRow(indexpath: indexPath)
+//        if labelsAtRow == "Security Settings" {
+//            let nav = SettingsProfile()
+//            navigationController?.pushViewController(nav, animated: true)
+//        }
+     
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width-32, height: 48)
+        return CGSize(width: 354, height:58)
         }
     
 }

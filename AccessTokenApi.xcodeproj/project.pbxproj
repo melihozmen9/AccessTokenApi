@@ -76,7 +76,10 @@
 		21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642D2A9375590047CB92 /* VisitVM.swift */; };
 		21B764302A9378380047CB92 /* TravelModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642F2A9378380047CB92 /* TravelModal.swift */; };
 		21B764332A937C8B0047CB92 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21B764322A937C8B0047CB92 /* Kingfisher */; };
+		21D0C58A2AA1B8D1004D2DFC /* SecuritySettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */; };
 		21F804782A93D7D40068CDAF /* TravelID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F804772A93D7D40068CDAF /* TravelID.swift */; };
+		794C453C2AA0B89D008DD231 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C453B2AA0B89D008DD231 /* MenuVM.swift */; };
+		7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,7 +168,10 @@
 		21B15DB82A913DE70021938F /* AddTravelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelVM.swift; sourceTree = "<group>"; };
 		21B7642D2A9375590047CB92 /* VisitVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitVM.swift; sourceTree = "<group>"; };
 		21B7642F2A9378380047CB92 /* TravelModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelModal.swift; sourceTree = "<group>"; };
+		21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritySettingsVM.swift; sourceTree = "<group>"; };
 		21F804772A93D7D40068CDAF /* TravelID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelID.swift; sourceTree = "<group>"; };
+		794C453B2AA0B89D008DD231 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
+		7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCvCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +209,9 @@
 			children = (
 				213FD1162A8FDD73004D2024 /* MainTabBarController.swift */,
 				213FD11B2A8FDEEE004D2024 /* HomeVC.swift */,
+				794C453B2AA0B89D008DD231 /* MenuVM.swift */,
 				213FD11F2A8FE155004D2024 /* MenuVC.swift */,
+				7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */,
 			);
 			name = TabBarVC;
 			sourceTree = "<group>";
@@ -413,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				219039652A9DECD9007AE38C /* SecuritySettingsVC.swift */,
+				21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */,
 			);
 			path = SecuritySettingPage;
 			sourceTree = "<group>";
@@ -603,6 +612,7 @@
 				216A05E22A95D91C001DC3D5 /* Extension.swift in Sources */,
 				213FD11E2A8FE141004D2024 /* MapVC.swift in Sources */,
 				218C34E92A8E112A008AC00B /* LoginVM.swift in Sources */,
+				21D0C58A2AA1B8D1004D2DFC /* SecuritySettingsVM.swift in Sources */,
 				217D7A472A8E345D00274A30 /* KeychainHelper.swift in Sources */,
 				21F804782A93D7D40068CDAF /* TravelID.swift in Sources */,
 				218C34AB2A8E0AFE008AC00B /* AppDelegate.swift in Sources */,
@@ -622,6 +632,7 @@
 				2190396D2A9E1583007AE38C /* EditProfileVC.swift in Sources */,
 				213FD1202A8FE155004D2024 /* MenuVC.swift in Sources */,
 				21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */,
+				7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */,
 				216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */,
 				217D7A4B2A8E44B100274A30 /* DetailVM.swift in Sources */,
 				214310DC2A8F66F1004B81A9 /* Extensions.swift in Sources */,
@@ -629,6 +640,7 @@
 				214310DE2A8F8C6C004B81A9 /* CustomButton.swift in Sources */,
 				21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */,
 				213FD11A2A8FDE34004D2024 /* VisitVC.swift in Sources */,
+				794C453C2AA0B89D008DD231 /* MenuVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

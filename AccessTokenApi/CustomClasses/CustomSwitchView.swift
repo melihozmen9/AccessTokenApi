@@ -39,6 +39,7 @@ class CustomSwitchView: UIView {
         self.addSubviews(Lbl,switchView)
         setupLayout()
     }
+    
     private func setupLayout() {
         Lbl.edgesToSuperview( insets: .top(25) + .left(16) + .bottom(27) + .right(200))
 

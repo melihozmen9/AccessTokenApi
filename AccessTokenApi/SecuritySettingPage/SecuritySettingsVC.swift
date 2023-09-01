@@ -7,7 +7,11 @@
 
 import UIKit
 import TinyConstraints
+
+
 class SecuritySettingsVC: UIViewController {
+    
+    let viewModal = SecuritySettingsVM()
     
     private lazy var view1: UIView = {
         let v = UIView()
@@ -15,11 +19,12 @@ class SecuritySettingsVC: UIViewController {
         return v
     }()
     
-    private lazy var backButton: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(named: "vector")
-        return iv
+    private lazy var backButton: UIButton = {
+        let btn = UIButton()
+        btn.contentMode = .scaleAspectFit
+        btn.setImage(UIImage(named: "vector"), for: .normal)
+        btn.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        return btn
     }()
     
     private lazy var titleLbl: UILabel = {
@@ -63,18 +68,24 @@ class SecuritySettingsVC: UIViewController {
     private lazy var cameraPermission: CustomSwitchView = {
         let v = CustomSwitchView()
         v.Lbl.text = "Camera"
+        v.switchView.addTarget(self, action: #selector(cameraToggled), for: .valueChanged)
+        v.switchView.isOn = viewModal.setPermissionToggle(forKey: "CameraPermission")
         return v
     }()
     
     private lazy var libraryPermission: CustomSwitchView = {
         let v = CustomSwitchView()
         v.Lbl.text = "Photo Library"
+        v.switchView.addTarget(self, action: #selector(libraryToggled), for: .valueChanged)
+        v.switchView.isOn = viewModal.setPermissionToggle(forKey: "LibraryPermission")
         return v
     }()
     
     private lazy var locationPermission: CustomSwitchView = {
         let v = CustomSwitchView()
         v.Lbl.text = "Location"
+        v.switchView.addTarget(self, action: #selector(locationToggled), for: .valueChanged)
+        v.switchView.isOn = viewModal.setPermissionToggle(forKey: "LocationPermission")
         return v
     }()
     
@@ -85,12 +96,12 @@ class SecuritySettingsVC: UIViewController {
         btn.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         return btn
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        setupView()
         
+        setupView()
+        initVM()
         
     }
     
@@ -99,9 +110,63 @@ class SecuritySettingsVC: UIViewController {
     }
     
     @objc func saveTapped() {
-        
+        dismiss(animated: true, completion: nil)
     }
-   
+    //MARK: - Switch fonksiyonları
+    @objc func cameraToggled(sender: UISwitch) {
+        if sender.isOn {
+            openAppSettings()
+        } else {
+            openAppSettings()
+        }
+        self.viewModal.checkCameraPermission()
+        sender.isOn = self.viewModal.setPermissionToggle(forKey: "CameraPermission")
+    }
+    
+    
+    
+    @objc func libraryToggled(sender: UISwitch) {
+        if sender.isOn {
+            openAppSettings()
+        } else {
+            openAppSettings()
+            
+        }
+        self.viewModal.checkLibraryPermission()
+        sender.isOn = self.viewModal.setPermissionToggle(forKey: "LibraryPermission")
+    }
+    
+    @objc func locationToggled(sender: UISwitch) {
+        if sender.isOn {
+            openAppSettings()
+        } else {
+            openAppSettings()
+            
+        }
+        self.viewModal.checkLocationPermission()
+        sender.isOn = self.viewModal.setPermissionToggle(forKey: "LocationPermission")
+    }
+    
+    @objc func backButtonTapped() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    func initVM() {
+        viewModal.checkAllPermissions()
+    }
+    
+    
+    //MARK: - Ayarlara yönlendiren fonksiyon
+    
+    func openAppSettings() {
+        if let appSettingsURL = URL(string: UIApplication.openSettingsURLString) {
+            if UIApplication.shared.canOpenURL(appSettingsURL) {
+                UIApplication.shared.open(appSettingsURL, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
     private func setupView() {
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Color.systemGreen.chooseColor
@@ -154,5 +219,5 @@ class SecuritySettingsVC: UIViewController {
         saveBtn.height(54)
         
     }
-
+    
 }

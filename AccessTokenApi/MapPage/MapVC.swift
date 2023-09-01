@@ -8,16 +8,17 @@
 import UIKit
 import MapKit
 import TinyConstraints
+import CoreLocation
 
 protocol Reloader: AnyObject {
     func reloadMap()
 }
 
-class MapVC: UIViewController{
+class MapVC: UIViewController, CLLocationManagerDelegate{
    
     let viewModal = MapVM()
     let addTravelVC = AddTravelVC()
-    
+    let locationManager = CLLocationManager()
     private lazy var mapView: MKMapView = {
         let mv = MKMapView()
         mv.mapType = MKMapType.standard
@@ -52,7 +53,7 @@ class MapVC: UIViewController{
         initVM()
         
         longPress()
-        
+        locationAdjustment()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +71,11 @@ class MapVC: UIViewController{
             vc.delegate = self
             present(vc, animated: true)
         }
+    }
+    
+    func locationAdjustment() {
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
     }
     
     func longPress() {

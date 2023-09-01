@@ -53,10 +53,10 @@ class HomeVC: UIViewController {
 //            let vc = PopularPlacesVC()
 //            navigationController?.pushViewController(vc, animated: true)
 //         case 1:
-//            let vc = PopularPlacesVC()
+//            let vc = MyAddedPlacesVC()
 //            navigationController?.pushViewController(vc, animated: true)
 //        case 2:
-//           let vc = PopularPlacesVC()
+//           let vc = NewPlacesVC()
 //           navigationController?.pushViewController(vc, animated: true)
 //         default:
 //           break
@@ -93,7 +93,7 @@ extension HomeVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
             let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 52))
-            
+        headerView.backgroundColor = Color.systemWhite.chooseColor
             let label = UILabel()
             label.frame = CGRect.init(x: 0, y: 20, width: headerView.frame.width-10, height: 30)
         label.text = viewModal.getHeaderNameForSection(section: section)

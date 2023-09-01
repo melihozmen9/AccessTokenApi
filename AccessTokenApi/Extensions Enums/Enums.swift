@@ -20,6 +20,7 @@ import Alamofire
 
 enum Font {
     case regular12
+    case regular14
     case regular16
     case semibold24
     case semibold16
@@ -36,6 +37,8 @@ enum Font {
         switch self {
         case .regular12:
             return UIFont(name: "Poppins-Regular", size: 12)!
+        case .regular14:
+            return UIFont(name: "Poppins-Regular", size: 14)!
         case .regular16:
             return UIFont(name: "Poppins-Regular", size: 16)!
         case .bold14:

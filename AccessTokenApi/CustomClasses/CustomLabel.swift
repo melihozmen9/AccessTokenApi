@@ -18,7 +18,6 @@ class CustomLabel: UILabel {
         super.init(frame: .zero) // neden bunu yapıyorum. ezbere yapıyorum?
         self.font = fontType.chooseFont
         self.textAlignment = .center
-        
     }
     
     required init?(coder: NSCoder) {

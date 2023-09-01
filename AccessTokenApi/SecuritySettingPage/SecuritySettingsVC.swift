@@ -19,11 +19,12 @@ class SecuritySettingsVC: UIViewController {
         return v
     }()
     
-    private lazy var backButton: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(named: "vector")
-        return iv
+    private lazy var backButton: UIButton = {
+        let btn = UIButton()
+        btn.contentMode = .scaleAspectFit
+        btn.setImage(UIImage(named: "vector"), for: .normal)
+        btn.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        return btn
     }()
     
     private lazy var titleLbl: UILabel = {
@@ -109,7 +110,7 @@ class SecuritySettingsVC: UIViewController {
     }
     
     @objc func saveTapped() {
-        
+        dismiss(animated: true, completion: nil)
     }
     //MARK: - Switch fonksiyonları
     @objc func cameraToggled(sender: UISwitch) {
@@ -144,6 +145,10 @@ class SecuritySettingsVC: UIViewController {
         }
         self.viewModal.checkLocationPermission()
         sender.isOn = self.viewModal.setPermissionToggle(forKey: "LocationPermission")
+    }
+    
+    @objc func backButtonTapped() {
+        dismiss(animated: true, completion: nil)
     }
     
     

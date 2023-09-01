@@ -80,6 +80,10 @@
 		21F804782A93D7D40068CDAF /* TravelID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F804772A93D7D40068CDAF /* TravelID.swift */; };
 		794C453C2AA0B89D008DD231 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C453B2AA0B89D008DD231 /* MenuVM.swift */; };
 		7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */; };
+		A395F14A2AA1E09D00E7AAAC /* PopularPlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395F1492AA1E09D00E7AAAC /* PopularPlacesVC.swift */; };
+		A395F14C2AA1FCBF00E7AAAC /* PopularPlacesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395F14B2AA1FCBF00E7AAAC /* PopularPlacesCustomCell.swift */; };
+		A395F14E2AA2131300E7AAAC /* PopularPlacesVM .swift in Sources */ = {isa = PBXBuildFile; fileRef = A395F14D2AA2131300E7AAAC /* PopularPlacesVM .swift */; };
+		A395F1502AA213C600E7AAAC /* PopularPlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A395F14F2AA213C600E7AAAC /* PopularPlacesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +176,10 @@
 		21F804772A93D7D40068CDAF /* TravelID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelID.swift; sourceTree = "<group>"; };
 		794C453B2AA0B89D008DD231 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
 		7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCvCell.swift; sourceTree = "<group>"; };
+		A395F1492AA1E09D00E7AAAC /* PopularPlacesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularPlacesVC.swift; sourceTree = "<group>"; };
+		A395F14B2AA1FCBF00E7AAAC /* PopularPlacesCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularPlacesCustomCell.swift; sourceTree = "<group>"; };
+		A395F14D2AA2131300E7AAAC /* PopularPlacesVM .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PopularPlacesVM .swift"; sourceTree = "<group>"; };
+		A395F14F2AA213C600E7AAAC /* PopularPlacesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularPlacesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +375,7 @@
 				216A05DD2A95D72B001DC3D5 /* LoginPage */,
 				216A05DE2A95D75D001DC3D5 /* SignUpPage */,
 				216A05DA2A95D68B001DC3D5 /* VisitPage */,
+				A395F1482AA1E01A00E7AAAC /* PopularPlaces */,
 				216A05DB2A95D6B1001DC3D5 /* MapPage */,
 				218C34E62A8E0E2E008AC00B /* View */,
 				218C34E52A8E0E12008AC00B /* ApiService */,
@@ -432,6 +441,17 @@
 				2190396C2A9E1583007AE38C /* EditProfileVC.swift */,
 			);
 			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		A395F1482AA1E01A00E7AAAC /* PopularPlaces */ = {
+			isa = PBXGroup;
+			children = (
+				A395F1492AA1E09D00E7AAAC /* PopularPlacesVC.swift */,
+				A395F14D2AA2131300E7AAAC /* PopularPlacesVM .swift */,
+				A395F14F2AA213C600E7AAAC /* PopularPlacesModel.swift */,
+				A395F14B2AA1FCBF00E7AAAC /* PopularPlacesCustomCell.swift */,
+			);
+			name = PopularPlaces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -607,9 +627,12 @@
 				219039662A9DECD9007AE38C /* SecuritySettingsVC.swift in Sources */,
 				219039682A9DF03F007AE38C /* Router.swift in Sources */,
 				218C34E32A8E0DFE008AC00B /* ApiService.swift in Sources */,
+				A395F14C2AA1FCBF00E7AAAC /* PopularPlacesCustomCell.swift in Sources */,
 				213FD1172A8FDD73004D2024 /* MainTabBarController.swift in Sources */,
+				A395F14E2AA2131300E7AAAC /* PopularPlacesVM .swift in Sources */,
 				21793EB52A98D42D001CA74D /* UploadResponse.swift in Sources */,
 				216A05E22A95D91C001DC3D5 /* Extension.swift in Sources */,
+				A395F1502AA213C600E7AAAC /* PopularPlacesModel.swift in Sources */,
 				213FD11E2A8FE141004D2024 /* MapVC.swift in Sources */,
 				218C34E92A8E112A008AC00B /* LoginVM.swift in Sources */,
 				21D0C58A2AA1B8D1004D2DFC /* SecuritySettingsVM.swift in Sources */,
@@ -627,6 +650,7 @@
 				218C34EB2A8E135F008AC00B /* Modal.swift in Sources */,
 				218C34AD2A8E0AFE008AC00B /* SceneDelegate.swift in Sources */,
 				216616AD2A94CACB00E0E3B9 /* GalleryData.swift in Sources */,
+				A395F14A2AA1E09D00E7AAAC /* PopularPlacesVC.swift in Sources */,
 				213FD1222A8FEF5C004D2024 /* VisitCell.swift in Sources */,
 				214310E22A8FA0DB004B81A9 /* RegisterVM.swift in Sources */,
 				2190396D2A9E1583007AE38C /* EditProfileVC.swift in Sources */,

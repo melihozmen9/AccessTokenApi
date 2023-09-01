@@ -118,7 +118,7 @@ class MapVC: UIViewController{
     
     func pushNav(item: PlaceItem) {
         let detailVC = DetailVC()
-//        detailVC.viewModal = DetailVM(id: item.id)
+        detailVC.placeId = item.id
         navigationController?.pushViewController(detailVC, animated: true)
     }
     

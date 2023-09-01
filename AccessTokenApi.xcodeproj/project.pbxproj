@@ -77,6 +77,9 @@
 		21B764302A9378380047CB92 /* TravelModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642F2A9378380047CB92 /* TravelModal.swift */; };
 		21B764332A937C8B0047CB92 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21B764322A937C8B0047CB92 /* Kingfisher */; };
 		21D0C58A2AA1B8D1004D2DFC /* SecuritySettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */; };
+		21D0C58D2AA1EC02004D2DFC /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */; };
+		21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */; };
+		21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C5902AA20977004D2DFC /* HomeVM.swift */; };
 		21F804782A93D7D40068CDAF /* TravelID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F804772A93D7D40068CDAF /* TravelID.swift */; };
 		794C453C2AA0B89D008DD231 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C453B2AA0B89D008DD231 /* MenuVM.swift */; };
 		7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */; };
@@ -169,6 +172,9 @@
 		21B7642D2A9375590047CB92 /* VisitVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitVM.swift; sourceTree = "<group>"; };
 		21B7642F2A9378380047CB92 /* TravelModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelModal.swift; sourceTree = "<group>"; };
 		21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritySettingsVM.swift; sourceTree = "<group>"; };
+		21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
+		21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		21D0C5902AA20977004D2DFC /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		21F804772A93D7D40068CDAF /* TravelID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelID.swift; sourceTree = "<group>"; };
 		794C453B2AA0B89D008DD231 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
 		7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCvCell.swift; sourceTree = "<group>"; };
@@ -208,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				213FD1162A8FDD73004D2024 /* MainTabBarController.swift */,
-				213FD11B2A8FDEEE004D2024 /* HomeVC.swift */,
 				794C453B2AA0B89D008DD231 /* MenuVM.swift */,
 				213FD11F2A8FE155004D2024 /* MenuVC.swift */,
 				7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */,
@@ -361,6 +366,7 @@
 			children = (
 				218C34AA2A8E0AFE008AC00B /* AppDelegate.swift */,
 				218C34AC2A8E0AFE008AC00B /* SceneDelegate.swift */,
+				21D0C58B2AA1E4B2004D2DFC /* HomePage */,
 				2190396B2A9E1552007AE38C /* EditProfile */,
 				219039642A9DEC7D007AE38C /* SecuritySettingPage */,
 				216A05E52A95F20D001DC3D5 /* AddNewVisitPage */,
@@ -432,6 +438,17 @@
 				2190396C2A9E1583007AE38C /* EditProfileVC.swift */,
 			);
 			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		21D0C58B2AA1E4B2004D2DFC /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				213FD11B2A8FDEEE004D2024 /* HomeVC.swift */,
+				21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */,
+				21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */,
+				21D0C5902AA20977004D2DFC /* HomeVM.swift */,
+			);
+			path = HomePage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -605,6 +622,7 @@
 				213FD11C2A8FDEEE004D2024 /* HomeVC.swift in Sources */,
 				21B764302A9378380047CB92 /* TravelModal.swift in Sources */,
 				219039662A9DECD9007AE38C /* SecuritySettingsVC.swift in Sources */,
+				21D0C58D2AA1EC02004D2DFC /* HomeTableCell.swift in Sources */,
 				219039682A9DF03F007AE38C /* Router.swift in Sources */,
 				218C34E32A8E0DFE008AC00B /* ApiService.swift in Sources */,
 				213FD1172A8FDD73004D2024 /* MainTabBarController.swift in Sources */,
@@ -617,10 +635,12 @@
 				21F804782A93D7D40068CDAF /* TravelID.swift in Sources */,
 				218C34AB2A8E0AFE008AC00B /* AppDelegate.swift in Sources */,
 				217D7A492A8E3F7900274A30 /* DetailVC.swift in Sources */,
+				21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */,
 				216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */,
 				214310AD2A8F57AA004B81A9 /* CustomView.swift in Sources */,
 				214310DA2A8F616E004B81A9 /* Enums.swift in Sources */,
 				214310E02A8F9323004B81A9 /* SignUpVC.swift in Sources */,
+				21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */,
 				21B15DB72A913DBD0021938F /* AddTravelVC.swift in Sources */,
 				216A05EC2A9623AC001DC3D5 /* AddTravelCollectionCell.swift in Sources */,
 				214310D72A8F5CC9004B81A9 /* CustomLabel.swift in Sources */,

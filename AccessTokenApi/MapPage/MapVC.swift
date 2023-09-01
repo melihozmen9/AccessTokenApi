@@ -29,7 +29,6 @@ class MapVC: UIViewController, CLLocationManagerDelegate{
     }()
     
     
-    
     private lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal

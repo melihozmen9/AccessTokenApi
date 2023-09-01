@@ -99,10 +99,7 @@ class SecuritySettingsVC: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
 
         setupView()
-        //setLibraryPermissionToggle()
-        checkCameraPermission()
-        checkLocationPermission()
-       
+       checkAllPermissions()
        
     }
     
@@ -115,20 +112,72 @@ class SecuritySettingsVC: UIViewController, CLLocationManagerDelegate {
     }
     
     @objc func cameraToggled(sender: UISwitch) {
-        
+        if sender.isOn {
+//        openAppSettings()
+//            AVCaptureDevice.requestAccess(for: .video) { granted in
+//                      if granted {
+//                          // Kullanıcı izni verdi.
+//                      } else {
+//                          // Kullanıcı izni vermedi.
+//                      }
+                  //}
+            // keza burada kullanıcı ayarlara gidip ayarını değiştirmeyebilir. kontroleden ve user'dault'u guncelleen fonksiyon burada calışmalı mı?
+              } else {
+                  openAppSettings()
+              }
     }
     
+//MARK: - Switch fonksiyonları
+    
     @objc func libraryToggled(sender: UISwitch) {
-//        if sender.isOn {
-//                  requestLibraryPermission()
-//              } else {
-//                  openAppSettings()
-//              }
+        if sender.isOn {
+        openAppSettings()
+              } else {
+                  openAppSettings()
+                  
+              }
     }
     
     @objc func locationToggled(sender: UISwitch) {
-        
+        if sender.isOn {
+        openAppSettings()
+              } else {
+                  openAppSettings()
+              }
     }
+    //MARK: - İzinlerin durumunu öğrenme ve userDefaults'a kaydetme.
+    
+    func checkAllPermissions() {
+        checkCameraPermission()
+        checkLocationPermission()
+        checkLibraryPermission()
+    }
+    
+    func checkLibraryPermission() {
+        let authorizationStatus = PHPhotoLibrary.authorizationStatus()
+        
+        var isLibraryPermissionGranted = false
+
+        switch authorizationStatus {
+        case .authorized:
+            print("Kullanıcı fotoğraf kitaplığı izni verdi.")
+            isLibraryPermissionGranted = true
+        case .denied:
+            print("Kullanıcı fotoğraf kitaplığı izni vermedi.")
+        case .restricted:
+            print("Fotoğraf kitaplığı izni kısıtlandı.")
+        case .notDetermined:
+            print("Fotoğraf kitaplığı izni henüz seçilmedi.")
+        @unknown default:
+            print("Bilinmeyen izin durumu.")
+        }
+
+        UserDefaults.standard.set(isLibraryPermissionGranted, forKey: "LibraryPermission")
+        setLibraryPermissionToggle()
+    }
+    
+   
+    
     func checkLocationPermission() {
         let authorizationStatus = CLLocationManager.authorizationStatus()
         var isLocationPermissionGranted = false
@@ -152,11 +201,7 @@ class SecuritySettingsVC: UIViewController, CLLocationManagerDelegate {
         UserDefaults.standard.set(isLocationPermissionGranted, forKey: "LocationPermission")
         setLocationPermissionToggle()
     }
-    func setLocationPermissionToggle() {
-           let isLocationPermissionGranted = UserDefaults.standard.bool(forKey: "LocationPermission")
-        locationPermission.switchView
-            .isOn = isLocationPermissionGranted
-       }
+  
 
     func checkCameraPermission() {
         let authorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
@@ -181,11 +226,24 @@ class SecuritySettingsVC: UIViewController, CLLocationManagerDelegate {
         UserDefaults.standard.set(isCameraPermissionGranted, forKey: "CameraPermission")
         setCameraPermissionToggle()
     }
+    
+    //MARK: - Switchlerin off/on statülerini ayarlama
     func setCameraPermissionToggle() {
            let isCameraPermissionGranted = UserDefaults.standard.bool(forKey: "CameraPermission")
         cameraPermission.switchView
             .isOn = isCameraPermissionGranted
        }
+    func setLibraryPermissionToggle() {
+           let isLibraryPermissionGranted = UserDefaults.standard.bool(forKey: "LibraryPermission")
+        libraryPermission.switchView.isOn = isLibraryPermissionGranted
+       }
+    
+    func setLocationPermissionToggle() {
+           let isLocationPermissionGranted = UserDefaults.standard.bool(forKey: "LocationPermission")
+        locationPermission.switchView
+            .isOn = isLocationPermissionGranted
+       }
+    //MARK: - Ayarlara yönlendiren fonksiyon
     
     func openAppSettings() {
            if let appSettingsURL = URL(string: UIApplication.openSettingsURLString) {

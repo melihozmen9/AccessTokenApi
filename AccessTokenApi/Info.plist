@@ -8,6 +8,8 @@
 	<string>We need your permission to acces your &apos;Location&apos;.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We need your permission to acces your &apos;Camera&apos;.</string>
+	<key>NSLocationUsageDescription</key>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Poppins-Bold.ttf</string>

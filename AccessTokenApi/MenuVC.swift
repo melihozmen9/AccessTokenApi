@@ -52,7 +52,7 @@ class MenuVC: UIViewController {
         layout.scrollDirection = .horizontal
    //     layout.minimumLineSpacing = 2
         layout.minimumInteritemSpacing = 2
-        let cv = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
   //      cv.backgroundColor = .clear
@@ -162,8 +162,9 @@ extension MenuVC:UICollectionViewDelegate {
 //    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let nav = SettingsProfile()
-//        navigationController?.pushViewController(nav, animated: true)
+        print("cell'e basıldı")
+        let nav = SecuritySettingsVC()
+        navigationController?.pushViewController(nav, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

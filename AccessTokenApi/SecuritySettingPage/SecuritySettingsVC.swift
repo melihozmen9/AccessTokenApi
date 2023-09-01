@@ -68,6 +68,7 @@ class SecuritySettingsVC: UIViewController {
         let v = CustomSwitchView()
         v.Lbl.text = "Camera"
         v.switchView.addTarget(self, action: #selector(cameraToggled), for: .valueChanged)
+        v.switchView.isOn = viewModal.setPermissionToggle(forKey: "CameraPermission")
         return v
     }()
     
@@ -75,6 +76,7 @@ class SecuritySettingsVC: UIViewController {
         let v = CustomSwitchView()
         v.Lbl.text = "Photo Library"
         v.switchView.addTarget(self, action: #selector(libraryToggled), for: .valueChanged)
+        v.switchView.isOn = viewModal.setPermissionToggle(forKey: "LibraryPermission")
         return v
     }()
     
@@ -82,6 +84,7 @@ class SecuritySettingsVC: UIViewController {
         let v = CustomSwitchView()
         v.Lbl.text = "Location"
         v.switchView.addTarget(self, action: #selector(locationToggled), for: .valueChanged)
+        v.switchView.isOn = viewModal.setPermissionToggle(forKey: "LocationPermission")
         return v
     }()
     

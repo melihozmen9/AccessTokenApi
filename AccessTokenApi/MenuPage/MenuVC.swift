@@ -50,14 +50,10 @@ class MenuVC: UIViewController {
     private lazy var collectionView:UICollectionView = {
        let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-<<<<<<< HEAD
-   //     layout.minimumLineSpacing = 2
-        layout.minimumInteritemSpacing = 2
-=======
-    //    layout.minimumLineSpacing = 1
+
+        layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
-        
->>>>>>> Sprint1/KaanSettings
+
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.dataSource = self
@@ -135,8 +131,8 @@ class MenuVC: UIViewController {
     
     @objc func editProfilePage() {
         
-//        let vc = editProfile()
-//        self.present(vc, animated: true)
+        let vc = EditProfileVC()
+        self.present(vc, animated: true)
     }
 
 }
@@ -166,17 +162,13 @@ extension MenuVC:UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-<<<<<<< HEAD
-        let nav = SecuritySettingsVC()
-       present(nav, animated: true, completion: nil)
-=======
+
         let labelsAtRow = viewModel.getLabelForRow(indexpath: indexPath)
-//        if labelsAtRow == "Security Settings" {
-//            let nav = SettingsProfile()
-//            navigationController?.pushViewController(nav, animated: true)
-//        }
+        if labelsAtRow == "Security Settings" {
+            let nav = SecuritySettingsVC()
+            navigationController?.pushViewController(nav, animated: true)
+        }
      
->>>>>>> Sprint1/KaanSettings
     }
     
     

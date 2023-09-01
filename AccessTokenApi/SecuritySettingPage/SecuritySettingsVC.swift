@@ -110,7 +110,7 @@ class SecuritySettingsVC: UIViewController {
     }
     
     @objc func saveTapped() {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     //MARK: - Switch fonksiyonları
     @objc func cameraToggled(sender: UISwitch) {
@@ -148,7 +148,7 @@ class SecuritySettingsVC: UIViewController {
     }
     
     @objc func backButtonTapped() {
-        dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     

@@ -69,7 +69,7 @@ class MainTabBarController: UITabBarController {
         appereance.backgroundColor = Color.white.chooseColor
         appereance.unselectedItemTintColor = Color.barItemColor.chooseColor
         appereance.tintColor = Color.systemGreen.chooseColor
-        appereance.alpha = 0.75
+        appereance.alpha = 0.90
     }
 
 

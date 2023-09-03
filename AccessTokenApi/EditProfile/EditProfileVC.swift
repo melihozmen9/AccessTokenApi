@@ -59,7 +59,7 @@ class EditProfileVC: UIViewController {
     private lazy var dateView: InfoCustomView = {
         let v = InfoCustomView()
         v.layer.cornerRadius = 16
-        v.backgroundColor = .blue
+        v.backgroundColor = Color.white.chooseColor
         v.imageview.image = UIImage(named: "dateIcon")
         v.Lbl.text = "30 Haziran 2023"
         return v
@@ -112,7 +112,7 @@ class EditProfileVC: UIViewController {
     }
     
     @objc func saveTapped() {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     private func setupView() {

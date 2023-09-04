@@ -219,6 +219,10 @@
 		213FD1182A8FDDCF004D2024 /* TabBarVC */ = {
 			isa = PBXGroup;
 			children = (
+				21D0C58B2AA1E4B2004D2DFC /* HomePage */,
+				216A05DA2A95D68B001DC3D5 /* VisitPage */,
+				216A05DB2A95D6B1001DC3D5 /* MapPage */,
+				219039642A9DEC7D007AE38C /* SecuritySettingPage */,
 				213FD1162A8FDD73004D2024 /* MainTabBarController.swift */,
 				794C453B2AA0B89D008DD231 /* MenuVM.swift */,
 				213FD11F2A8FE155004D2024 /* MenuVC.swift */,
@@ -301,6 +305,7 @@
 				213FD11D2A8FE141004D2024 /* MapVC.swift */,
 				216A05E32A95E21C001DC3D5 /* PlacesModal.swift */,
 				216A05E92A961422001DC3D5 /* MapCollectionCell.swift */,
+				216A05E52A95F20D001DC3D5 /* AddNewVisitPage */,
 			);
 			path = MapPage;
 			sourceTree = "<group>";
@@ -374,13 +379,7 @@
 				218C34AC2A8E0AFE008AC00B /* SceneDelegate.swift */,
 				216A05DD2A95D72B001DC3D5 /* LoginPage */,
 				216A05DE2A95D75D001DC3D5 /* SignUpPage */,
-				21D0C58B2AA1E4B2004D2DFC /* HomePage */,
 				2190396B2A9E1552007AE38C /* EditProfile */,
-				219039642A9DEC7D007AE38C /* SecuritySettingPage */,
-				216A05E52A95F20D001DC3D5 /* AddNewVisitPage */,
-				A3C32F622AA6604A005D558B /* SeeAllPlaces */,
-				216A05DA2A95D68B001DC3D5 /* VisitPage */,
-				216A05DB2A95D6B1001DC3D5 /* MapPage */,
 				218C34E62A8E0E2E008AC00B /* View */,
 				218C34E52A8E0E12008AC00B /* ApiService */,
 				214310D82A8F6154004B81A9 /* Extensions Enums */,
@@ -454,6 +453,7 @@
 				21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */,
 				21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */,
 				21D0C5902AA20977004D2DFC /* HomeVM.swift */,
+				A3C32F622AA6604A005D558B /* SeeAllPlaces */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";

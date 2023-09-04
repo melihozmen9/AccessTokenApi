@@ -11,6 +11,7 @@ import Alamofire
 
 class AddTravelVM {
     
+    let dispatchGroup = DispatchGroup()
     let apiService: ApiServiceProtocol
     
     init(apiService: ApiServiceProtocol = ApiService()){
@@ -50,11 +51,13 @@ class AddTravelVM {
                 for url in urlArrays {
                     var body = [String:Any]()
                     body["place_id"] = id
-                    body["image_url"] = url
+                    body["image_url"] = url // enter
                     self.addGallery(body: body)
+                    //leave
                 }
                 
                 guard let dismiss = self.dismiss else {return}
+                //notify
                 dismiss()
                 
             case .failure(let failure):

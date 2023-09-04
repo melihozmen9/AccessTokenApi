@@ -3,8 +3,14 @@
 //  AccessTokenApi
 //
 //  Created by Kullanici on 17.08.2023.
+//bir sevice gieck ve sonra fdiğeri başlayacak. dispatchGroup()
+// dipatchgorup.enter() dan sna istediğim işlemi yazıyorum. ve işlem bitince de .leave ile işlemden ayrılıyoruz.
+//notify(queue: .main) {
+//işlemlerin bittiğini belirtilen queuya bildiriyor.
+//}
+//default ve utiliy ağ serviceleri
+// background daha büyük işlemlerde sorgularda kullanıyor.
 //
-
 import Foundation
 import Alamofire
 

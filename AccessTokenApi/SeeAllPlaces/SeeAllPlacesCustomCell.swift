@@ -14,7 +14,6 @@ class SeeAllPlacesCustomCell:UICollectionViewCell {
     
     private lazy var nameLabel:UILabel = {
         let label = UILabel()
-        label.text = "Kız Kulesi"
         label.font = Font.semibold24.chooseFont
         label.textColor = .black
         return label
@@ -22,7 +21,6 @@ class SeeAllPlacesCustomCell:UICollectionViewCell {
     
     private lazy var cityNameLabel:UILabel = {
         let label = UILabel()
-        label.text = "Istanbul"
         label.font = Font.regular14.chooseFont
         label.textColor = .black
         return label
@@ -78,6 +76,10 @@ class SeeAllPlacesCustomCell:UICollectionViewCell {
     
     func configure(item: PlaceItem){
         
+        nameLabel.text = item.title
+        cityNameLabel.text = item.place
+        guard let url = item.cover_image_url else {return}
+        cellImage.kf.setImage(with: URL(string: url ))
     }
     
     

@@ -43,13 +43,17 @@
 		216616A92A949CF200E0E3B9 /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216616A82A949CF200E0E3B9 /* MapVM.swift */; };
 		216616AB2A94B28B00E0E3B9 /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216616AA2A94B28B00E0E3B9 /* CustomCollectionCell.swift */; };
 		216616AD2A94CACB00E0E3B9 /* GalleryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216616AC2A94CACB00E0E3B9 /* GalleryData.swift */; };
-		216616B02A94E41E00E0E3B9 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 216616AF2A94E41E00E0E3B9 /* NVActivityIndicatorView */; };
 		216A05E02A95D7BE001DC3D5 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05DF2A95D7BE001DC3D5 /* NavigationHelper.swift */; };
 		216A05E22A95D91C001DC3D5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E12A95D91B001DC3D5 /* Extension.swift */; };
 		216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E32A95E21C001DC3D5 /* PlacesModal.swift */; };
-		216A05E82A9610BC001DC3D5 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 216A05E72A9610BC001DC3D5 /* JWTDecode */; };
 		216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E92A961422001DC3D5 /* MapCollectionCell.swift */; };
 		216A05EC2A9623AC001DC3D5 /* AddTravelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05EB2A9623AC001DC3D5 /* AddTravelCollectionCell.swift */; };
+		21777B312AA6113600ED5346 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B302AA6113600ED5346 /* Alamofire */; };
+		21777B342AA6115E00ED5346 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B332AA6115E00ED5346 /* JWTDecode */; };
+		21777B372AA6117D00ED5346 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B362AA6117D00ED5346 /* NVActivityIndicatorView */; };
+		21777B3A2AA6119D00ED5346 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B392AA6119D00ED5346 /* Kingfisher */; };
+		21777B3D2AA611B100ED5346 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B3C2AA611B100ED5346 /* TinyConstraints */; };
+		21777B3F2AA6130C00ED5346 /* SecurityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21777B3E2AA6130C00ED5346 /* SecurityCell.swift */; };
 		21793EB52A98D42D001CA74D /* UploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21793EB42A98D42D001CA74D /* UploadResponse.swift */; };
 		217D7A472A8E345D00274A30 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217D7A462A8E345D00274A30 /* KeychainHelper.swift */; };
 		217D7A492A8E3F7900274A30 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217D7A482A8E3F7900274A30 /* DetailVC.swift */; };
@@ -62,8 +66,6 @@
 		218C34C22A8E0B01008AC00B /* AccessTokenApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34C12A8E0B01008AC00B /* AccessTokenApiTests.swift */; };
 		218C34CC2A8E0B01008AC00B /* AccessTokenApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34CB2A8E0B01008AC00B /* AccessTokenApiUITests.swift */; };
 		218C34CE2A8E0B01008AC00B /* AccessTokenApiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34CD2A8E0B01008AC00B /* AccessTokenApiUITestsLaunchTests.swift */; };
-		218C34DE2A8E0CB0008AC00B /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 218C34DD2A8E0CB0008AC00B /* TinyConstraints */; };
-		218C34E12A8E0CC4008AC00B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 218C34E02A8E0CC4008AC00B /* Alamofire */; };
 		218C34E32A8E0DFE008AC00B /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34E22A8E0DFE008AC00B /* ApiService.swift */; };
 		218C34E92A8E112A008AC00B /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34E82A8E112A008AC00B /* LoginVM.swift */; };
 		218C34EB2A8E135F008AC00B /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34EA2A8E135F008AC00B /* Modal.swift */; };
@@ -75,7 +77,6 @@
 		21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB82A913DE70021938F /* AddTravelVM.swift */; };
 		21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642D2A9375590047CB92 /* VisitVM.swift */; };
 		21B764302A9378380047CB92 /* TravelModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642F2A9378380047CB92 /* TravelModal.swift */; };
-		21B764332A937C8B0047CB92 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21B764322A937C8B0047CB92 /* Kingfisher */; };
 		21D0C58A2AA1B8D1004D2DFC /* SecuritySettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */; };
 		21D0C58D2AA1EC02004D2DFC /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */; };
 		21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */; };
@@ -148,6 +149,7 @@
 		216A05E32A95E21C001DC3D5 /* PlacesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesModal.swift; sourceTree = "<group>"; };
 		216A05E92A961422001DC3D5 /* MapCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionCell.swift; sourceTree = "<group>"; };
 		216A05EB2A9623AC001DC3D5 /* AddTravelCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelCollectionCell.swift; sourceTree = "<group>"; };
+		21777B3E2AA6130C00ED5346 /* SecurityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCell.swift; sourceTree = "<group>"; };
 		21793EB42A98D42D001CA74D /* UploadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadResponse.swift; sourceTree = "<group>"; };
 		217D7A462A8E345D00274A30 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		217D7A482A8E3F7900274A30 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
@@ -193,11 +195,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				216616B02A94E41E00E0E3B9 /* NVActivityIndicatorView in Frameworks */,
-				21B764332A937C8B0047CB92 /* Kingfisher in Frameworks */,
-				218C34DE2A8E0CB0008AC00B /* TinyConstraints in Frameworks */,
-				216A05E82A9610BC001DC3D5 /* JWTDecode in Frameworks */,
-				218C34E12A8E0CC4008AC00B /* Alamofire in Frameworks */,
+				21777B3A2AA6119D00ED5346 /* Kingfisher in Frameworks */,
+				21777B342AA6115E00ED5346 /* JWTDecode in Frameworks */,
+				21777B3D2AA611B100ED5346 /* TinyConstraints in Frameworks */,
+				21777B312AA6113600ED5346 /* Alamofire in Frameworks */,
+				21777B372AA6117D00ED5346 /* NVActivityIndicatorView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +439,7 @@
 			children = (
 				219039652A9DECD9007AE38C /* SecuritySettingsVC.swift */,
 				21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */,
+				21777B3E2AA6130C00ED5346 /* SecurityCell.swift */,
 			);
 			path = SecuritySettingPage;
 			sourceTree = "<group>";
@@ -488,11 +491,11 @@
 			);
 			name = AccessTokenApi;
 			packageProductDependencies = (
-				218C34DD2A8E0CB0008AC00B /* TinyConstraints */,
-				218C34E02A8E0CC4008AC00B /* Alamofire */,
-				21B764322A937C8B0047CB92 /* Kingfisher */,
-				216616AF2A94E41E00E0E3B9 /* NVActivityIndicatorView */,
-				216A05E72A9610BC001DC3D5 /* JWTDecode */,
+				21777B302AA6113600ED5346 /* Alamofire */,
+				21777B332AA6115E00ED5346 /* JWTDecode */,
+				21777B362AA6117D00ED5346 /* NVActivityIndicatorView */,
+				21777B392AA6119D00ED5346 /* Kingfisher */,
+				21777B3C2AA611B100ED5346 /* TinyConstraints */,
 			);
 			productName = AccessTokenApi;
 			productReference = 218C34A72A8E0AFE008AC00B /* AccessTokenApi.app */;
@@ -567,11 +570,11 @@
 			);
 			mainGroup = 218C349E2A8E0AFE008AC00B;
 			packageReferences = (
-				218C34DC2A8E0CB0008AC00B /* XCRemoteSwiftPackageReference "TinyConstraints" */,
-				218C34DF2A8E0CC4008AC00B /* XCRemoteSwiftPackageReference "Alamofire" */,
-				21B764312A937C8B0047CB92 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				216616AE2A94E41E00E0E3B9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
-				216A05E62A9610BC001DC3D5 /* XCRemoteSwiftPackageReference "JWTDecode" */,
+				21777B2F2AA6113600ED5346 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				21777B322AA6115E00ED5346 /* XCRemoteSwiftPackageReference "JWTDecode" */,
+				21777B352AA6117D00ED5346 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				21777B382AA6119D00ED5346 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				21777B3B2AA611B100ED5346 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
 			);
 			productRefGroup = 218C34A82A8E0AFE008AC00B /* Products */;
 			projectDirPath = "";
@@ -655,6 +658,7 @@
 				217D7A472A8E345D00274A30 /* KeychainHelper.swift in Sources */,
 				21F804782A93D7D40068CDAF /* TravelID.swift in Sources */,
 				218C34AB2A8E0AFE008AC00B /* AppDelegate.swift in Sources */,
+				21777B3F2AA6130C00ED5346 /* SecurityCell.swift in Sources */,
 				217D7A492A8E3F7900274A30 /* DetailVC.swift in Sources */,
 				21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */,
 				216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */,
@@ -1020,31 +1024,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		216616AE2A94E41E00E0E3B9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		216A05E62A9610BC001DC3D5 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-		218C34DC2A8E0CB0008AC00B /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/roberthein/TinyConstraints";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
-		218C34DF2A8E0CC4008AC00B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		21777B2F2AA6113600ED5346 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -1052,41 +1032,65 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		21B764312A937C8B0047CB92 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		21777B322AA6115E00ED5346 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		21777B352AA6117D00ED5346 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		21777B382AA6119D00ED5346 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		21777B3B2AA611B100ED5346 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/roberthein/TinyConstraints";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		216616AF2A94E41E00E0E3B9 /* NVActivityIndicatorView */ = {
+		21777B302AA6113600ED5346 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 216616AE2A94E41E00E0E3B9 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorView;
-		};
-		216A05E72A9610BC001DC3D5 /* JWTDecode */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 216A05E62A9610BC001DC3D5 /* XCRemoteSwiftPackageReference "JWTDecode" */;
-			productName = JWTDecode;
-		};
-		218C34DD2A8E0CB0008AC00B /* TinyConstraints */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 218C34DC2A8E0CB0008AC00B /* XCRemoteSwiftPackageReference "TinyConstraints" */;
-			productName = TinyConstraints;
-		};
-		218C34E02A8E0CC4008AC00B /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 218C34DF2A8E0CC4008AC00B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 21777B2F2AA6113600ED5346 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		21B764322A937C8B0047CB92 /* Kingfisher */ = {
+		21777B332AA6115E00ED5346 /* JWTDecode */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21B764312A937C8B0047CB92 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 21777B322AA6115E00ED5346 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
+		};
+		21777B362AA6117D00ED5346 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21777B352AA6117D00ED5346 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		21777B392AA6119D00ED5346 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21777B382AA6119D00ED5346 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		21777B3C2AA611B100ED5346 /* TinyConstraints */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21777B3B2AA611B100ED5346 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

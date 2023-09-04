@@ -13,7 +13,7 @@ import CoreLocation
 class SecuritySettingsVM {
     
     let locationManager = CLLocationManager()
-    
+    let settingsArray = [["New Password", "New Password Confirm"], ["Camera","Photo Library","Location"]]
     //MARK: - İzinlerin durumunu öğrenme ve userDefaults'a kaydetme.
     
     func checkAllPermissions() {

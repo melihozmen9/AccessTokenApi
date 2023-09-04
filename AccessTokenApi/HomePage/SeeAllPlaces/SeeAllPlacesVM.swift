@@ -5,9 +5,10 @@ import Foundation
 
 class SeeAllPlacesVM {
     
-    var popularPlaces = [PlaceItem]()
-    var lasPlaces = [PlaceItem]()
-    
+    private var popularPlaces = [PlaceItem]()
+    private var myAddedPlaces = [PlaceItem]()
+    private var lastPlaces = [PlaceItem]()
+
     let apiService: ApiServiceProtocol
     
     init(apiService: ApiServiceProtocol = ApiService()){
@@ -30,12 +31,12 @@ class SeeAllPlacesVM {
         }
     }
     
-    func getLastPlaces( callback: @escaping ()->Void) {
+    func getMyAddedPlaces (callback: @escaping ()->Void) {
         DispatchQueue.global().async { [self] in
-            apiService.makeRequest(urlConvertible: Router.getLastPlaces) { (result:Result<PlacesData,Error>) in
+            apiService.makeRequest(urlConvertible: Router.getMyAddedPlaces) { (result:Result<PlacesData,Error>) in
                 switch result {
                 case .success(let data):
-                    self.lasPlaces = data.data.places
+                    self.myAddedPlaces = data.data.places
                     DispatchQueue.main.async {
                         callback()
                     }
@@ -46,12 +47,46 @@ class SeeAllPlacesVM {
         }
     }
     
+    func getLastPlaces( callback: @escaping ()->Void) {
+        DispatchQueue.global().async { [self] in
+            apiService.makeRequest(urlConvertible: Router.getLastPlaces) { (result:Result<PlacesData,Error>) in
+                switch result {
+                case .success(let data):
+                    self.lastPlaces = data.data.places
+                    DispatchQueue.main.async {
+                        callback()
+                    }
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+        }
+    }
+    
+    func getPopularPlace(index:Int) -> PlaceItem? {
+        return popularPlaces[index]
+    }
+    
+    func getMyAddedPlace(index:Int) -> PlaceItem? {
+        return myAddedPlaces[index]
+    }
+    
+    func getLastPlace(index:Int) -> PlaceItem? {
+        return lastPlaces[index]
+    }
+    
+    
     func countOfPopularPlaces() -> Int {
         return popularPlaces.count
     }
-    
-    func countOfLastPlaces() -> Int {
-        return lasPlaces.count
+
+    func countOfMyAddedPlaces() -> Int {
+        return myAddedPlaces.count
     }
+
+    func countOfLastPlaces() -> Int {
+        return lastPlaces.count
+    }
+    
     
 }

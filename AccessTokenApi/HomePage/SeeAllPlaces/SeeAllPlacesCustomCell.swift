@@ -8,7 +8,7 @@ class SeeAllPlacesCustomCell:UICollectionViewCell {
     
     private lazy var cellImage:UIImageView = {
         let cellImage = UIImageView()
-        cellImage.contentMode = .center
+        cellImage.contentMode = .scaleToFill
         return cellImage
     }()
     
@@ -64,6 +64,7 @@ class SeeAllPlacesCustomCell:UICollectionViewCell {
         
         nameLabel.leadingToTrailing(of: cellImage, offset: 8)
         nameLabel.topToSuperview(offset:16)
+        nameLabel.trailingToSuperview(offset:16)
         
         locationSymbolImage.leadingToTrailing(of: cellImage, offset: 8)
         locationSymbolImage.topToBottom(of: nameLabel, offset: 4)
@@ -88,7 +89,7 @@ class SeeAllPlacesCustomCell:UICollectionViewCell {
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 4
-        clipsToBounds = false
+        clipsToBounds = true
         layer.cornerRadius = 16
         layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
     }

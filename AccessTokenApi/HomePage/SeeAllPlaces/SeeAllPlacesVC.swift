@@ -17,13 +17,13 @@ class SeeAllPlacesVC: UIViewController {
     private lazy var backButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "vector"), for: .normal)
+        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.layer.cornerRadius = 3
-        label.text = "Popular Places"
         label.font = Font.semibold32.chooseFont
         label.textColor = Color.white.chooseColor
         return label
@@ -60,7 +60,7 @@ class SeeAllPlacesVC: UIViewController {
     override func viewWillLayoutSubviews() {
         containerView.roundCorners(corners: [.topLeft], radius: 80)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,7 +72,7 @@ class SeeAllPlacesVC: UIViewController {
         
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Color.systemGreen.chooseColor
-
+        
         
         self.containerView.addSubviews(collectionView, ascendingDescendingButton)
         
@@ -99,24 +99,36 @@ class SeeAllPlacesVC: UIViewController {
         ascendingDescendingButton.edgesToSuperview(excluding: [.left, .bottom], insets: .top(24) + .right(24))
         ascendingDescendingButton.height(22)
         ascendingDescendingButton.width(25)
-
-        collectionView.edgesToSuperview()
-
         
+        collectionView.edgesToSuperview()
+        
+        
+    }
+    
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     private func getData() {
         if fromWhere == "popularPlaces" {
+            headerLabel.text = "Popular Places"
             seeAllPlacesVM.getPopularPlaces {
                 self.collectionView.reloadData()
             }
+            
+        } else if fromWhere == "myAddedPlaces" {
+            headerLabel.text = "My Added Places"
+            seeAllPlacesVM.getMyAddedPlaces {
+                self.collectionView.reloadData()
+            }
+            
         } else if fromWhere == "lastPlaces" {
+            headerLabel.text = "Last Places"
             seeAllPlacesVM.getLastPlaces {
                 self.collectionView.reloadData()
             }
         }
     }
-
 }
 
 extension SeeAllPlacesVC:UICollectionViewDelegateFlowLayout {
@@ -145,6 +157,8 @@ extension SeeAllPlacesVC:UICollectionViewDataSource {
         var count = 0
         if fromWhere == "popularPlaces" {
             count = seeAllPlacesVM.countOfPopularPlaces()
+        } else if fromWhere == "myAddedPlaces" {
+            count = seeAllPlacesVM.countOfMyAddedPlaces()
         } else if fromWhere == "lastPlaces" {
             count = seeAllPlacesVM.countOfLastPlaces()
         }
@@ -157,10 +171,13 @@ extension SeeAllPlacesVC:UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularPlacesCustomCell", for: indexPath) as? SeeAllPlacesCustomCell else { return UICollectionViewCell() }
         
         if fromWhere == "popularPlaces" {
-            let item = seeAllPlacesVM.popularPlaces[indexPath.row]
+            guard let item = seeAllPlacesVM.getPopularPlace(index: indexPath.row) else { return UICollectionViewCell() }
+            cell.configure(item: item)
+        } else if fromWhere == "myAddedPlaces" {
+            guard let item = seeAllPlacesVM.getMyAddedPlace(index: indexPath.row) else { return UICollectionViewCell() }
             cell.configure(item: item)
         } else if fromWhere == "lastPlaces" {
-            let item = seeAllPlacesVM.lasPlaces[indexPath.row]
+            guard let item = seeAllPlacesVM.getLastPlace(index: indexPath.row) else { return UICollectionViewCell() }
             cell.configure(item: item)
         }
         return cell

@@ -76,6 +76,10 @@ class SeeAllPlacesCustomCell:UICollectionViewCell {
         cityNameLabel.leadingToTrailing(of: locationSymbolImage, offset: 6)
     }
     
+    func configure(item: PlaceItem){
+        
+    }
+    
     
     private func addShadowRadius() {
         layer.shadowColor = Color.systemgray.chooseColor.cgColor

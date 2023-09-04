@@ -11,6 +11,9 @@ import Kingfisher
 
 class SeeAllPlacesVC: UIViewController {
     
+    var fromWhere:String?
+    let seeAllPlacesVM = SeeAllPlacesVM()
+    
     private lazy var backButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "vector"), for: .normal)
@@ -61,7 +64,7 @@ class SeeAllPlacesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        getData()
         setupViews()
     }
     
@@ -101,6 +104,18 @@ class SeeAllPlacesVC: UIViewController {
 
         
     }
+    
+    private func getData() {
+        if fromWhere == "popularPlaces" {
+            seeAllPlacesVM.getPopularPlaces {
+                self.collectionView.reloadData()
+            }
+        } else if fromWhere == "lastPlaces" {
+            seeAllPlacesVM.getLastPlaces {
+                self.collectionView.reloadData()
+            }
+        }
+    }
 
 }
 
@@ -127,7 +142,13 @@ extension SeeAllPlacesVC:UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        var count = 0
+        if fromWhere == "popularPlaces" {
+            count = seeAllPlacesVM.countOfPopularPlaces()
+        } else if fromWhere == "lastPlaces" {
+            count = seeAllPlacesVM.countOfLastPlaces()
+        }
+        return count
     }
     
     
@@ -135,6 +156,13 @@ extension SeeAllPlacesVC:UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularPlacesCustomCell", for: indexPath) as? SeeAllPlacesCustomCell else { return UICollectionViewCell() }
         
+        if fromWhere == "popularPlaces" {
+            let item = seeAllPlacesVM.popularPlaces[indexPath.row]
+            cell.configure(item: item)
+        } else if fromWhere == "lastPlaces" {
+            let item = seeAllPlacesVM.lasPlaces[indexPath.row]
+            cell.configure(item: item)
+        }
         return cell
     }
     

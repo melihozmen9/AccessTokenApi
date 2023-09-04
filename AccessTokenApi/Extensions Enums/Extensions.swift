@@ -26,6 +26,7 @@ enum FormatType:String {
     case standard = "yyyy-MM-dd"
     case dateAndTime = "dd.MM.yyyy'T'HH:mm"
     case time = "HH:mm"
+    case dayMonthYear = "dd MMMM yyyy"
 }
 
 extension UIStackView {

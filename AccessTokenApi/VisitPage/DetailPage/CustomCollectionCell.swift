@@ -7,6 +7,8 @@
 
 import UIKit
 import TinyConstraints
+import Kingfisher
+
 class CustomCollectionCell: UICollectionViewCell {
     
     private lazy var imageview: UIImageView = {
@@ -31,8 +33,8 @@ class CustomCollectionCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(imageItem: ImageItem) {
-        let url = URL(string: imageItem.image_url)
+    func configure(imageUrl: String) {
+        let url = URL(string: imageUrl)
         imageview.kf.setImage(with: url)
     }
     

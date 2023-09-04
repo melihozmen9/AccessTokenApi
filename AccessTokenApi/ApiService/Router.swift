@@ -14,13 +14,15 @@ enum Router: URLRequestConvertible {
     case login(params:Parameters)
     case me
     //Travel
-    case upload
+    case upload(image: [Data])
     case myAllVisits
-    case travelID (id:String)
+    case travelID (placeId:String)
     case postPlace(params:Parameters)
+    case deletePlace(visitId:String)
     // gallery Map
-    case galleryID(id:String)
+    case galleryID(placeId:String)
     case places
+    case postGallery(params:Parameters)
     
     var baseURL: URL {
            return URL(string: "https://api.iosclass.live/")!
@@ -35,7 +37,7 @@ enum Router: URLRequestConvertible {
         case .me:
             return  "v1/me"
         case .upload:
-            return  "v1/upload"
+            return  "upload"
         case .myAllVisits:
             return  "v1/visits"
         case .travelID(let id):
@@ -44,23 +46,29 @@ enum Router: URLRequestConvertible {
             return "v1/galleries/" + "\(id)"
         case .places:
             return  "v1/places"
+        case .deletePlace(let visitId):
+            return "v1/visits" + "/\(visitId)"
         case .postPlace:
             return  "v1/places"
+        case .postGallery(params: let params):
+            return "v1/galleries"
         }
     }
     // query parametreler sorgu yapar.
     var method: HTTPMethod {
           switch self {
-          case .login, .register, .upload,.postPlace :
+          case .login, .register, .upload,.postPlace, .postGallery :
               return .post
           case .me,.myAllVisits,.places,.travelID, .galleryID :
               return .get
+          case .deletePlace:
+              return .delete
           }
       }
     
     var parameters: Parameters {
             switch self {
-            case .login(let params), .register(let params), .postPlace(let params):
+            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params):
                 return params
             default:
                 return [:]
@@ -71,11 +79,30 @@ enum Router: URLRequestConvertible {
         switch self {
         case .login,.register:
             return [:]
+        case .upload:
+            return ["Content-Type": "multipart/form-data"]
         default:
             return ["Authorization": "Basic \(getTokenFromChain())",
             "Accept": "application/json"]
         }
     }
+    
+    var multipartFormData: MultipartFormData {
+        let formData = MultipartFormData()
+        switch self {
+        
+        case .upload(let imagedata):
+            imagedata.forEach { image in
+                formData.append(image, withName: "file", fileName: "image.jpg",
+                                mimeType: "image/jpeg")
+            }
+            return formData
+        default:
+            break
+        }
+        return formData
+    }
+    
     func getTokenFromChain()->String {
         guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return""}
         guard let tokenstr = String(data: token, encoding: .utf8) else {return""}

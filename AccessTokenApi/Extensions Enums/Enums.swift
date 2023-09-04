@@ -14,121 +14,126 @@
 //Bold -> 700
 
 import UIKit
-
-<<<<<<< HEAD
-
+import Alamofire
 
 
-=======
-enum Router: URLRequestConvertible {
-    //Auth
-    case register(params:Parameters)
-    case login(params:Parameters)
-    case me
-    //Travel
-    case upload
-    case myAllVisits
-    case travelID (id:String)
-    case postPlace(params:Parameters)
-    case postGallery(params:Parameters)
-    // gallery Map
-    case galleryID(id:String)
-    case places
-    
-    var baseURL: URL {
-           return URL(string: "https://api.iosclass.live/")! // API'nin temel URL'sini belirtir. Bu temel URL, tüm isteklerin başına eklenir.
-       }
-    
-    var path: String {
-        switch self {
-        case .register:
-            return  "v1/auth/register"
-        case .login:
-            return  "v1/auth/login"
-        case .me:
-            return  "v1/me"
-        case .upload:
-            return  "v1/upload"
-        case .myAllVisits:
-            return  "v1/visits"
-        case .travelID(let id):
-            return  "v1/places/" + "\(id)"
-        case .galleryID(let id):
-            return "v1/galleries/" + "\(id)"
-        case .places:
-            return  "v1/places"
-        case .postPlace:
-            return  "v1/places"
-        case .postGallery:
-            return "v1/galleries"
-        }
-    }
-    // query parametreler sorgu yapar.
-    var method: HTTPMethod {
-          switch self {
-          case .login, .register, .upload,.postPlace, .postGallery :
-              return .post
-          case .me,.myAllVisits,.places,.travelID, .galleryID :
-              return .get
-          }
-      }
-    
-    var parameters: Parameters {
-            switch self {
-            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params):
-                return params
-            default:
-                return [:]
-            }
-        }
-    
-    var headers: HTTPHeaders {
-        switch self {
-        case .login,.register:
-            return [:]
-        default:
-            return ["Authorization": "Basic \(getTokenFromChain())",
-            "Accept": "application/json"]
-        }
-    }
-    func getTokenFromChain()->String {
-        guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return""}
-        guard let tokenstr = String(data: token, encoding: .utf8) else {return""}
-        return tokenstr
-    }
-    
-    
-    
-    func asURLRequest() throws -> URLRequest {
-       
-        
-        let url = baseURL.appendingPathComponent(path)
-        var request = URLRequest(url: url)
-        request.method = method
-        request.headers = headers
-        
-        let encoding: ParameterEncoding = {
-            switch method {
-            case .get:
-                return URLEncoding.default
-            default:
-                return JSONEncoding.default
-            }
-        }()
-        
-        return try encoding.encode(request, with: parameters)
-    }
-    
-    
-}
->>>>>>> Sprint1/addTravel
+//enum Router: URLRequestConvertible {
+//    //Auth
+//    case register(params:Parameters)
+//    case login(params:Parameters)
+//    case me
+//    //Travel
+//    case upload
+//    case myAllVisits
+//    case travelID (placeId:String)
+//    case postPlace(params:Parameters)
+//    case deletePlace(visitId:String)
+//    case isTraveled(placeId:String)
+//    // gallery Map
+//    case galleryID(placeId:String)
+//    case places
+//
+//    var baseURL: URL {
+//           return URL(string: "https://api.iosclass.live/")!
+//       }
+//
+//    var path: String {
+//        switch self {
+//        case .register:
+//            return  "v1/auth/register"
+//        case .login:
+//            return  "v1/auth/login"
+//        case .me:
+//            return  "v1/me"
+//        case .upload:
+//            return  "v1/upload"
+//        case .myAllVisits:
+//            return  "v1/visits"
+//        case .travelID(let placeId):
+//            return  "v1/places/" + "\(placeId)"
+//        case .galleryID(let id):
+//            return "v1/galleries/" + "\(id)"
+//        case .places:
+//            return  "v1/places"
+//        case .postPlace:
+//            return  "v1/places"
+//        case .deletePlace(let visitId):
+//            return "v1/visits" + "/\(visitId)"
+//        case .isTraveled(let placeId):
+//            return "v1/visits/user" + "\(placeId)"
+//        }
+//    }
+//    // query parametreler sorgu yapar.
+//    var method: HTTPMethod {
+//          switch self {
+//          case .login, .register, .upload,.postPlace :
+//              return .post
+//          case .me,.myAllVisits,.places,.travelID, .galleryID, .isTraveled :
+//              return .get
+//          case .deletePlace:
+//              return .delete
+//          }
+//      }
+//
+//    var parameters: Parameters {
+//            switch self {
+//            case .login(let params), .register(let params), .postPlace(let params):
+//                return params
+//            default:
+//                return [:]
+//            }
+//        }
+//
+//    var headers: HTTPHeaders {
+//        switch self {
+//        case .login,.register, .isTraveled:
+//            return [:]
+//        default:
+//            return ["Authorization": "Bearer \(getTokenFromChain())"]
+//        }
+//    }
+//
+//    func getTokenFromChain()->String {
+//        guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return""}
+//        guard let tokenstr = String(data: token, encoding: .utf8) else {return""}
+//        return tokenstr
+//    }
+//
+//
+//
+//    func asURLRequest() throws -> URLRequest {
+//
+//
+//        let url = baseURL.appendingPathComponent(path)
+//        var request = URLRequest(url: url)
+//        request.method = method
+//        request.headers = headers
+//
+//        let encoding: ParameterEncoding = {
+//            switch method {
+//            case .get:
+//                return URLEncoding.default
+//            default:
+//                return JSONEncoding.default
+//            }
+//        }()
+//
+//        return try encoding.encode(request, with: parameters)
+//    }
+//    
+//
+//}
 
 enum Font {
     case regular12
+    case regular14
     case regular16
     case semibold24
+    case semibold20
     case semibold16
     case semibold14
+    case semibold12
+    case semibold32
     case bold36
     case bold32
     case bold30
@@ -140,16 +145,24 @@ enum Font {
         switch self {
         case .regular12:
             return UIFont(name: "Poppins-Regular", size: 12)!
+        case .regular14:
+            return UIFont(name: "Poppins-Regular", size: 14)!
         case .regular16:
             return UIFont(name: "Poppins-Regular", size: 16)!
         case .bold14:
             return UIFont(name: "Poppins-Bold", size: 14)!
+        case .semibold32:
+            return UIFont(name: "Poppins-SemiBold", size: 32)!
         case .semibold24:
             return UIFont(name: "Poppins-SemiBold", size: 24)!
+        case .semibold20:
+            return UIFont(name: "Poppins-SemiBold", size: 20)!
         case .semibold16:
             return UIFont(name: "Poppins-SemiBold", size: 16)!
         case .semibold14:
             return UIFont(name: "Poppins-SemiBold", size: 14)!
+        case .semibold12:
+            return UIFont(name: "Poppins-SemiBold", size: 12)!
         case .bold36:
             return UIFont(name: "Poppins-Bold", size: 36)!
         case .bold30:

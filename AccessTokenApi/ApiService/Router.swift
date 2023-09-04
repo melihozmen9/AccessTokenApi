@@ -23,6 +23,9 @@ enum Router: URLRequestConvertible {
     case galleryID(placeId:String)
     case places
     case postGallery(params:Parameters)
+    // seeAllPlaces
+    case getPopularPlaces
+    case getLastPlaces
     
     var baseURL: URL {
            return URL(string: "https://api.iosclass.live/")!
@@ -52,6 +55,10 @@ enum Router: URLRequestConvertible {
             return  "v1/places"
         case .postGallery(params: let params):
             return "v1/galleries"
+        case .getPopularPlaces:
+            return "v1/places/popular"
+        case .getLastPlaces:
+            return "/v1/places/last"
         }
     }
     // query parametreler sorgu yapar.
@@ -59,7 +66,7 @@ enum Router: URLRequestConvertible {
           switch self {
           case .login, .register, .upload,.postPlace, .postGallery :
               return .post
-          case .me,.myAllVisits,.places,.travelID, .galleryID :
+          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getLastPlaces :
               return .get
           case .deletePlace:
               return .delete

@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 import TinyConstraints
 
-class PopularPlacesCustomCell:UICollectionViewCell {
+class SeeAllPlacesCustomCell:UICollectionViewCell {
     
     
     private lazy var cellImage:UIImageView = {

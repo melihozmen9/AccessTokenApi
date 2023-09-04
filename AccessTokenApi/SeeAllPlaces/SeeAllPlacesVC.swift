@@ -9,7 +9,7 @@ import UIKit
 import TinyConstraints
 import Kingfisher
 
-class PopularPlacesVC: UIViewController {
+class SeeAllPlacesVC: UIViewController {
     
     private lazy var backButton:UIButton = {
         let button = UIButton()
@@ -50,7 +50,7 @@ class PopularPlacesVC: UIViewController {
         cv.dataSource = self
         cv.showsVerticalScrollIndicator = false
         cv.showsHorizontalScrollIndicator = false
-        cv.register(PopularPlacesCustomCell.self, forCellWithReuseIdentifier: "PopularPlacesCustomCell")
+        cv.register(SeeAllPlacesCustomCell.self, forCellWithReuseIdentifier: "PopularPlacesCustomCell")
         return cv
     }()
     
@@ -104,7 +104,7 @@ class PopularPlacesVC: UIViewController {
 
 }
 
-extension PopularPlacesVC:UICollectionViewDelegateFlowLayout {
+extension SeeAllPlacesVC:UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -123,7 +123,7 @@ extension PopularPlacesVC:UICollectionViewDelegateFlowLayout {
 
 
 
-extension PopularPlacesVC:UICollectionViewDataSource {
+extension SeeAllPlacesVC:UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -133,7 +133,7 @@ extension PopularPlacesVC:UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularPlacesCustomCell", for: indexPath) as? PopularPlacesCustomCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularPlacesCustomCell", for: indexPath) as? SeeAllPlacesCustomCell else { return UICollectionViewCell() }
         
         return cell
     }

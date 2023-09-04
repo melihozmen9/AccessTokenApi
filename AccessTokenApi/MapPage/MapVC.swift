@@ -17,16 +17,12 @@ protocol Reloader: AnyObject {
 class MapVC: UIViewController, CLLocationManagerDelegate{
    
     let viewModal = MapVM()
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
     let addTravelVC = AddTravelVC()
->>>>>>> Sprint1/addTravel
     
-=======
-    let addTravelVC = AddTravelVC()
     let locationManager = CLLocationManager()
->>>>>>> HomeVC_fix
+
+    
     private lazy var mapView: MKMapView = {
         let mv = MKMapView()
         mv.mapType = MKMapType.standard

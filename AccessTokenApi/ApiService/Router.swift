@@ -13,6 +13,7 @@ enum Router: URLRequestConvertible {
     case register(params:Parameters)
     case login(params:Parameters)
     case changePassword(params:Parameters)
+    case editProfile(params:Parameters)
     case me
     //Travel
     case upload(image: [Data])
@@ -52,10 +53,12 @@ enum Router: URLRequestConvertible {
             return "v1/visits" + "/\(visitId)"
         case .postPlace:
             return  "v1/places"
-        case .postGallery(let params):
+        case .postGallery:
             return "v1/galleries"
-        case .changePassword(let params):
+        case .changePassword:
             return "v1/change-password"
+        case .editProfile:
+            return "v1/edit-profile"
         }
     }
     // query parametreler sorgu yapar.
@@ -67,14 +70,14 @@ enum Router: URLRequestConvertible {
               return .get
           case .deletePlace:
               return .delete
-          case .changePassword:
+          case .changePassword, .editProfile:
               return .put
           }
       }
     
     var parameters: Parameters {
             switch self {
-            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params):
+            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params), .editProfile(let params), .changePassword(let params):
                 return params
             default:
                 return [:]

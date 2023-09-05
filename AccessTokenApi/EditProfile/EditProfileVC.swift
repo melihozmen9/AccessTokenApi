@@ -112,6 +112,8 @@ class EditProfileVC: UIViewController {
     }
     
     @objc func saveTapped() {
+        guard let name = nameView.Tf.text, let email = emailView.Tf.text else {return}
+        let body = ["full_name":name, "email": email]
         
     }
     

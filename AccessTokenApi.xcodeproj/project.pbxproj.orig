@@ -51,14 +51,14 @@
 		2190396D2A9E1583007AE38C /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190396C2A9E1583007AE38C /* EditProfileVC.swift */; };
 		21B15DB72A913DBD0021938F /* AddTravelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB62A913DBD0021938F /* AddTravelVC.swift */; };
 		21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB82A913DE70021938F /* AddTravelVM.swift */; };
-		21B5E5442AA769DD00651CD0 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 21B5E5432AA769DD00651CD0 /* JWTDecode */; };
-		21B5E5472AA769EF00651CD0 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 21B5E5462AA769EF00651CD0 /* NVActivityIndicatorView */; };
-		21B5E54A2AA769FC00651CD0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 21B5E5492AA769FC00651CD0 /* Alamofire */; };
 		21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642D2A9375590047CB92 /* VisitVM.swift */; };
 		21B764302A9378380047CB92 /* TravelModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642F2A9378380047CB92 /* TravelModal.swift */; };
 		21C20F832AA73A9400C87340 /* EditProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C20F822AA73A9400C87340 /* EditProfileVM.swift */; };
 		21C20F852AA73A9F00C87340 /* EditModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C20F842AA73A9F00C87340 /* EditModal.swift */; };
+		21C20F8E2AA73EBB00C87340 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F8D2AA73EBB00C87340 /* Alamofire */; };
 		21C20F912AA73EF700C87340 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F902AA73EF700C87340 /* TinyConstraints */; };
+		21C20F942AA7407D00C87340 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F932AA7407D00C87340 /* NVActivityIndicatorView */; };
+		21C20F972AA7409B00C87340 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F962AA7409B00C87340 /* JWTDecode */; };
 		21C20F9A2AA740B600C87340 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F992AA740B600C87340 /* Kingfisher */; };
 		21C20FED2AA749FC00C87340 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21C20FDA2AA749FC00C87340 /* Poppins-ExtraLight.ttf */; };
 		21C20FEE2AA749FC00C87340 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 21C20FDA2AA749FC00C87340 /* Poppins-ExtraLight.ttf */; };
@@ -243,11 +243,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21B5E54A2AA769FC00651CD0 /* Alamofire in Frameworks */,
-				21B5E5472AA769EF00651CD0 /* NVActivityIndicatorView in Frameworks */,
+				21C20F8E2AA73EBB00C87340 /* Alamofire in Frameworks */,
 				21C20F912AA73EF700C87340 /* TinyConstraints in Frameworks */,
+				21C20F972AA7409B00C87340 /* JWTDecode in Frameworks */,
+				21C20F942AA7407D00C87340 /* NVActivityIndicatorView in Frameworks */,
 				21C20F9A2AA740B600C87340 /* Kingfisher in Frameworks */,
-				21B5E5442AA769DD00651CD0 /* JWTDecode in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,11 +543,11 @@
 			);
 			name = AccessTokenApi;
 			packageProductDependencies = (
+				21C20F8D2AA73EBB00C87340 /* Alamofire */,
 				21C20F902AA73EF700C87340 /* TinyConstraints */,
+				21C20F932AA7407D00C87340 /* NVActivityIndicatorView */,
+				21C20F962AA7409B00C87340 /* JWTDecode */,
 				21C20F992AA740B600C87340 /* Kingfisher */,
-				21B5E5432AA769DD00651CD0 /* JWTDecode */,
-				21B5E5462AA769EF00651CD0 /* NVActivityIndicatorView */,
-				21B5E5492AA769FC00651CD0 /* Alamofire */,
 			);
 			productName = AccessTokenApi;
 			productReference = 218C34A72A8E0AFE008AC00B /* AccessTokenApi.app */;
@@ -622,11 +622,11 @@
 			);
 			mainGroup = 218C349E2A8E0AFE008AC00B;
 			packageReferences = (
+				21C20F8C2AA73EBB00C87340 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				21C20F8F2AA73EF700C87340 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+				21C20F922AA7407D00C87340 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				21C20F952AA7409B00C87340 /* XCRemoteSwiftPackageReference "JWTDecode" */,
 				21C20F982AA740B600C87340 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				21B5E5422AA769DD00651CD0 /* XCRemoteSwiftPackageReference "JWTDecode" */,
-				21B5E5452AA769EF00651CD0 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
-				21B5E5482AA769FC00651CD0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 218C34A82A8E0AFE008AC00B /* Products */;
 			projectDirPath = "";
@@ -744,13 +744,20 @@
 				21793EB52A98D42D001CA74D /* UploadResponse.swift in Sources */,
 				216A05E22A95D91C001DC3D5 /* Extension.swift in Sources */,
 				213FD11E2A8FE141004D2024 /* MapVC.swift in Sources */,
+<<<<<<< HEAD
+				A3C32F5B2AA5D4CF005D558B /* PopularPlacesModel.swift in Sources */,
+=======
 				218C34E92A8E112A008AC00B /* LoginVM.swift in Sources */,
+>>>>>>> Sprint2/seeAllPlaces
 				21D0C58A2AA1B8D1004D2DFC /* SecuritySettingsVM.swift in Sources */,
 				217D7A472A8E345D00274A30 /* KeychainHelper.swift in Sources */,
 				21F804782A93D7D40068CDAF /* TravelID.swift in Sources */,
 				218C34AB2A8E0AFE008AC00B /* AppDelegate.swift in Sources */,
+<<<<<<< HEAD
 				21777B3F2AA6130C00ED5346 /* SecurityCell.swift in Sources */,
+=======
 				A3C32F642AA66068005D558B /* SeeAllPlacesVM.swift in Sources */,
+>>>>>>> Sprint2/seeAllPlaces
 				217D7A492A8E3F7900274A30 /* DetailVC.swift in Sources */,
 				21C20F832AA73A9400C87340 /* EditProfileVM.swift in Sources */,
 				21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */,
@@ -763,10 +770,13 @@
 				216A05EC2A9623AC001DC3D5 /* AddTravelCollectionCell.swift in Sources */,
 				21678CE72AA71E7C0029BA0E /* SecurityCellVM.swift in Sources */,
 				214310D72A8F5CC9004B81A9 /* CustomLabel.swift in Sources */,
-				A3C32F5D2AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift in Sources */,
+<<<<<<< HEAD
+				A3C32F5D2AA5D4CF005D558B /* PopularPlacesCustomCell.swift in Sources */,
 				218C34EB2A8E135F008AC00B /* LoginModal.swift in Sources */,
+=======
 				A3C32F5D2AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift in Sources */,
-				218C34EB2A8E135F008AC00B /* LoginModal.swift in Sources */,
+				218C34EB2A8E135F008AC00B /* Modal.swift in Sources */,
+>>>>>>> Sprint2/seeAllPlaces
 				218C34AD2A8E0AFE008AC00B /* SceneDelegate.swift in Sources */,
 				216616AD2A94CACB00E0E3B9 /* GalleryData.swift in Sources */,
 				213FD1222A8FEF5C004D2024 /* VisitCell.swift in Sources */,
@@ -1123,23 +1133,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		21B5E5422AA769DD00651CD0 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-		21B5E5452AA769EF00651CD0 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		21B5E5482AA769FC00651CD0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		21C20F8C2AA73EBB00C87340 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -1155,6 +1149,22 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		21C20F922AA7407D00C87340 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		21C20F952AA7409B00C87340 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		21C20F982AA740B600C87340 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher";
@@ -1166,25 +1176,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		21B5E5432AA769DD00651CD0 /* JWTDecode */ = {
+		21C20F8D2AA73EBB00C87340 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21B5E5422AA769DD00651CD0 /* XCRemoteSwiftPackageReference "JWTDecode" */;
-			productName = JWTDecode;
-		};
-		21B5E5462AA769EF00651CD0 /* NVActivityIndicatorView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 21B5E5452AA769EF00651CD0 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
-			productName = NVActivityIndicatorView;
-		};
-		21B5E5492AA769FC00651CD0 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 21B5E5482AA769FC00651CD0 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 21C20F8C2AA73EBB00C87340 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 		21C20F902AA73EF700C87340 /* TinyConstraints */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 21C20F8F2AA73EF700C87340 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
 			productName = TinyConstraints;
+		};
+		21C20F932AA7407D00C87340 /* NVActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21C20F922AA7407D00C87340 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			productName = NVActivityIndicatorView;
+		};
+		21C20F962AA7409B00C87340 /* JWTDecode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21C20F952AA7409B00C87340 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
 		};
 		21C20F992AA740B600C87340 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -35,9 +35,10 @@ class SeeAllPlacesVC: UIViewController {
         return containerView
     }()
     
-    private lazy var ascendingDescendingButton:UIButton = {
+    private lazy var sortButton:UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "AscendingPlace"), for: .normal)
+        button.setImage(UIImage(named: "ascending"), for: .normal)
+        button.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -46,15 +47,15 @@ class SeeAllPlacesVC: UIViewController {
         layout.minimumLineSpacing = 16
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 70, left: 24, bottom: 0, right: 24)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.isPagingEnabled = false
-        cv.backgroundColor = .clear
-        cv.delegate = self
-        cv.dataSource = self
-        cv.showsVerticalScrollIndicator = false
-        cv.showsHorizontalScrollIndicator = false
-        cv.register(SeeAllPlacesCustomCell.self, forCellWithReuseIdentifier: "PopularPlacesCustomCell")
-        return cv
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isPagingEnabled = false
+        collectionView.backgroundColor = .clear
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(SeeAllPlacesCustomCell.self, forCellWithReuseIdentifier: "PopularPlacesCustomCell")
+        return collectionView
     }()
     
     override func viewWillLayoutSubviews() {
@@ -74,7 +75,7 @@ class SeeAllPlacesVC: UIViewController {
         view.backgroundColor = Color.systemGreen.chooseColor
         
         
-        self.containerView.addSubviews(collectionView, ascendingDescendingButton)
+        self.containerView.addSubviews(collectionView, sortButton)
         
         view.addSubviews(backButton,
                          headerLabel,
@@ -96,9 +97,9 @@ class SeeAllPlacesVC: UIViewController {
         containerView.topToBottom(of: headerLabel, offset: 60)
         containerView.edgesToSuperview(excluding: [.top])
         
-        ascendingDescendingButton.edgesToSuperview(excluding: [.left, .bottom], insets: .top(24) + .right(24))
-        ascendingDescendingButton.height(22)
-        ascendingDescendingButton.width(25)
+        sortButton.edgesToSuperview(excluding: [.left, .bottom], insets: .top(24) + .right(24))
+        sortButton.height(22)
+        sortButton.width(25)
         
         collectionView.edgesToSuperview()
         
@@ -109,24 +110,19 @@ class SeeAllPlacesVC: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func sortButtonTapped() {
+        
+        guard let fromWhere = fromWhere else { return }
+        seeAllPlacesVM.sortArray(places: fromWhere) {
+            self.collectionView.reloadData()
+        }
+        
+    }
+    
     private func getData() {
-        if fromWhere == "popularPlaces" {
-            headerLabel.text = "Popular Places"
-            seeAllPlacesVM.getPopularPlaces {
-                self.collectionView.reloadData()
-            }
-            
-        } else if fromWhere == "myAddedPlaces" {
-            headerLabel.text = "My Added Places"
-            seeAllPlacesVM.getMyAddedPlaces {
-                self.collectionView.reloadData()
-            }
-            
-        } else if fromWhere == "lastPlaces" {
-            headerLabel.text = "Last Places"
-            seeAllPlacesVM.getLastPlaces {
-                self.collectionView.reloadData()
-            }
+        guard let fromWhere = fromWhere else { return }
+        seeAllPlacesVM.getPlaces(places: fromWhere) {
+            self.collectionView.reloadData()
         }
     }
 }
@@ -154,15 +150,8 @@ extension SeeAllPlacesVC:UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var count = 0
-        if fromWhere == "popularPlaces" {
-            count = seeAllPlacesVM.countOfPopularPlaces()
-        } else if fromWhere == "myAddedPlaces" {
-            count = seeAllPlacesVM.countOfMyAddedPlaces()
-        } else if fromWhere == "lastPlaces" {
-            count = seeAllPlacesVM.countOfLastPlaces()
-        }
-        return count
+        guard let fromWhere = fromWhere else { return 0 }
+        return seeAllPlacesVM.countOfPlaces(places: fromWhere)
     }
     
     
@@ -170,16 +159,10 @@ extension SeeAllPlacesVC:UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularPlacesCustomCell", for: indexPath) as? SeeAllPlacesCustomCell else { return UICollectionViewCell() }
         
-        if fromWhere == "popularPlaces" {
-            guard let item = seeAllPlacesVM.getPopularPlace(index: indexPath.row) else { return UICollectionViewCell() }
-            cell.configure(item: item)
-        } else if fromWhere == "myAddedPlaces" {
-            guard let item = seeAllPlacesVM.getMyAddedPlace(index: indexPath.row) else { return UICollectionViewCell() }
-            cell.configure(item: item)
-        } else if fromWhere == "lastPlaces" {
-            guard let item = seeAllPlacesVM.getLastPlace(index: indexPath.row) else { return UICollectionViewCell() }
-            cell.configure(item: item)
-        }
+
+        guard let fromWhere = fromWhere else { return UICollectionViewCell() }
+        guard let item = seeAllPlacesVM.getPlacesIndex(index: indexPath.row, places: fromWhere) else { return UICollectionViewCell() }
+        cell.configure(item: item)
         return cell
     }
     

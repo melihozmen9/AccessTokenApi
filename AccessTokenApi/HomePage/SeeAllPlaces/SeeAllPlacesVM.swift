@@ -23,7 +23,7 @@ func getPlaces (callback: @escaping ()->Void) {
             router = Router.getPopularPlaces
         case "myAddedPlaces":
             router = Router.getMyAddedPlaces
-        case "lastPlaces":
+        case "newPlaces":
             router = Router.getLastPlaces
         default:
             fatalError("Invalid place value")
@@ -43,7 +43,7 @@ func getPlaces (callback: @escaping ()->Void) {
     }
 }
 
-    func getPlacesIndex(index:Int) -> PlaceItem? {
+    func getPlacesIndex(index:Int) -> PlaceItem {
         return placeArray[index]
     }
 
@@ -65,8 +65,8 @@ func getPlaces (callback: @escaping ()->Void) {
             return "Popular Places"
         } else if place == "myAddedPlaces"{
             return "My Added Places"
-        } else if place == "lastPlaces" {
-            return "LastPlaces"
+        } else if place == "newPlaces" {
+            return "New Places"
         }
         return ""
     }

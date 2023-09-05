@@ -148,7 +148,10 @@ extension SeeAllPlacesVC:UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let detailVC = DetailVC()
+        let item = seeAllPlacesVM.getPlacesIndex(index: indexPath.row)
+        detailVC.placeId = item.id
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
@@ -167,7 +170,7 @@ extension SeeAllPlacesVC:UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularPlacesCustomCell", for: indexPath) as? SeeAllPlacesCustomCell else { return UICollectionViewCell() }
         
 
-        guard let item = seeAllPlacesVM.getPlacesIndex(index: indexPath.row) else { return UICollectionViewCell() }
+        let item = seeAllPlacesVM.getPlacesIndex(index: indexPath.row)
         cell.configure(item: item)
         return cell
     }

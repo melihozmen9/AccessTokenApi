@@ -55,7 +55,7 @@ class HomeVC: UIViewController {
         } else if button.tag == 1 {
             seeAllVC.fromWhere = "myAddedPlaces"
         } else if button.tag == 2 {
-            seeAllVC.fromWhere = "lastPlaces"
+            seeAllVC.fromWhere = "newPlaces"
         }
         navigationController?.pushViewController(seeAllVC, animated: true)
     }

@@ -12,6 +12,7 @@ enum Router: URLRequestConvertible {
     //Auth
     case register(params:Parameters)
     case login(params:Parameters)
+    case changePassword(params:Parameters)
     case me
     //Travel
     case upload(image: [Data])
@@ -24,6 +25,7 @@ enum Router: URLRequestConvertible {
     case places
     case postGallery(params:Parameters)
     
+    //change-password
     var baseURL: URL {
            return URL(string: "https://api.iosclass.live/")!
        }
@@ -50,8 +52,10 @@ enum Router: URLRequestConvertible {
             return "v1/visits" + "/\(visitId)"
         case .postPlace:
             return  "v1/places"
-        case .postGallery(params: let params):
+        case .postGallery(let params):
             return "v1/galleries"
+        case .changePassword(let params):
+            return "v1/change-password"
         }
     }
     // query parametreler sorgu yapar.
@@ -63,6 +67,8 @@ enum Router: URLRequestConvertible {
               return .get
           case .deletePlace:
               return .delete
+          case .changePassword:
+              return .put
           }
       }
     

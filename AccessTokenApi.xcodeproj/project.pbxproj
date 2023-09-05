@@ -43,6 +43,8 @@
 		216616A92A949CF200E0E3B9 /* MapVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216616A82A949CF200E0E3B9 /* MapVM.swift */; };
 		216616AB2A94B28B00E0E3B9 /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216616AA2A94B28B00E0E3B9 /* CustomCollectionCell.swift */; };
 		216616AD2A94CACB00E0E3B9 /* GalleryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216616AC2A94CACB00E0E3B9 /* GalleryData.swift */; };
+		21678CE72AA71E7C0029BA0E /* SecurityCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21678CE62AA71E7C0029BA0E /* SecurityCellVM.swift */; };
+		21678CE92AA71FD20029BA0E /* SecurityModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21678CE82AA71FD20029BA0E /* SecurityModal.swift */; };
 		216A05E02A95D7BE001DC3D5 /* NavigationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05DF2A95D7BE001DC3D5 /* NavigationHelper.swift */; };
 		216A05E22A95D91C001DC3D5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E12A95D91B001DC3D5 /* Extension.swift */; };
 		216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E32A95E21C001DC3D5 /* PlacesModal.swift */; };
@@ -144,6 +146,8 @@
 		216616A82A949CF200E0E3B9 /* MapVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVM.swift; sourceTree = "<group>"; };
 		216616AA2A94B28B00E0E3B9 /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
 		216616AC2A94CACB00E0E3B9 /* GalleryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryData.swift; sourceTree = "<group>"; };
+		21678CE62AA71E7C0029BA0E /* SecurityCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityCellVM.swift; sourceTree = "<group>"; };
+		21678CE82AA71FD20029BA0E /* SecurityModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityModal.swift; sourceTree = "<group>"; };
 		216A05DF2A95D7BE001DC3D5 /* NavigationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHelper.swift; sourceTree = "<group>"; };
 		216A05E12A95D91B001DC3D5 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		216A05E32A95E21C001DC3D5 /* PlacesModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesModal.swift; sourceTree = "<group>"; };
@@ -440,6 +444,8 @@
 				219039652A9DECD9007AE38C /* SecuritySettingsVC.swift */,
 				21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */,
 				21777B3E2AA6130C00ED5346 /* SecurityCell.swift */,
+				21678CE62AA71E7C0029BA0E /* SecurityCellVM.swift */,
+				21678CE82AA71FD20029BA0E /* SecurityModal.swift */,
 			);
 			path = SecuritySettingPage;
 			sourceTree = "<group>";
@@ -668,6 +674,7 @@
 				21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */,
 				21B15DB72A913DBD0021938F /* AddTravelVC.swift in Sources */,
 				216A05EC2A9623AC001DC3D5 /* AddTravelCollectionCell.swift in Sources */,
+				21678CE72AA71E7C0029BA0E /* SecurityCellVM.swift in Sources */,
 				214310D72A8F5CC9004B81A9 /* CustomLabel.swift in Sources */,
 				A3C32F5D2AA5D4CF005D558B /* PopularPlacesCustomCell.swift in Sources */,
 				218C34EB2A8E135F008AC00B /* Modal.swift in Sources */,
@@ -681,6 +688,7 @@
 				A3C32F5C2AA5D4CF005D558B /* PopularPlacesVM .swift in Sources */,
 				21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */,
 				7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */,
+				21678CE92AA71FD20029BA0E /* SecurityModal.swift in Sources */,
 				216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */,
 				217D7A4B2A8E44B100274A30 /* DetailVM.swift in Sources */,
 				214310DC2A8F66F1004B81A9 /* Extensions.swift in Sources */,

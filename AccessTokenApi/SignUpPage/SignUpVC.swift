@@ -108,7 +108,7 @@ class SignUpVC: UIViewController {
         let leftButton = UIBarButtonItem(image: UIImage(named: "vector"), style: .plain, target: self, action: #selector(registerTapped))
         leftButton.tintColor = Color.white.chooseColor
         self.navigationItem.leftBarButtonItem  = leftButton
-        self.navigationController?.navigationBar.backgroundColor = .red
+        self.navigationController?.navigationBar.backgroundColor = .clear
     }
     private func setupLayout() {
         view1.edgesToSuperview(insets: .top(124))
@@ -135,7 +135,7 @@ class SignUpVC: UIViewController {
     func showAlert() { // bunun olumsuz fonksiyonu'da yaz. gelen error'u string olarak mesaja yazdır.
         let alert = UIAlertController(title: "Tebrikler, Kaydoldunuz", message: "Şimdi sisteme giriş yapabilirsin.", preferredStyle: .alert)
         let action = UIAlertAction(title: "Login sayfasına git", style: .default, handler: {_ in
-            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popViewController(animated: true)
         })
         alert.addAction(action)
         present(alert, animated: true)

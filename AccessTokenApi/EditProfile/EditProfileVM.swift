@@ -55,12 +55,13 @@ class EditProfileVM {
     }
     
     func editProfile(body: [String:String]) {
+        print(body)
         apiService.objectRequest(urlConvertible: Router.editProfile(params: body)) { (result:Result<ProfileResponse,Error>) in
             switch result {
             case .success(let success):
+                print(success)
                 guard let statusAlert = self.statusAlert else {return}
                 statusAlert(success.status)
-                print(success)
             case .failure(let failure):
                 print(failure)
             }

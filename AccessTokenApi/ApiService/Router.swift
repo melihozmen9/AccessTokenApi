@@ -87,7 +87,7 @@ enum Router: URLRequestConvertible {
     
     var parameters: Parameters {
             switch self {
-            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params):
+            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params), .editProfile(let params), .changePassword(let params):
                 return params
             default:
                 return [:]

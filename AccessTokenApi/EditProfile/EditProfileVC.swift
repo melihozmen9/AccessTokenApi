@@ -18,12 +18,6 @@ class EditProfileVC: UIViewController {
         return activity
     }()
     
-//    private lazy var activiyView: UIView = {
-//        let v = UIView()
-//        v.backgroundColor = Color.white.chooseColor
-//        return v
-//    }()
-    
     private lazy var view1: UIView = {
         let v = UIView()
         v.backgroundColor = Color.systemWhite.chooseColor
@@ -49,8 +43,7 @@ class EditProfileVC: UIViewController {
         let iv = UIImageView()
         iv.layer.cornerRadius = iv.frame.size.width / 2
         iv.layer.masksToBounds = true
-        iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(systemName: "person.fill")
+        iv.contentMode = .scaleAspectFill
         return iv
     }()
     
@@ -67,7 +60,6 @@ class EditProfileVC: UIViewController {
         l.font = Font.bold24.chooseFont
         l.textColor = Color.systemblack.chooseColor
         l.textAlignment = .center
-        l.text = "Delete Later"
         return l
     }()
     
@@ -76,7 +68,6 @@ class EditProfileVC: UIViewController {
         v.layer.cornerRadius = 16
         v.backgroundColor = Color.white.chooseColor
         v.imageview.image = UIImage(named: "dateIcon")
-        v.Lbl.text = "30 Haziran 2023"
         return v
     }()
     
@@ -120,6 +111,8 @@ class EditProfileVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         view1.roundCorners(corners: [.topLeft], radius: 80)
+        imageview.layer.cornerRadius = imageview.frame.size.width / 2
+        imageview.layer.masksToBounds = true
     }
     
     @objc func changePhotoTapped() {
@@ -157,8 +150,13 @@ class EditProfileVC: UIViewController {
            self.dateView.Lbl.text = self.dateFormat(date: user.created_at)
             self.nameView.Tf.text = user.full_name
             self.emailView.Tf.text = user.email
-            let url = URL(string: user.pp_url)
-            self.imageview.kf.setImage(with: url)
+            if user.pp_url != "" {
+                let url = URL(string: user.pp_url)
+                self.imageview.kf.setImage(with: url)
+            } else {
+                self.imageview.image = UIImage(systemName: "person.fill")
+            }
+           
         }
     }
     
@@ -229,8 +227,8 @@ class EditProfileVC: UIViewController {
         
         
         activity.centerInSuperview()
-        activity.height(40)
-        activity.width(40)
+        activity.height(50)
+        activity.width(50)
     }
 
 }

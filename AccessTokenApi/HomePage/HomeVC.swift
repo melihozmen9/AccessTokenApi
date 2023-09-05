@@ -41,6 +41,7 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        initVM()
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,6 +59,12 @@ class HomeVC: UIViewController {
             seeAllVC.fromWhere = "newPlaces"
         }
         navigationController?.pushViewController(seeAllVC, animated: true)
+    }
+    
+    func initVM() {
+        //viewModal.getAddedPlaces()
+       // viewModal.getPopularPlaces()
+        viewModal.getLastPlaces()
     }
     
     private func setupView() {

@@ -21,14 +21,38 @@ class HomeVM {
     }
     
     func getAddedPlaces() {
-        apiService.makeRequest(urlConvertible: Router.myAllVisits) { (result:Result<TravelData,Error>) in
+        apiService.makeRequest(urlConvertible: Router.getMyAddedPlacesLimit(limit: 5)) { (result:Result<TravelData,Error>) in
             switch result {
             case .success(let success):
                 let value = success.data.visits
                 self.myVisitsArray = value
+                print(value)
             case .failure(let failure):
                 print(failure.localizedDescription)
             }
         }
     }
+    
+    func getPopularPlaces() {
+        apiService.objectRequest(urlConvertible: Router.getPopularPlacesLimit(limit: 5)) { (result:Result<PlacesData,Error>) in
+            switch result {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
+    
+    func getLastPlaces() {
+        apiService.makeRequest(urlConvertible: Router.getLastPlacesLimit(limit: 5)) { (result:Result<PlacesData,Error>) in
+            switch result {
+            case .success(let success):
+                print(success)
+            case .failure(let failure):
+                print(failure.localizedDescription)
+            }
+        }
+    }
+  
 }

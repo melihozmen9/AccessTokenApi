@@ -25,6 +25,10 @@ enum Router: URLRequestConvertible {
     case galleryID(placeId:String)
     case places
     case postGallery(params:Parameters)
+    // seeAllPlaces
+    case getPopularPlaces
+    case getMyAddedPlaces
+    case getLastPlaces
     
     //change-password
     var baseURL: URL {
@@ -59,6 +63,12 @@ enum Router: URLRequestConvertible {
             return "v1/change-password"
         case .editProfile(let params):
             return "v1/edit-profile"
+        case .getPopularPlaces:
+            return "v1/places/popular"
+        case .getMyAddedPlaces:
+            return "v1/places/user"
+        case .getLastPlaces:
+            return "v1/places/last"
         }
     }
     // query parametreler sorgu yapar.
@@ -66,7 +76,7 @@ enum Router: URLRequestConvertible {
           switch self {
           case .login, .register, .upload,.postPlace, .postGallery :
               return .post
-          case .me,.myAllVisits,.places,.travelID, .galleryID :
+          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces :
               return .get
           case .deletePlace:
               return .delete
@@ -86,7 +96,7 @@ enum Router: URLRequestConvertible {
     
     var headers: HTTPHeaders {
         switch self {
-        case .login,.register:
+        case .login, .register, .getPopularPlaces, .getLastPlaces:
             return [:]
         case .upload:
             return ["Content-Type": "multipart/form-data"]

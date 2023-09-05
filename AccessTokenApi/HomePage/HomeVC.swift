@@ -48,20 +48,16 @@ class HomeVC: UIViewController {
     }
     
     @objc func showDetail(_ button:UIButton){
-//        switch button.tag{
-//        case 0:
-//            let vc = PopularPlacesVC()
-//            navigationController?.pushViewController(vc, animated: true)
-//         case 1:
-//            let vc = MyAddedPlacesVC()
-//            navigationController?.pushViewController(vc, animated: true)
-//        case 2:
-//           let vc = NewPlacesVC()
-//           navigationController?.pushViewController(vc, animated: true)
-//         default:
-//           break
-//        }
-
+        let seeAllVC = SeeAllPlacesVC()
+        
+        if button.tag == 0 {
+            seeAllVC.fromWhere = "popularPlaces"
+        } else if button.tag == 1 {
+            seeAllVC.fromWhere = "myAddedPlaces"
+        } else if button.tag == 2 {
+            seeAllVC.fromWhere = "newPlaces"
+        }
+        navigationController?.pushViewController(seeAllVC, animated: true)
     }
     
     private func setupView() {
@@ -118,7 +114,7 @@ extension HomeVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
             return 52
-        }
+    }
    
 }
 

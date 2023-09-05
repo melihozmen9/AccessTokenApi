@@ -3,15 +3,21 @@
 //  AccessTokenApi
 //
 //  Created by Kullanici on 29.08.2023.
-//
+
 
 import UIKit
 import TinyConstraints
+import CloudKit
+
+protocol CellFunctions: AnyObject {
+    func textFieldFunctions(text: String,number:Int)
+}
 
 
-class SecuritySettingsVC: UIViewController {
-    
+class SecuritySettingsVC: UIViewController, CellFunctions {
+   
     let viewModal = SecuritySettingsVM()
+    var passwords = [1:"",2:""]
     
     private lazy var view1: UIView = {
         let v = UIView()
@@ -35,59 +41,6 @@ class SecuritySettingsVC: UIViewController {
         return l
     }()
     
-    private lazy var infoLbl1: UILabel = {
-        let l = UILabel()
-        l.text = "Change Password"
-        l.font = Font.bold16.chooseFont
-        l.textColor = Color.systemGreen.chooseColor
-        return l
-    }()
-    
-    private lazy var passwordTf1: CustomView = {
-        let v = CustomView()
-        v.Lbl.text = "New Password"
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
-        return v
-    }()
-    
-    private lazy var passwordTf2: CustomView = {
-        let v = CustomView()
-        v.Lbl.text = "New Password Confirm"
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
-        return v
-    }()
-    
-    private lazy var infoLbl2: UILabel = {
-        let l = UILabel()
-        l.text = "Privacy"
-        l.font = Font.bold16.chooseFont
-        l.textColor = Color.systemGreen.chooseColor
-        return l
-    }()
-    
-    private lazy var cameraPermission: CustomSwitchView = {
-        let v = CustomSwitchView()
-        v.Lbl.text = "Camera"
-        v.switchView.addTarget(self, action: #selector(cameraToggled), for: .valueChanged)
-        v.switchView.isOn = viewModal.setPermissionToggle(forKey: "CameraPermission")
-        return v
-    }()
-    
-    private lazy var libraryPermission: CustomSwitchView = {
-        let v = CustomSwitchView()
-        v.Lbl.text = "Photo Library"
-        v.switchView.addTarget(self, action: #selector(libraryToggled), for: .valueChanged)
-        v.switchView.isOn = viewModal.setPermissionToggle(forKey: "LibraryPermission")
-        return v
-    }()
-    
-    private lazy var locationPermission: CustomSwitchView = {
-        let v = CustomSwitchView()
-        v.Lbl.text = "Location"
-        v.switchView.addTarget(self, action: #selector(locationToggled), for: .valueChanged)
-        v.switchView.isOn = viewModal.setPermissionToggle(forKey: "LocationPermission")
-        return v
-    }()
     
     private lazy var saveBtn: CustomButton = {
         let btn = CustomButton()
@@ -97,11 +50,20 @@ class SecuritySettingsVC: UIViewController {
         return btn
     }()
     
+    private lazy var tableView : UITableView = {
+        let tv = UITableView()
+        tv.delegate = self
+        tv.dataSource = self
+        tv.register(SecurityCell.self, forCellReuseIdentifier: "cell")
+        tv.separatorStyle = .none
+        tv.backgroundColor = .clear
+        return tv
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
-        initVM()
         
     }
     
@@ -110,67 +72,67 @@ class SecuritySettingsVC: UIViewController {
     }
     
     @objc func saveTapped() {
-        dismiss(animated: true, completion: nil)
-    }
-    //MARK: - Switch fonksiyonları
-    @objc func cameraToggled(sender: UISwitch) {
-        if sender.isOn {
-            openAppSettings()
-        } else {
-            openAppSettings()
+        checkForEqual()
+        viewModal.statusAlert = {status in
+            self.statusAlert(status: status)
         }
-        self.viewModal.checkCameraPermission()
-        sender.isOn = self.viewModal.setPermissionToggle(forKey: "CameraPermission")
     }
+
     
-    
-    
-    @objc func libraryToggled(sender: UISwitch) {
-        if sender.isOn {
-            openAppSettings()
-        } else {
-            openAppSettings()
-            
-        }
-        self.viewModal.checkLibraryPermission()
-        sender.isOn = self.viewModal.setPermissionToggle(forKey: "LibraryPermission")
-    }
-    
-    @objc func locationToggled(sender: UISwitch) {
-        if sender.isOn {
-            openAppSettings()
-        } else {
-            openAppSettings()
-            
-        }
-        self.viewModal.checkLocationPermission()
-        sender.isOn = self.viewModal.setPermissionToggle(forKey: "LocationPermission")
-    }
     
     @objc func backButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
     
     
-    func initVM() {
-        viewModal.checkAllPermissions()
+
+    
+    func textFieldFunctions(text: String,number:Int) {
+        passwords[number] = text
+        print(passwords)
     }
     
-    
-    //MARK: - Ayarlara yönlendiren fonksiyon
-    
-    func openAppSettings() {
-        if let appSettingsURL = URL(string: UIApplication.openSettingsURLString) {
-            if UIApplication.shared.canOpenURL(appSettingsURL) {
-                UIApplication.shared.open(appSettingsURL, options: [:], completionHandler: nil)
-            }
+    func checkForEqual() {
+        if passwords[1] == passwords[2] && passwords[1] != "" || passwords[2] != "" {
+            guard let password = passwords[1] else {return}
+            viewModal.changePassword(password: ["new_password": password])
+        } else {
+            showAlert()
         }
     }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Hata", message: "Girdiğiniz şifreler aynı değildir.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Tamam", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
+    func statusAlert(status:String) {
+        var alert = UIAlertController()
+        var action = UIAlertAction()
+        if status == "success" {
+            alert = UIAlertController(title: "Tebrikler", message: "Şifreniz başarıyla değiştirildi.", preferredStyle: .alert)
+             action = UIAlertAction(title: "Tamam", style: .default) {action in
+                self.dismiss(animated: true, completion: nil)
+            }
+        } else {
+            alert = UIAlertController(title: "Üzgünüz", message: "Şifreniz değiştirilemedi.", preferredStyle: .alert)
+             action = UIAlertAction(title: "Tamam", style: .default)
+        }
+       
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+
+  
+    
+ 
     
     private func setupView() {
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Color.systemGreen.chooseColor
-        view.addSubViews(view1,infoLbl1,infoLbl2,cameraPermission,libraryPermission,locationPermission,passwordTf1,passwordTf2,backButton,titleLbl,saveBtn)
+        view.addSubViews(view1,tableView,backButton,titleLbl,saveBtn)
         setupLayout()
     }
     private func setupLayout() {
@@ -187,33 +149,9 @@ class SecuritySettingsVC: UIViewController {
         view1.edgesToSuperview(excluding: [.top])
         view1.topToBottom(of: titleLbl, offset: 58)
         
-        infoLbl1.edgesToSuperview(excluding: [.bottom, .top], insets: .left(24) + .right(130))
-        infoLbl1.top(to: view1, offset: 44)
-        infoLbl1.height(20)
-        
-        passwordTf1.edgesToSuperview(excluding: [.top, .bottom], insets: .left(24) + .right(24))
-        passwordTf1.topToBottom(of: infoLbl1, offset: 8)
-        passwordTf1.height(74)
-        
-        passwordTf2.edgesToSuperview(excluding: [.top, .bottom], insets: .left(24) + .right(24))
-        passwordTf2.topToBottom(of: passwordTf1, offset: 8)
-        passwordTf2.height(74)
-        
-        infoLbl2.edgesToSuperview(excluding: [.top, .bottom], insets: .left(24) + .right(130))
-        infoLbl2.topToBottom(of: passwordTf2, offset: 24)
-        infoLbl2.height(20)
-        
-        cameraPermission.edgesToSuperview(excluding: [.top, .bottom], insets: .left(24) + .right(24))
-        cameraPermission.topToBottom(of: infoLbl2, offset: 8)
-        cameraPermission.height(74)
-        
-        libraryPermission.edgesToSuperview(excluding: [.top, .bottom], insets: .left(24) + .right(24))
-        libraryPermission.topToBottom(of: cameraPermission, offset: 8)
-        libraryPermission.height(74)
-        
-        locationPermission.edgesToSuperview(excluding: [.top, .bottom], insets: .left(24) + .right(24))
-        locationPermission.topToBottom(of: libraryPermission, offset: 8)
-        locationPermission.height(74)
+        tableView.edgesToSuperview(excluding:[.bottom,.top] ,insets: .right(24) + .left(24))
+        tableView.bottomToTop(of: saveBtn, offset: -20)
+        tableView.top(to: view1, offset: 20)
         
         saveBtn.edgesToSuperview(excluding: [.top], insets: .left(24) + .right(24) + .bottom(18))
         saveBtn.height(54)
@@ -221,3 +159,51 @@ class SecuritySettingsVC: UIViewController {
     }
     
 }
+
+extension SecuritySettingsVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 82
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 30))
+        headerView.backgroundColor = .clear // Başlık arkaplan rengi
+        
+        let label = UILabel(frame: CGRect(x: 10, y: 5, width: tableView.frame.size.width - 20, height: 20))
+        label.font = Font.bold16.chooseFont
+        label.textColor = Color.systemGreen.chooseColor
+        if section == 0 {
+            label.text = "Change Password"
+        } else if section == 1 {
+            label.text = "Privacy"
+        }
+        
+        headerView.addSubview(label)
+        return headerView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30.0 // Başlık yüksekliği
+    }
+}
+
+extension SecuritySettingsVC: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModal.settingsArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModal.settingsArray[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? SecurityCell else {return UITableViewCell()}
+       
+        cell.configure(section: indexPath.section,
+                       data: viewModal.settingsArray[indexPath.section][indexPath.row])
+        
+        cell.delegate = self
+        return cell
+    }
+}
+
+

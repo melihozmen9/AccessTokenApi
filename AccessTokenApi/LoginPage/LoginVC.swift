@@ -39,7 +39,7 @@ class LoginVC: UIViewController {
     private lazy var emailView: CustomView = {
         let v = CustomView()
         v.Lbl.text = "Email"
-        v.Tf.text = "melih3@gmail.com"
+        v.Tf.text = "Melihv3@gmail.com"
         v.Tf.attributedPlaceholder = NSAttributedString(string: "developer@bilgeadam.com", attributes: v.attributes)
         return v
     }()

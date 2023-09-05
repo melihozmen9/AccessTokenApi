@@ -7,7 +7,22 @@
 
 import UIKit
 import TinyConstraints
+import Kingfisher
+import NVActivityIndicatorView
 class EditProfileVC: UIViewController {
+    
+    let viewModal = EditProfileVM()
+    
+    private lazy var activity: NVActivityIndicatorView = {
+        let activity = NVActivityIndicatorView(frame: .zero, type: .pacman, color: Color.systemGreen.chooseColor, padding: 0)
+        return activity
+    }()
+    
+//    private lazy var activiyView: UIView = {
+//        let v = UIView()
+//        v.backgroundColor = Color.white.chooseColor
+//        return v
+//    }()
     
     private lazy var view1: UIView = {
         let v = UIView()
@@ -59,7 +74,7 @@ class EditProfileVC: UIViewController {
     private lazy var dateView: InfoCustomView = {
         let v = InfoCustomView()
         v.layer.cornerRadius = 16
-        v.backgroundColor = .blue
+        v.backgroundColor = Color.white.chooseColor
         v.imageview.image = UIImage(named: "dateIcon")
         v.Lbl.text = "30 Haziran 2023"
         return v
@@ -100,7 +115,7 @@ class EditProfileVC: UIViewController {
         super.viewDidLoad()
         
         setupView()
-      
+        initVM()
     }
     
     override func viewDidLayoutSubviews() {
@@ -108,19 +123,62 @@ class EditProfileVC: UIViewController {
     }
     
     @objc func changePhotoTapped() {
-        
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
     }
     
     @objc func saveTapped() {
         guard let name = nameView.Tf.text, let email = emailView.Tf.text else {return}
-        let body = ["full_name":name, "email": email]
-        
+        let imageUrl = viewModal.getImageUrl()
+        let body = ["full_name":name, "email": email, "pp_url": imageUrl]
+        viewModal.editProfile(body: body)
     }
     
+    func initVM() {
+        viewModal.onDataFetch = { [weak self] isLoading in
+            DispatchQueue.main.async {
+                if isLoading {
+                    self?.activity.startAnimating()
+                   
+                } else {
+                    self?.activity.stopAnimating()
+                    
+                }
+            }
+        }
+        viewModal.getUserInfo()
+        viewModal.configureUserInfo = {user in
+            self.nameLbl.text = user.full_name
+            self.positionView.Lbl.text = user.role
+            //FIXME: tarih formatlanacak.
+           self.dateView.Lbl.text = self.dateFormat(date: user.created_at)
+            self.nameView.Tf.text = user.full_name
+            self.emailView.Tf.text = user.email
+            let url = URL(string: user.pp_url)
+            self.imageview.kf.setImage(with: url)
+        }
+    }
+    
+    func dateFormat(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = FormatType.longFormat.rawValue
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+
+        if let date = dateFormatter.date(from: date) {
+            dateFormatter.dateFormat = FormatType.dayMonthYear.rawValue
+            let formattedDate = dateFormatter.string(from: date)
+            return formattedDate
+        } else {
+            return ""
+        }
+    }
     private func setupView() {
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Color.systemGreen.chooseColor
-        self.view.addSubViews(backButton, titleLbl, view1, imageview, changePhotoBtn, nameLbl, dateView, positionView, nameView, emailView, saveBtn)
+        self.view.addSubViews(backButton, titleLbl, view1, imageview, changePhotoBtn, nameLbl, dateView, positionView, nameView, emailView, saveBtn, activity)
         setupLayout()
     }
     private func setupLayout() {
@@ -168,7 +226,32 @@ class EditProfileVC: UIViewController {
         
         saveBtn.edgesToSuperview(excluding: [.top], insets: .left(24) + .right(24) + .bottom(99))
         saveBtn.height(51)
+        
+        
+        activity.centerInSuperview()
+        activity.height(40)
+        activity.width(40)
     }
 
 }
 
+extension EditProfileVC: UIImagePickerControllerDelegate & UINavigationControllerDelegate  {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print(info)
+        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage?  {
+            guard let image = image else {return}
+            imageview.image = image
+            guard let data = image.jpegData(compressionQuality: 0.5) else {return}
+            let dataArray = [data]
+            
+            viewModal.uploadPhoto(images: dataArray )
+        }
+
+        picker.dismiss(animated: true, completion: nil)
+
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+}

@@ -124,10 +124,6 @@ class SecuritySettingsVC: UIViewController, CellFunctions {
         alert.addAction(action)
         present(alert, animated: true)
     }
-    
-    func initVM() {
-       
-    }
 
   
     

@@ -11,8 +11,9 @@ import Kingfisher
 
 class SeeAllPlacesVC: UIViewController {
     
-    var fromWhere:String?
+    var fromWhere:String!
     let seeAllPlacesVM = SeeAllPlacesVM()
+    var buttonToggle:Bool = false
     
     private lazy var backButton:UIButton = {
         let button = UIButton()
@@ -111,17 +112,24 @@ class SeeAllPlacesVC: UIViewController {
     }
     
     @objc func sortButtonTapped() {
-        
-        guard let fromWhere = fromWhere else { return }
-        seeAllPlacesVM.sortArray(places: fromWhere) {
-            self.collectionView.reloadData()
+                
+        buttonToggle.toggle()
+        if buttonToggle {
+            sortButton.setImage(UIImage(named: "descending"), for: .normal)
+            seeAllPlacesVM.sortArray(ascending: true)
+        } else {
+            sortButton.setImage(UIImage(named: "ascending"), for: .normal)
+            seeAllPlacesVM.sortArray(ascending: false)
         }
-        
+        self.collectionView.reloadData()
     }
     
     private func getData() {
-        guard let fromWhere = fromWhere else { return }
-        seeAllPlacesVM.getPlaces(places: fromWhere) {
+
+        seeAllPlacesVM.place = fromWhere
+        
+        seeAllPlacesVM.getPlaces() {
+            self.headerLabel.text = self.seeAllPlacesVM.setTitle()
             self.collectionView.reloadData()
         }
     }
@@ -150,8 +158,7 @@ extension SeeAllPlacesVC:UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let fromWhere = fromWhere else { return 0 }
-        return seeAllPlacesVM.countOfPlaces(places: fromWhere)
+        return seeAllPlacesVM.countOfPlaces()
     }
     
     
@@ -160,8 +167,7 @@ extension SeeAllPlacesVC:UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularPlacesCustomCell", for: indexPath) as? SeeAllPlacesCustomCell else { return UICollectionViewCell() }
         
 
-        guard let fromWhere = fromWhere else { return UICollectionViewCell() }
-        guard let item = seeAllPlacesVM.getPlacesIndex(index: indexPath.row, places: fromWhere) else { return UICollectionViewCell() }
+        guard let item = seeAllPlacesVM.getPlacesIndex(index: indexPath.row) else { return UICollectionViewCell() }
         cell.configure(item: item)
         return cell
     }

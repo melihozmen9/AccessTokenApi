@@ -5,99 +5,71 @@ import Foundation
 
 class SeeAllPlacesVM {
     
-    private var popularPlaces = [PlaceItem]()
-    private var myAddedPlaces = [PlaceItem]()
-    private var lastPlaces = [PlaceItem]()
-
+    private var placeArray = [PlaceItem]()
+    var place:String?
+    
     let apiService: ApiServiceProtocol
     
     init(apiService: ApiServiceProtocol = ApiService()){
         self.apiService = apiService
     }
     
-    func getPlaces (places:String, callback: @escaping ()->Void) {
-        if places == "popularPlaces"{
-            DispatchQueue.global().async { [self] in
-                apiService.makeRequest(urlConvertible: Router.getPopularPlaces) { (result:Result<PlacesData,Error>) in
-                    switch result {
-                    case .success(let data):
-                        self.popularPlaces = data.data.places
-                        DispatchQueue.main.async {
-                            callback()
-                        }
-                    case .failure(let failure):
-                        print(failure)
-                    }
-                }
-            }
-        } else if places == "myAddedPlaces"{
-            DispatchQueue.global().async { [self] in
-                apiService.makeRequest(urlConvertible: Router.getMyAddedPlaces) { (result:Result<PlacesData,Error>) in
-                    switch result {
-                    case .success(let data):
-                        self.myAddedPlaces = data.data.places
-                        DispatchQueue.main.async {
-                            callback()
-                        }
-                    case .failure(let failure):
-                        print(failure)
-                    }
-                }
-            }
-        } else if places == "lastPlaces" {
-            DispatchQueue.global().async { [self] in
-                apiService.makeRequest(urlConvertible: Router.getLastPlaces) { (result:Result<PlacesData,Error>) in
-                    switch result {
-                    case .success(let data):
-                        self.lastPlaces = data.data.places
-                        DispatchQueue.main.async {
-                            callback()
-                        }
-                    case .failure(let failure):
-                        print(failure)
-                    }
-                }
-            }
+
+func getPlaces (callback: @escaping ()->Void) {
+    DispatchQueue.global().async { [self] in
+        let router: Router
+        switch self.place {
+        case "popularPlaces":
+            router = Router.getPopularPlaces
+        case "myAddedPlaces":
+            router = Router.getMyAddedPlaces
+        case "lastPlaces":
+            router = Router.getLastPlaces
+        default:
+            fatalError("Invalid place value")
         }
         
-    }
-    
-    func getPlacesIndex(index:Int, places:String) -> PlaceItem? {
-        var item:PlaceItem?
-        if places == "popularPlaces"{
-            item =  popularPlaces[index]
-        } else if places == "myAddedPlaces"{
-            item = myAddedPlaces[index]
-        } else if places == "lastPlaces" {
-            item = lastPlaces[index]
-        }
-        
-        return item
-    }
-    
-    func countOfPlaces(places:String) -> Int {
-        var count = 0
-        
-        if places == "popularPlaces"{
-            count = popularPlaces.count
-        } else if places == "myAddedPlaces"{
-            count = myAddedPlaces.count
-        } else if places == "lastPlaces" {
-            count = lastPlaces.count
-        }
-        return count
-    }
-    
-    
-    func sortArray (places: String, callback: @escaping () -> Void ) {
-        if places == "popularPlaces"{
-            popularPlaces = popularPlaces.sorted { $0.title < $1.title }
-        } else if places == "myAddedPlaces"{
-            myAddedPlaces = myAddedPlaces.sorted { $0.title < $1.title }
-        } else if places == "lastPlaces" {
-            lastPlaces = lastPlaces.sorted { $0.title < $1.title }
+        apiService.makeRequest(urlConvertible: router) { (result:Result<PlacesData,Error>) in
+            switch result {
+            case .success(let data):
+                self.placeArray = data.data.places
+                DispatchQueue.main.async {
+                    callback()
+                }
+            case .failure(let failure):
+                print(failure)
+            }
         }
     }
+}
+
+    func getPlacesIndex(index:Int) -> PlaceItem? {
+        return placeArray[index]
+    }
+
+    func countOfPlaces() -> Int {
+        return placeArray.count
+    }
+
+
+    func sortArray (ascending:Bool) {
+        if ascending {
+            placeArray = placeArray.sorted { $0.title.lowercased() < $1.title.lowercased() }
+        } else {
+            placeArray = placeArray.sorted { $0.title.lowercased() > $1.title.lowercased() }
+        }
+    }
+
+    func setTitle() -> String {
+        if place == "popularPlaces" {
+            return "Popular Places"
+        } else if place == "myAddedPlaces"{
+            return "My Added Places"
+        } else if place == "lastPlaces" {
+            return "LastPlaces"
+        }
+        return ""
+    }
     
-    
+
 }

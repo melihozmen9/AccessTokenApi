@@ -113,12 +113,12 @@ class SecuritySettingsVC: UIViewController, CellFunctions {
         var action = UIAlertAction()
         if status == "success" {
             alert = UIAlertController(title: "Tebrikler", message: "Şifreniz başarıyla değiştirildi.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Tamam", style: .default) {action in
+             action = UIAlertAction(title: "Tamam", style: .default) {action in
                 self.dismiss(animated: true, completion: nil)
             }
         } else {
             alert = UIAlertController(title: "Üzgünüz", message: "Şifreniz değiştirilemedi.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Tamam", style: .default)
+             action = UIAlertAction(title: "Tamam", style: .default)
         }
        
         alert.addAction(action)

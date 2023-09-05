@@ -14,25 +14,6 @@
 		213FD1202A8FE155004D2024 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD11F2A8FE155004D2024 /* MenuVC.swift */; };
 		213FD1222A8FEF5C004D2024 /* VisitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD1212A8FEF5C004D2024 /* VisitCell.swift */; };
 		214310AD2A8F57AA004B81A9 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310AC2A8F57AA004B81A9 /* CustomView.swift */; };
-		214310C32A8F589D004B81A9 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B02A8F589D004B81A9 /* Poppins-ExtraLight.ttf */; };
-		214310C42A8F589D004B81A9 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B12A8F589D004B81A9 /* Poppins-ThinItalic.ttf */; };
-		214310C52A8F589D004B81A9 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B22A8F589D004B81A9 /* Poppins-ExtraLightItalic.ttf */; };
-		214310C62A8F589D004B81A9 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B32A8F589D004B81A9 /* Poppins-BoldItalic.ttf */; };
-		214310C72A8F589D004B81A9 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B42A8F589D004B81A9 /* Poppins-Light.ttf */; };
-		214310C82A8F589D004B81A9 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B52A8F589D004B81A9 /* Poppins-Medium.ttf */; };
-		214310C92A8F589D004B81A9 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B62A8F589D004B81A9 /* Poppins-SemiBoldItalic.ttf */; };
-		214310CA2A8F589D004B81A9 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B72A8F589D004B81A9 /* Poppins-ExtraBoldItalic.ttf */; };
-		214310CB2A8F589D004B81A9 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B82A8F589D004B81A9 /* Poppins-ExtraBold.ttf */; };
-		214310CC2A8F589D004B81A9 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310B92A8F589D004B81A9 /* Poppins-BlackItalic.ttf */; };
-		214310CD2A8F589D004B81A9 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 214310BA2A8F589D004B81A9 /* OFL.txt */; };
-		214310CE2A8F589D004B81A9 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310BB2A8F589D004B81A9 /* Poppins-Regular.ttf */; };
-		214310CF2A8F589D004B81A9 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310BC2A8F589D004B81A9 /* Poppins-LightItalic.ttf */; };
-		214310D02A8F589D004B81A9 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310BD2A8F589D004B81A9 /* Poppins-Bold.ttf */; };
-		214310D12A8F589D004B81A9 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310BE2A8F589D004B81A9 /* Poppins-Black.ttf */; };
-		214310D22A8F589D004B81A9 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310BF2A8F589D004B81A9 /* Poppins-Thin.ttf */; };
-		214310D32A8F589D004B81A9 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310C02A8F589D004B81A9 /* Poppins-SemiBold.ttf */; };
-		214310D42A8F589D004B81A9 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310C12A8F589D004B81A9 /* Poppins-Italic.ttf */; };
-		214310D52A8F589D004B81A9 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 214310C22A8F589D004B81A9 /* Poppins-MediumItalic.ttf */; };
 		214310D72A8F5CC9004B81A9 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310D62A8F5CC9004B81A9 /* CustomLabel.swift */; };
 		214310DA2A8F616E004B81A9 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310D92A8F616E004B81A9 /* Enums.swift */; };
 		214310DC2A8F66F1004B81A9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310DB2A8F66F1004B81A9 /* Extensions.swift */; };
@@ -50,11 +31,6 @@
 		216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E32A95E21C001DC3D5 /* PlacesModal.swift */; };
 		216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05E92A961422001DC3D5 /* MapCollectionCell.swift */; };
 		216A05EC2A9623AC001DC3D5 /* AddTravelCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 216A05EB2A9623AC001DC3D5 /* AddTravelCollectionCell.swift */; };
-		21777B312AA6113600ED5346 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B302AA6113600ED5346 /* Alamofire */; };
-		21777B342AA6115E00ED5346 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B332AA6115E00ED5346 /* JWTDecode */; };
-		21777B372AA6117D00ED5346 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B362AA6117D00ED5346 /* NVActivityIndicatorView */; };
-		21777B3A2AA6119D00ED5346 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B392AA6119D00ED5346 /* Kingfisher */; };
-		21777B3D2AA611B100ED5346 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 21777B3C2AA611B100ED5346 /* TinyConstraints */; };
 		21777B3F2AA6130C00ED5346 /* SecurityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21777B3E2AA6130C00ED5346 /* SecurityCell.swift */; };
 		21793EB52A98D42D001CA74D /* UploadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21793EB42A98D42D001CA74D /* UploadResponse.swift */; };
 		217D7A472A8E345D00274A30 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217D7A462A8E345D00274A30 /* KeychainHelper.swift */; };
@@ -63,8 +39,6 @@
 		218C34AB2A8E0AFE008AC00B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34AA2A8E0AFE008AC00B /* AppDelegate.swift */; };
 		218C34AD2A8E0AFE008AC00B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34AC2A8E0AFE008AC00B /* SceneDelegate.swift */; };
 		218C34AF2A8E0AFE008AC00B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34AE2A8E0AFE008AC00B /* LoginVC.swift */; };
-		218C34B42A8E0B00008AC00B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 218C34B32A8E0B00008AC00B /* Assets.xcassets */; };
-		218C34B72A8E0B00008AC00B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 218C34B52A8E0B00008AC00B /* LaunchScreen.storyboard */; };
 		218C34C22A8E0B01008AC00B /* AccessTokenApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34C12A8E0B01008AC00B /* AccessTokenApiTests.swift */; };
 		218C34CC2A8E0B01008AC00B /* AccessTokenApiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34CB2A8E0B01008AC00B /* AccessTokenApiUITests.swift */; };
 		218C34CE2A8E0B01008AC00B /* AccessTokenApiUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218C34CD2A8E0B01008AC00B /* AccessTokenApiUITestsLaunchTests.swift */; };
@@ -79,6 +53,13 @@
 		21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB82A913DE70021938F /* AddTravelVM.swift */; };
 		21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642D2A9375590047CB92 /* VisitVM.swift */; };
 		21B764302A9378380047CB92 /* TravelModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B7642F2A9378380047CB92 /* TravelModal.swift */; };
+		21C20F832AA73A9400C87340 /* EditProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C20F822AA73A9400C87340 /* EditProfileVM.swift */; };
+		21C20F852AA73A9F00C87340 /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C20F842AA73A9F00C87340 /* Modal.swift */; };
+		21C20F8E2AA73EBB00C87340 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F8D2AA73EBB00C87340 /* Alamofire */; };
+		21C20F912AA73EF700C87340 /* TinyConstraints in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F902AA73EF700C87340 /* TinyConstraints */; };
+		21C20F942AA7407D00C87340 /* NVActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F932AA7407D00C87340 /* NVActivityIndicatorView */; };
+		21C20F972AA7409B00C87340 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F962AA7409B00C87340 /* JWTDecode */; };
+		21C20F9A2AA740B600C87340 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 21C20F992AA740B600C87340 /* Kingfisher */; };
 		21D0C58A2AA1B8D1004D2DFC /* SecuritySettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */; };
 		21D0C58D2AA1EC02004D2DFC /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */; };
 		21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */; };
@@ -181,6 +162,8 @@
 		21B15DB82A913DE70021938F /* AddTravelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelVM.swift; sourceTree = "<group>"; };
 		21B7642D2A9375590047CB92 /* VisitVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitVM.swift; sourceTree = "<group>"; };
 		21B7642F2A9378380047CB92 /* TravelModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelModal.swift; sourceTree = "<group>"; };
+		21C20F822AA73A9400C87340 /* EditProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVM.swift; sourceTree = "<group>"; };
+		21C20F842AA73A9F00C87340 /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritySettingsVM.swift; sourceTree = "<group>"; };
 		21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -199,11 +182,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21777B3A2AA6119D00ED5346 /* Kingfisher in Frameworks */,
-				21777B342AA6115E00ED5346 /* JWTDecode in Frameworks */,
-				21777B3D2AA611B100ED5346 /* TinyConstraints in Frameworks */,
-				21777B312AA6113600ED5346 /* Alamofire in Frameworks */,
-				21777B372AA6117D00ED5346 /* NVActivityIndicatorView in Frameworks */,
+				21C20F8E2AA73EBB00C87340 /* Alamofire in Frameworks */,
+				21C20F912AA73EF700C87340 /* TinyConstraints in Frameworks */,
+				21C20F972AA7409B00C87340 /* JWTDecode in Frameworks */,
+				21C20F942AA7407D00C87340 /* NVActivityIndicatorView in Frameworks */,
+				21C20F9A2AA740B600C87340 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +437,8 @@
 			isa = PBXGroup;
 			children = (
 				2190396C2A9E1583007AE38C /* EditProfileVC.swift */,
+				21C20F822AA73A9400C87340 /* EditProfileVM.swift */,
+				21C20F842AA73A9F00C87340 /* Modal.swift */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -489,7 +474,6 @@
 			buildPhases = (
 				218C34A32A8E0AFE008AC00B /* Sources */,
 				218C34A42A8E0AFE008AC00B /* Frameworks */,
-				218C34A52A8E0AFE008AC00B /* Resources */,
 			);
 			buildRules = (
 			);
@@ -497,11 +481,11 @@
 			);
 			name = AccessTokenApi;
 			packageProductDependencies = (
-				21777B302AA6113600ED5346 /* Alamofire */,
-				21777B332AA6115E00ED5346 /* JWTDecode */,
-				21777B362AA6117D00ED5346 /* NVActivityIndicatorView */,
-				21777B392AA6119D00ED5346 /* Kingfisher */,
-				21777B3C2AA611B100ED5346 /* TinyConstraints */,
+				21C20F8D2AA73EBB00C87340 /* Alamofire */,
+				21C20F902AA73EF700C87340 /* TinyConstraints */,
+				21C20F932AA7407D00C87340 /* NVActivityIndicatorView */,
+				21C20F962AA7409B00C87340 /* JWTDecode */,
+				21C20F992AA740B600C87340 /* Kingfisher */,
 			);
 			productName = AccessTokenApi;
 			productReference = 218C34A72A8E0AFE008AC00B /* AccessTokenApi.app */;
@@ -576,11 +560,11 @@
 			);
 			mainGroup = 218C349E2A8E0AFE008AC00B;
 			packageReferences = (
-				21777B2F2AA6113600ED5346 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				21777B322AA6115E00ED5346 /* XCRemoteSwiftPackageReference "JWTDecode" */,
-				21777B352AA6117D00ED5346 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
-				21777B382AA6119D00ED5346 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				21777B3B2AA611B100ED5346 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+				21C20F8C2AA73EBB00C87340 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				21C20F8F2AA73EF700C87340 /* XCRemoteSwiftPackageReference "TinyConstraints" */,
+				21C20F922AA7407D00C87340 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */,
+				21C20F952AA7409B00C87340 /* XCRemoteSwiftPackageReference "JWTDecode" */,
+				21C20F982AA740B600C87340 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 218C34A82A8E0AFE008AC00B /* Products */;
 			projectDirPath = "";
@@ -594,34 +578,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		218C34A52A8E0AFE008AC00B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				214310C72A8F589D004B81A9 /* Poppins-Light.ttf in Resources */,
-				214310D12A8F589D004B81A9 /* Poppins-Black.ttf in Resources */,
-				214310CF2A8F589D004B81A9 /* Poppins-LightItalic.ttf in Resources */,
-				214310D22A8F589D004B81A9 /* Poppins-Thin.ttf in Resources */,
-				214310C32A8F589D004B81A9 /* Poppins-ExtraLight.ttf in Resources */,
-				214310D32A8F589D004B81A9 /* Poppins-SemiBold.ttf in Resources */,
-				214310D02A8F589D004B81A9 /* Poppins-Bold.ttf in Resources */,
-				214310C42A8F589D004B81A9 /* Poppins-ThinItalic.ttf in Resources */,
-				214310C52A8F589D004B81A9 /* Poppins-ExtraLightItalic.ttf in Resources */,
-				214310CC2A8F589D004B81A9 /* Poppins-BlackItalic.ttf in Resources */,
-				214310CA2A8F589D004B81A9 /* Poppins-ExtraBoldItalic.ttf in Resources */,
-				214310C62A8F589D004B81A9 /* Poppins-BoldItalic.ttf in Resources */,
-				214310C92A8F589D004B81A9 /* Poppins-SemiBoldItalic.ttf in Resources */,
-				214310CD2A8F589D004B81A9 /* OFL.txt in Resources */,
-				214310CE2A8F589D004B81A9 /* Poppins-Regular.ttf in Resources */,
-				214310CB2A8F589D004B81A9 /* Poppins-ExtraBold.ttf in Resources */,
-				214310C82A8F589D004B81A9 /* Poppins-Medium.ttf in Resources */,
-				218C34B72A8E0B00008AC00B /* LaunchScreen.storyboard in Resources */,
-				214310D42A8F589D004B81A9 /* Poppins-Italic.ttf in Resources */,
-				214310D52A8F589D004B81A9 /* Poppins-MediumItalic.ttf in Resources */,
-				218C34B42A8E0B00008AC00B /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		218C34BB2A8E0B01008AC00B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -654,6 +610,7 @@
 				21D0C58D2AA1EC02004D2DFC /* HomeTableCell.swift in Sources */,
 				219039682A9DF03F007AE38C /* Router.swift in Sources */,
 				218C34E32A8E0DFE008AC00B /* ApiService.swift in Sources */,
+				21C20F852AA73A9F00C87340 /* Modal.swift in Sources */,
 				213FD1172A8FDD73004D2024 /* MainTabBarController.swift in Sources */,
 				21793EB52A98D42D001CA74D /* UploadResponse.swift in Sources */,
 				216A05E22A95D91C001DC3D5 /* Extension.swift in Sources */,
@@ -666,6 +623,7 @@
 				218C34AB2A8E0AFE008AC00B /* AppDelegate.swift in Sources */,
 				21777B3F2AA6130C00ED5346 /* SecurityCell.swift in Sources */,
 				217D7A492A8E3F7900274A30 /* DetailVC.swift in Sources */,
+				21C20F832AA73A9400C87340 /* EditProfileVM.swift in Sources */,
 				21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */,
 				216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */,
 				214310AD2A8F57AA004B81A9 /* CustomView.swift in Sources */,
@@ -1032,7 +990,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		21777B2F2AA6113600ED5346 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		21C20F8C2AA73EBB00C87340 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -1040,31 +998,7 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		21777B322AA6115E00ED5346 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
-			};
-		};
-		21777B352AA6117D00ED5346 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-		21777B382AA6119D00ED5346 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
-		21777B3B2AA611B100ED5346 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
+		21C20F8F2AA73EF700C87340 /* XCRemoteSwiftPackageReference "TinyConstraints" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/roberthein/TinyConstraints";
 			requirement = {
@@ -1072,33 +1006,57 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		21C20F922AA7407D00C87340 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ninjaprox/NVActivityIndicatorView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		21C20F952AA7409B00C87340 /* XCRemoteSwiftPackageReference "JWTDecode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/auth0/JWTDecode.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		21C20F982AA740B600C87340 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		21777B302AA6113600ED5346 /* Alamofire */ = {
+		21C20F8D2AA73EBB00C87340 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21777B2F2AA6113600ED5346 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 21C20F8C2AA73EBB00C87340 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		21777B332AA6115E00ED5346 /* JWTDecode */ = {
+		21C20F902AA73EF700C87340 /* TinyConstraints */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21777B322AA6115E00ED5346 /* XCRemoteSwiftPackageReference "JWTDecode" */;
-			productName = JWTDecode;
+			package = 21C20F8F2AA73EF700C87340 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
+			productName = TinyConstraints;
 		};
-		21777B362AA6117D00ED5346 /* NVActivityIndicatorView */ = {
+		21C20F932AA7407D00C87340 /* NVActivityIndicatorView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21777B352AA6117D00ED5346 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
+			package = 21C20F922AA7407D00C87340 /* XCRemoteSwiftPackageReference "NVActivityIndicatorView" */;
 			productName = NVActivityIndicatorView;
 		};
-		21777B392AA6119D00ED5346 /* Kingfisher */ = {
+		21C20F962AA7409B00C87340 /* JWTDecode */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21777B382AA6119D00ED5346 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
+			package = 21C20F952AA7409B00C87340 /* XCRemoteSwiftPackageReference "JWTDecode" */;
+			productName = JWTDecode;
 		};
-		21777B3C2AA611B100ED5346 /* TinyConstraints */ = {
+		21C20F992AA740B600C87340 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 21777B3B2AA611B100ED5346 /* XCRemoteSwiftPackageReference "TinyConstraints" */;
-			productName = TinyConstraints;
+			package = 21C20F982AA740B600C87340 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

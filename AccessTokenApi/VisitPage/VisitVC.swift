@@ -27,14 +27,6 @@ class VisitVC: UIViewController {
         return label
     }()
     
-    private lazy var addVisitButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 3
-        button.setImage(UIImage(named: "addNew"), for: .normal)
-        button.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var containerView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = Color.systemWhite.chooseColor
@@ -69,20 +61,15 @@ class VisitVC: UIViewController {
         }
     }
     
-    @objc func addTapped() {
-        let vc = AddTravelVC()
-        present(vc, animated: true)
-    }
-    
     func initVM() {
         visitViewModal.onDataFetch = { [weak self] isLoading in
             DispatchQueue.main.async {
                 if isLoading {
                     self?.activity.startAnimating()
-                    print("started")
+                   
                 } else {
                     self?.activity.stopAnimating()
-                    print("ended")
+                    
                 }
             }
         }
@@ -96,7 +83,7 @@ class VisitVC: UIViewController {
     
     private func setupView() {
         self.view.backgroundColor = Color.systemGreen.chooseColor
-        view.addSubViews(containerView,headerLabel,addVisitButton,activity)
+        view.addSubViews(containerView,headerLabel,activity)
         containerView.addSubViews(tableView)
         setupLayout()
     }
@@ -108,10 +95,6 @@ class VisitVC: UIViewController {
         activity.centerInSuperview()
         activity.height(40)
         activity.width(40)
-        
-        addVisitButton.edgesToSuperview(excluding:[.top,.left], insets: .right(16) + .bottom(29),usingSafeArea: true)
-        addVisitButton.width(50)
-        addVisitButton.height(50)
         
         containerView.edgesToSuperview( insets: .top(129))
         

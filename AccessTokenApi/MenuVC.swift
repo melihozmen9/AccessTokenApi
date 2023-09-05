@@ -43,7 +43,7 @@ class MenuVC: UIViewController {
         difButton.setTitleColor(#colorLiteral(red: 0, green: 0.7960889935, blue: 0.9382097721, alpha: 1), for: .normal)
         difButton.setTitle("Edit Profile", for: .normal)
         difButton.titleLabel?.font = Font.regular12.chooseFont
-       
+        difButton.addTarget(self, action: #selector(editTapped), for: .touchUpInside)
         return difButton
     }()
     
@@ -89,6 +89,11 @@ class MenuVC: UIViewController {
         
         view1.roundCorners(corners: .topLeft, radius: 80)
         
+    }
+    
+    @objc func editTapped() {
+        let editVC = EditProfileVC()
+        navigationController?.pushViewController(editVC, animated: true)
     }
     
     func setupView() {

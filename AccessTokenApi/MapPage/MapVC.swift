@@ -19,11 +19,10 @@ class MapVC: UIViewController, CLLocationManagerDelegate{
     let viewModal = MapVM()
 
     let addTravelVC = AddTravelVC()
-
     
-
     let locationManager = CLLocationManager()
 
+    
     private lazy var mapView: MKMapView = {
         let mv = MKMapView()
         mv.mapType = MKMapType.standard

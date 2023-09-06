@@ -24,7 +24,7 @@ struct ImageItem:Codable {
     var updated_at: String
 }
 
-struct DeleteVisitResponse:Codable {
-      var message: String
+struct CheckVisitResponse:Codable {
+      var message: Bool
       var status: String
 }

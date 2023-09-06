@@ -20,7 +20,8 @@ enum Router: URLRequestConvertible {
     case myAllVisits
     case travelID (placeId:String)
     case postPlace(params:Parameters)
-    case deletePlace(visitId:String)
+    case deletePlace(placeId:String)
+    case checkVisit(placeId:String)
     // gallery Map
     case galleryID(placeId:String)
     case places
@@ -47,14 +48,16 @@ enum Router: URLRequestConvertible {
             return  "upload"
         case .myAllVisits:
             return  "v1/visits"
+        case .checkVisit(let placeId):
+            return "v1/visits/user/\(placeId)"
         case .travelID(let id):
             return  "v1/places/" + "\(id)"
         case .galleryID(let id):
             return "v1/galleries/" + "\(id)"
         case .places:
             return  "v1/places"
-        case .deletePlace(let visitId):
-            return "v1/visits" + "/\(visitId)"
+        case .deletePlace(let placeId):
+            return "v1/visits" + "/\(placeId)"
         case .postPlace:
             return  "v1/places"
         case .postGallery(let params):
@@ -76,7 +79,7 @@ enum Router: URLRequestConvertible {
           switch self {
           case .login, .register, .upload,.postPlace, .postGallery :
               return .post
-          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces :
+          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces, .checkVisit :
               return .get
           case .deletePlace:
               return .delete

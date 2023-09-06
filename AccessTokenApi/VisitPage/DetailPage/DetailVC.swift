@@ -10,7 +10,6 @@ import TinyConstraints
 import MapKit
 class DetailVC: UIViewController {
     
-    var visitId:String?
     var placeId:String?
     
     let detailViewModal = DetailVM()
@@ -46,28 +45,10 @@ class DetailVC: UIViewController {
         return button
     }()
     
-    private lazy var planeImageView:UIImageView =  {
-        let planeImageView = UIImageView()
-        let planeImage = UIImage(named: "visited")
-        planeImageView.image = planeImage
-        return planeImageView
-    }()
-    
-    private lazy var addRemoveLabel:UILabel = {
-        let label = UILabel()
-        label.text = "Remove"
-        label.textColor = .white
-        label.font = Font.regular12.chooseFont
-        label.font = .systemFont(ofSize: 10)
-        return label
-    }()
-    
-    private lazy var addRemoveButton:UIButton = {
+    private lazy var visitedButton:UIButton = {
         let button = UIButton()
         button.backgroundColor = Color.systemGreen.chooseColor
-        button.addTarget(self, action: #selector(removeButtonClicked), for: .touchUpInside)
-        button.addSubview(planeImageView)
-        button.addSubview(addRemoveLabel)
+        button.addTarget(self, action: #selector(visitedButtonClicked), for: .touchUpInside)
         return button
     }()
     
@@ -150,12 +131,12 @@ class DetailVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         mapView.roundCorners(corners: [.topLeft, .topRight ,.bottomLeft], radius: 16)
-        addRemoveButton.roundCorners(corners: [.topLeft, .topRight ,.bottomLeft], radius: 16)
+        visitedButton.roundCorners(corners: [.topLeft, .topRight ,.bottomLeft], radius: 16)
     }
     
     private func setupView() {
         view.backgroundColor = Color.systemWhite.chooseColor
-        view.addSubViews(collectionView,pageControl,addRemoveButton, scrollView,backButton)
+        view.addSubViews(collectionView,pageControl,visitedButton, scrollView,backButton)
         scrollView.addSubViews(contentView)
         contentView.addSubViews(cityLabel,dateLabel,creatorLabel,mapView,descriptionLabel)
         setupLayout()
@@ -170,16 +151,9 @@ class DetailVC: UIViewController {
         backButton.width(40)
         backButton.height(40)
         
-        planeImageView.centerXToSuperview()
-        planeImageView.topToSuperview(offset:10)
-        planeImageView.height(18)
-        
-        addRemoveLabel.topToBottom(of: planeImageView, offset: 1)
-        addRemoveLabel.centerXToSuperview()
-        
-        addRemoveButton.edgesToSuperview(excluding: [.left, .bottom], insets: .top(50) + .right(24), usingSafeArea: false)
-        addRemoveButton.height(50)
-        addRemoveButton.width(50)
+        visitedButton.edgesToSuperview(excluding: [.left, .bottom], insets: .top(50) + .right(24), usingSafeArea: false)
+        visitedButton.height(50)
+        visitedButton.width(50)
         
         pageControl.bottom(to: collectionView)
         pageControl.centerXToSuperview()
@@ -219,29 +193,43 @@ class DetailVC: UIViewController {
             self.navigationController?.popViewController(animated: true)
     }
     
-    @objc func removeButtonClicked () {
-            guard let visitId = visitId else { return }
-            self.detailViewModal.deleteVisitItem(visitId: visitId ){
+    @objc func visitedButtonClicked () {
+        
+    
+        self.detailViewModal.deleteVisitItem(){
                 DispatchQueue.main.async {
                     self.navigationController?.popViewController(animated: true)
                 }
-            }
+        }
     }
    
     func initVM() {
-        
         guard let placeId = placeId else { return }
-        detailViewModal.getTravelItemByID(placeId: placeId) { place in
+        detailViewModal.placeId = placeId
+        
+        
+        detailViewModal.getTravelItemByID() { place in
             self.configure(place: place)
         }
 
-        detailViewModal.getGalleryItems(placeId:placeId) {
+        detailViewModal.getGalleryItems() {
             let count = self.detailViewModal.getNumberOfRowsInSection()
             self.pageControl.numberOfPages = count
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
+        
+        detailViewModal.checkVisit { check in
+            if check == true {
+                self.visitedButton.setImage(UIImage(named: "visited"), for: .normal)
+            } else {
+                self.visitedButton.setImage(UIImage(named: "unvisited"), for: .normal)
+            }
+        }
+        
+        
+        
     }
     
     func configure(place: Place) {

@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "isVisitMark.png",
+      "filename" : "unvisited.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

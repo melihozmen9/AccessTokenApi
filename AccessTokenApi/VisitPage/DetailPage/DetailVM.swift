@@ -12,6 +12,8 @@ import UIKit
 
 class DetailVM {
     
+    var placeId:String?
+    
     let apiService: ApiServiceProtocol
     
     init(apiService: ApiServiceProtocol = ApiService()){
@@ -20,7 +22,8 @@ class DetailVM {
     
     var galleryImagesItem: [ImageItem]?
     
-    func getTravelItemByID (placeId:String, callback: @escaping (Place)->Void) {
+    func getTravelItemByID (callback: @escaping (Place)->Void) {
+        guard let placeId = placeId else { return }
         apiService.makeRequest(urlConvertible: Router.travelID(placeId: placeId)) { (result:Result<PlaceData,Error>) in
             switch result {
             case .success(let data):
@@ -31,7 +34,8 @@ class DetailVM {
         }
     }
     
-    func getGalleryItems(placeId:String, callback: @escaping () -> Void) {
+    func getGalleryItems(callback: @escaping () -> Void) {
+        guard let placeId = placeId else { return }
         apiService.makeRequest(urlConvertible: Router.galleryID(placeId: placeId)) { (result:Result<GalleryData,Error>) in
             switch result {
             case .success(let success):
@@ -44,17 +48,45 @@ class DetailVM {
         }
     }
     
-    func deleteVisitItem(visitId:String, callback: @escaping ()->Void) {
-        apiService.makeRequest(urlConvertible: Router.deletePlace(visitId: visitId)) { (result:Result<DeleteVisitResponse,Error>) in
-            switch result {
-            case .success(let success):
-                if success.status == "success"{
-                    callback()
+    func deleteVisitItem(callback: @escaping ()->Void) {
+        guard let placeId = placeId else { return }
+        DispatchQueue.global().async {
+            self.apiService.makeRequest(urlConvertible: Router.deletePlace(placeId: placeId)) { (result:Result<DeleteVisitResponse,Error>) in
+                switch result {
+                case .success(let success):
+                    if success.status == "success"{
+                        DispatchQueue.main.async {
+                            callback()
+                        }
+                    }
+                case .failure(let failure):
+                    print(failure)
                 }
-            case .failure(let failure):
-                print(failure)
             }
         }
+    }
+    
+    func checkVisit(callback: @escaping (Bool)->Void) {
+        guard let placeId = placeId else { return }
+
+        DispatchQueue.global().async {
+            self.apiService.makeRequest(urlConvertible: Router.deletePlace(placeId: placeId)) { (result:Result<CheckVisitResponse,Error>) in
+                switch result {
+                case .success(let success):
+                    DispatchQueue.main.async {
+                        if success.message == true {
+                            callback(true)
+                        } else {
+                            callback(false)
+                        }
+                    }
+                case .failure(let failure):
+                    print(failure)
+                }
+            }
+        }
+        
+        
     }
     
     
@@ -65,7 +97,7 @@ class DetailVM {
     }
     
     func getCellForRowAt(indexpath: IndexPath) -> ImageItem? {
-        guard let galleryImagesItem = galleryImagesItem else { return nil}
+        guard let galleryImagesItem = galleryImagesItem else { return nil }
         let value = galleryImagesItem[indexpath.row]
         return value
     }

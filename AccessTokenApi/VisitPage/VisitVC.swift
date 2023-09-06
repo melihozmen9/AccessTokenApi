@@ -103,7 +103,6 @@ class VisitVC: UIViewController {
     
     func pushNav(visitId:String, placeId: String) {
         let detailVC = DetailVC()
-        detailVC.visitId = visitId
         detailVC.placeId = placeId
         navigationController?.pushViewController(detailVC, animated: true)
     }

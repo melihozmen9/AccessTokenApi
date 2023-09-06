@@ -146,7 +146,6 @@ class EditProfileVC: UIViewController {
         viewModal.configureUserInfo = {user in
             self.nameLbl.text = user.full_name
             self.positionView.Lbl.text = user.role
-            //FIXME: tarih formatlanacak.
            self.dateView.Lbl.text = self.dateFormat(date: user.created_at)
             self.nameView.Tf.text = user.full_name
             self.emailView.Tf.text = user.email

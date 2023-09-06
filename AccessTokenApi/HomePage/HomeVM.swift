@@ -14,45 +14,90 @@ class HomeVM {
         self.apiService = apiService
     }
     
-    let array = ["Popular Places", "My Added Places", "New Places"]
-    var myVisitsArray: [Visits]?
+    let sectionNames = ["Popular Places", "Last Places"]
+    
     func getHeaderNameForSection(section:Int) -> String {
-        return array[section]
+        return sectionNames[section]
     }
     
-    func getAddedPlaces() {
-        apiService.makeRequest(urlConvertible: Router.getMyAddedPlacesLimit(limit: 5)) { (result:Result<TravelData,Error>) in
+    var popularPlaces: [PlaceItem]?
+    
+    var lastPlaces: [PlaceItem]?
+    
+    func getPopularPlaces(handler: @escaping (()->())) {
+        apiService.objectRequest(urlConvertible: Router.getPopularPlaces(limit: 5)) { (result:Result<PlacesData,Error>) in
             switch result {
             case .success(let success):
-                let value = success.data.visits
-                self.myVisitsArray = value
-                print(value)
+                self.popularPlaces = success.data.places
+                handler()
             case .failure(let failure):
                 print(failure.localizedDescription)
             }
         }
     }
     
-    func getPopularPlaces() {
-        apiService.objectRequest(urlConvertible: Router.getPopularPlacesLimit(limit: 5)) { (result:Result<PlacesData,Error>) in
+    func getLastPlaces(handler: @escaping (()->())) {
+        apiService.makeRequest(urlConvertible: Router.getLastPlaces(limit: 5)) { (result:Result<PlacesData,Error>) in
             switch result {
             case .success(let success):
-                print(success)
+                self.lastPlaces = success.data.places
+                handler()
             case .failure(let failure):
                 print(failure.localizedDescription)
             }
         }
     }
-    
-    func getLastPlaces() {
-        apiService.makeRequest(urlConvertible: Router.getLastPlacesLimit(limit: 5)) { (result:Result<PlacesData,Error>) in
-            switch result {
-            case .success(let success):
-                print(success)
-            case .failure(let failure):
-                print(failure.localizedDescription)
-            }
-        }
-    }
+
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    var myVisitsArray: [PlaceItem]? {
+//        didSet {
+//            guard let reloadCollection = reloadCollection else {return}
+//            reloadCollection()
+//        }
+//    }
+
+//    {
+//        didSet {
+//            guard let reloadCollection = reloadCollection, let popularPlaces = popularPlaces else {return}
+//            reloadCollection(popularPlaces)
+//        }
+//    }
+    
+   
+//    {
+//        didSet {
+//            guard let reloadCollection = reloadCollection,let lastPlaces = lastPlaces else {return}
+//            reloadCollection(lastPlaces)
+//        }
+//    }
+    
+    //var reloadCollection: (([PlaceItem])->())?
+  
+    
+//    func getAddedPlaces(handler:(()->())) {
+//        apiService.makeRequest(urlConvertible: Router.getMyAddedPlaces(limit: 5)) { (result:Result<PlacesData,Error>) in
+//            switch result {
+//            case .success(let success):
+//                let value = success.data.places
+//                self.myVisitsArray = value
+//
+//            case .failure(let failure):
+//                print(failure.localizedDescription)
+//            }
+//        }
+//    }

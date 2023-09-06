@@ -508,9 +508,9 @@
 			isa = PBXGroup;
 			children = (
 				213FD11B2A8FDEEE004D2024 /* HomeVC.swift */,
+				21D0C5902AA20977004D2DFC /* HomeVM.swift */,
 				21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */,
 				21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */,
-				21D0C5902AA20977004D2DFC /* HomeVM.swift */,
 				A3C32F622AA6604A005D558B /* SeeAllPlaces */,
 			);
 			path = HomePage;

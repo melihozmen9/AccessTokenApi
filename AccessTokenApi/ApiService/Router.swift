@@ -26,12 +26,9 @@ enum Router: URLRequestConvertible {
     case places
     case postGallery(params:Parameters)
     // seeAllPlaces
-    case getPopularPlaces
-    case getMyAddedPlaces
-    case getLastPlaces
-    case getPopularPlacesLimit(limit:Int)
-    case getMyAddedPlacesLimit(limit:Int)
-    case getLastPlacesLimit(limit:Int)
+    case getPopularPlaces(limit:Int?)
+    case getMyAddedPlaces(limit:Int?)
+    case getLastPlaces(limit:Int?)
     
     
     var baseURL: URL {
@@ -72,20 +69,14 @@ enum Router: URLRequestConvertible {
             return "v1/places/user"
         case .getLastPlaces:
             return "v1/places/last"
-        case .getPopularPlacesLimit(let limit) :
-            return "v1/places/popular" + "?limit=\(limit)"
-        case .getMyAddedPlacesLimit(let limit):
-            return "v1/places/user" + "?limit=\(limit)"
-        case .getLastPlacesLimit(let limit):
-            return "v1/places/last?limit=" + "\(limit)"
         }
     }
-    // query parametreler sorgu yapar.
+   
     var method: HTTPMethod {
           switch self {
           case .login, .register, .upload,.postPlace, .postGallery :
               return .post
-          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces,.getPopularPlacesLimit, .getMyAddedPlacesLimit , .getLastPlacesLimit :
+          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces :
               return .get
           case .deletePlace:
               return .delete
@@ -98,6 +89,11 @@ enum Router: URLRequestConvertible {
             switch self {
             case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params), .editProfile(let params), .changePassword(let params):
                 return params
+            case .getPopularPlaces(let limit), .getLastPlaces(let limit), .getMyAddedPlaces(let limit):
+                if let limit = limit {
+                    return ["limit": limit]
+                }
+                return [:]
             default:
                 return [:]
             }
@@ -105,7 +101,7 @@ enum Router: URLRequestConvertible {
     
     var headers: HTTPHeaders {
         switch self {
-        case .login, .register, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces,.getPopularPlacesLimit, .getMyAddedPlacesLimit , .getLastPlacesLimit :
+        case .login, .register, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces :
             return [:]
         case .upload:
             return ["Content-Type": "multipart/form-data"]

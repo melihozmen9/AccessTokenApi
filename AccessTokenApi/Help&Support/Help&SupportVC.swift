@@ -25,6 +25,8 @@ class HelpAndSupportVC: UIViewController {
     private lazy var helpAndSupportLabel:CustomLabel = {
         let topTitle = CustomLabel()
         topTitle.text = "Help&Support"
+        topTitle.font = Font.semibold32.chooseFont
+        topTitle.textColor = Color.white.chooseColor
         
         return topTitle
     }()
@@ -36,9 +38,11 @@ class HelpAndSupportVC: UIViewController {
         return whiteView
     }()
     
-    private lazy var FaqLAbel:CustomLabel = {
-        let faq = CustomLabel()
-        
+    private lazy var faqLabel:UILabel = {
+        let faq = UILabel()
+        faq.text = "FAQ"
+        faq.textColor = Color.systemGreen.chooseColor
+        faq.font = Font.semibold24.chooseFont
         
         return faq
     }()
@@ -48,7 +52,9 @@ class HelpAndSupportVC: UIViewController {
         faqTableView.dataSource = self
         faqTableView.delegate = self
         faqTableView.register(HelpSupportTableCell.self, forCellReuseIdentifier: "customCell")
-        faqTableView.frame = view.bounds
+        faqTableView.isScrollEnabled = false
+//        faqTableView.sectionHeaderHeight = 10.0 // Üst boşluğu ayarlayın
+//        faqTableView.sectionFooterHeight = 10.0
         
         return faqTableView
     }()
@@ -60,6 +66,10 @@ class HelpAndSupportVC: UIViewController {
         setupView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        whiteView.roundCorners(corners: .topLeft, radius: 80)
+    }
+    
     @objc func backToSettings() {
         
         let settingsPage = MenuVC()
@@ -69,24 +79,27 @@ class HelpAndSupportVC: UIViewController {
     func setupView() {
         
         view.addSubviews(helpAndSupportBackButton, helpAndSupportLabel, whiteView)
-        whiteView.addSubviews(FaqLAbel, faqTableView)
+        whiteView.addSubviews(faqLabel, faqTableView)
         setupLayout()
     }
   
     func setupLayout() {
         
-        helpAndSupportBackButton.edgesToSuperview(excluding: [.right, .bottom], insets: .top(32) + .left(24))
+        helpAndSupportBackButton.edgesToSuperview(excluding: [.right, .bottom], insets: .top(32) + .left(24), usingSafeArea: true)
         
         helpAndSupportLabel.leadingToTrailing(of: helpAndSupportBackButton, offset: 24)
-        helpAndSupportLabel.topToSuperview(offset:19)
+        helpAndSupportLabel.topToSuperview(offset:19, usingSafeArea: true)
         
-        whiteView.topToBottom(of: helpAndSupportLabel, offset: 58)
+        whiteView.edgesToSuperview(insets: .top(125),usingSafeArea: true)
+        whiteView.bottomToSuperview()
         
-        FaqLAbel.leftToSuperview(offset:24)
-        FaqLAbel.topToBottom(of: whiteView)
+        faqLabel.top(to: whiteView, offset: 44)
+        faqLabel.leadingToSuperview(offset:24)
         
         faqTableView.leadingToSuperview(offset:24)
-        faqTableView.topToBottom(of: FaqLAbel, offset: 20.51)
+        faqTableView.topToBottom(of: faqLabel, offset: 20.51)
+        faqTableView.centerXToSuperview()
+        faqTableView.bottomToSuperview(offset:-89)
     }
 
 }
@@ -104,7 +117,8 @@ extension HelpAndSupportVC:UITableViewDataSource {
         let topLabel = viewModel.topLabelArray[indexPath.row]
         
         cell.textLabel!.text = topLabel
-        
+//        cell.sizeToFit()
+//        cell.height(cell.frame.height)
         return cell
     }
     
@@ -113,6 +127,29 @@ extension HelpAndSupportVC:UITableViewDataSource {
 extension HelpAndSupportVC:UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 75
+
     }
+    
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView()
+//            headerView.backgroundColor = .clear // Üst boşluğun arka plan rengini ayarlayın
+//            return headerView
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 10
+//    }
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        cell.contentView.backgroundColor = UIColor.clear
+//        let whiteRoundedView : UIView = UIView(frame: CGRectMake(0, 10, self.view.frame.size.width, 70))
+//        whiteRoundedView.layer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1.0, 1.0, 1.0, 1.0])
+//                whiteRoundedView.layer.masksToBounds = false
+//                whiteRoundedView.layer.cornerRadius = 3.0
+//                whiteRoundedView.layer.shadowOffset = CGSizeMake(-1, 1)
+//                whiteRoundedView.layer.shadowOpacity = 0.5
+//                cell.contentView.addSubview(whiteRoundedView)
+//                cell.contentView.sendSubviewToBack(whiteRoundedView)
+//    }
 }

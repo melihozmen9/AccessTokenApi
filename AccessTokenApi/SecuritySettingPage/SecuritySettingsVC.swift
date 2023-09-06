@@ -125,10 +125,6 @@ class SecuritySettingsVC: UIViewController, CellFunctions {
         present(alert, animated: true)
     }
 
-  
-    
- 
-    
     private func setupView() {
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Color.systemGreen.chooseColor

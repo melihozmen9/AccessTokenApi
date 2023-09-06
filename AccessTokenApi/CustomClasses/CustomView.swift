@@ -65,13 +65,13 @@ class CustomView: UIView {
     }
     private func setupLayout() {
         
-        Lbl.edgesToSuperview(excluding: [.bottom,.right], insets: .left(12) + .top(8))
+        Lbl.edgesToSuperview(excluding: [.bottom], insets: .left(12) + .top(8) + .right(12))
         Lbl.height(21)
-        Lbl.width(250)
         
         Tf.topToBottom(of: Lbl,offset: 8)
-        Tf.left(to: Lbl)
+        Tf.edgesToSuperview(excluding: [.bottom,.top], insets: .left(12) + .right(12))
         Tf.height(18)
+        
     }
     
 }

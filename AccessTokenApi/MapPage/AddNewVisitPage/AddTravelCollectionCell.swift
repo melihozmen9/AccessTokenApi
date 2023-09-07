@@ -23,7 +23,7 @@ class AddTravelCollectionCell: UICollectionViewCell {
     }
     
     override func layoutSubviews() {
-        self.contentView.roundCorners(corners: [.topLeft,.topRight,.bottomLeft], radius: 16)
+        self.contentView.roundCornersWithShadow([.topLeft,.topRight,.bottomLeft], radius: 16)
     }
     
     required init?(coder: NSCoder) {

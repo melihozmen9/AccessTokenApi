@@ -57,7 +57,7 @@ class AddTravelVC: UIViewController{
         cv.delegate = self
         cv.dataSource = self
         cv.isPagingEnabled = false
-        cv.backgroundColor = Color.systemWhite.chooseColor
+        cv.backgroundColor = .clear
         return cv
     }()
 
@@ -73,11 +73,17 @@ class AddTravelVC: UIViewController{
         super.viewDidLoad()
         
         setupView()
+        
         guard let latitude = latitude, let longitude = longitude else { return}
 
         getCityAndCountryName(latitude: latitude, longitude: longitude)
+        
         iniVM()
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        collectionView.roundCornersWithShadow([.topLeft, .bottomLeft], radius: 16)
     }
     
     @objc func addTapped() {
@@ -101,10 +107,7 @@ class AddTravelVC: UIViewController{
     
     func iniVM() {
         viewModal.dismiss = {
-           
-          
             self.dismiss(animated: true) {
-              
                 self.delegate?.reloadMap()
             }
         }

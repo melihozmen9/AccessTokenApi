@@ -41,7 +41,7 @@ class CustomView: UIView {
     }
     
     override func layoutSubviews() {
-        self.roundCorners(corners: [.topLeft, .topRight, .bottomLeft], radius: 16)
+        self.roundCornersWithShadow([.topLeft, .topRight, .bottomLeft], radius: 16)
         
     }
     

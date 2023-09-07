@@ -33,9 +33,12 @@ class VisitCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
-            }
+        layoutIfNeeded()
+        contentView.roundCornersWithShadow( [.topLeft,.topRight,.bottomLeft], radius: 16)
+    }
     
-   
+    
+    
     func configure(item: VisitPlace) {
         
         imageview.layoutIfNeeded()
@@ -46,7 +49,6 @@ class VisitCell: UITableViewCell {
         imageview.kf.setImage(with: url)
         imageview.kf.indicatorType = .activity
         
-
     }
     
     required init?(coder: NSCoder) {
@@ -54,7 +56,7 @@ class VisitCell: UITableViewCell {
     }
     
     private func setupView() {
-        self.backgroundColor = Color.systemWhite.chooseColor
+        self.backgroundColor = .clear
         self.contentView.addSubViews(imageview)
         imageview.addSubViews(Lbl,iconView)
         setupLayout()
@@ -62,7 +64,6 @@ class VisitCell: UITableViewCell {
     
     private func setupLayout() {
         imageview.edgesToSuperview(insets: .bottom(16))
-       
         
         iconView.edgesToSuperview(excluding: [.top,.right], insets: .bottom(8) + .left(10))
         iconView.height(20)

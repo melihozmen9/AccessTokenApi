@@ -82,15 +82,15 @@ class EditProfileVC: UIViewController {
     
     private lazy var nameView: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Full Name"
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "bilge_adam", attributes: v.attributes)
+        v.titleLabel.text = "Full Name"
+        v.textField.attributedPlaceholder = NSAttributedString(string: "bilge_adam", attributes: v.attributes)
         return v
     }()
     
     private lazy var emailView: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Email"
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "bilge_adam", attributes: v.attributes)
+        v.titleLabel.text = "Email"
+        v.textField.attributedPlaceholder = NSAttributedString(string: "bilge_adam", attributes: v.attributes)
         return v
     }()
     
@@ -124,7 +124,7 @@ class EditProfileVC: UIViewController {
     }
     
     @objc func saveTapped() {
-        guard let name = nameView.Tf.text, let email = emailView.Tf.text else {return}
+        guard let name = nameView.textField.text, let email = emailView.textField.text else {return}
         let imageUrl = viewModal.getImageUrl()
         let body = ["full_name":name, "email": email, "pp_url": imageUrl]
         viewModal.editProfile(body: body)
@@ -147,8 +147,8 @@ class EditProfileVC: UIViewController {
             self.nameLbl.text = user.full_name
             self.positionView.Lbl.text = user.role
            self.dateView.Lbl.text = self.dateFormat(date: user.created_at)
-            self.nameView.Tf.text = user.full_name
-            self.emailView.Tf.text = user.email
+            self.nameView.textField.text = user.full_name
+            self.emailView.textField.text = user.email
             if user.pp_url != "" {
                 let url = URL(string: user.pp_url)
                 self.imageview.kf.setImage(with: url)

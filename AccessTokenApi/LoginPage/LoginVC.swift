@@ -44,18 +44,18 @@ class LoginVC: UIViewController {
     
     private lazy var emailView: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Email"
-        v.Tf.text = "Melihv6@gmail.com"
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "developer@bilgeadam.com", attributes: v.attributes)
+        v.titleLabel.text = "Email"
+        v.textField.text = "Melihv6@gmail.com"
+        v.textField.attributedPlaceholder = NSAttributedString(string: "developer@bilgeadam.com", attributes: v.attributes)
         return v
     }()
     
     private lazy var passwordView: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Password"
-        v.Tf.text = "123456"
-        v.Tf.isSecureTextEntry = true
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
+        v.titleLabel.text = "Password"
+        v.textField.text = "123456"
+        v.textField.isSecureTextEntry = true
+        v.textField.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
         return v
     }()
     
@@ -91,7 +91,7 @@ class LoginVC: UIViewController {
     
     @objc func loginTapped() {
         self.activity.startAnimating()
-        guard let email = emailView.Tf.text, let password = passwordView.Tf.text else {return}
+        guard let email = emailView.textField.text, let password = passwordView.textField.text else {return}
         let body = ["email":email,"password":password]
         viewModal.login(params: body) { message in
             if !message.isEmpty {

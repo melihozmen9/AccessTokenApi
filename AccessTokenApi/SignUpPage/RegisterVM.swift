@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RegisterVM {
     
@@ -26,4 +27,15 @@ class RegisterVM {
             }
         }
     }
+    
+    func updateLoginButtonState(isEmail: Bool, isUsername: Bool, isPassword: Bool, isPassword2: Bool, password1Text: String, password2Text:String) -> Bool {
+        
+        if isEmail && isUsername && isPassword && isPassword2 && password1Text == password2Text{
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    
 }

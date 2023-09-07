@@ -10,10 +10,6 @@ import TinyConstraints
 class SignUpVC: UIViewController {
     
     let viewModal = RegisterVM()
-    var isEmail = false
-    var isUsername = false
-    var isPassword1 = false
-    var isPassword2 = false
     
     private lazy var view1: UIView = {
         let v = UIView()
@@ -39,35 +35,37 @@ class SignUpVC: UIViewController {
     
     private lazy var usernameView: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Username"
-        v.Tf.delegate = self
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "bilge_adam", attributes: v.attributes)
+        v.titleLabel.text = "Username"
+        //v.textField.delegate = self
+        v.textField.attributedPlaceholder = NSAttributedString(string: "bilge_adam", attributes: v.attributes)
+        v.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return v
     }()
     
     private lazy var emailView: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Email"
-        v.Tf.delegate = self
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "developer@bilgeadam.com", attributes: v.attributes)
+        v.titleLabel.text = "Email"
+        v.textField.attributedPlaceholder = NSAttributedString(string: "developer@bilgeadam.com", attributes: v.attributes)
+        v.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return v
     }()
     
     private lazy var pass1View: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Password"
-        v.Tf.delegate = self
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
-        v.Tf.isSecureTextEntry = true
+        v.titleLabel.text = "Password"
+        //v.textField.delegate = self
+        v.textField.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
+        v.textField.isSecureTextEntry = true
+        v.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return v
     }()
     
     private lazy var pass2View: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Password Confirm"
-        v.Tf.delegate = self
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
-        v.Tf.isSecureTextEntry = true
+        v.titleLabel.text = "Password Confirm"
+        v.textField.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
+        v.textField.isSecureTextEntry = true
+        v.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         return v
     }()
     
@@ -83,31 +81,44 @@ class SignUpVC: UIViewController {
         let btn = CustomButton()
         btn.setTitle("Register", for: .normal)
         btn.addTarget(self, action: #selector(registerTapped), for: .touchUpInside)
+        btn.backgroundColor = Color.systemgray.chooseColor
+        btn.isEnabled = false
         return btn
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        showAlert()
     }
     
     override func viewDidLayoutSubviews() {
         view1.roundCorners(corners: .topLeft, radius: 80)
-        lgnBtn.backgroundColor = Color.systemgray.chooseColor
-        lgnBtn.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
     
+    
+    @objc func textFieldDidChange() {
+       if viewModal.updateLoginButtonState(isEmail: emailView.isEmail,
+                                                     isUsername: usernameView.isUsername,
+                                                     isPassword: pass1View.isPassword,
+                                                     isPassword2: pass2View.isPassword,
+                                                     password1Text: pass1View.textField.text ?? "",
+                                                     password2Text: pass2View.textField.text ?? ""
+        ) {
+            lgnBtn.isEnabled = true
+            lgnBtn.backgroundColor = Color.systemGreen.chooseColor
+        }
+      }
+    
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
     
     @objc func registerTapped() {
-        guard let name = usernameView.Tf.text, let email = emailView.Tf.text, let password1 = pass1View.Tf.text,let _ = pass2View.Tf.text else {return}
+        guard let name = usernameView.textField.text, let email = emailView.textField.text, let password1 = pass1View.textField.text,let _ = pass2View.textField.text else {return}
         
         let body = ["full_name":name,"email":email,"password":password1]
         
@@ -169,106 +180,5 @@ class SignUpVC: UIViewController {
         present(alert, animated: true)
     }
     
-    func showAlert() {
-        let alert = UIAlertController(title: "Üye olurken;", message: """
-                                                            Username alanına sadece harf girmelisiniz.
-                                                            Email alanına email formatı girmelisiniz.
-                                                            Şifreniz en az 1 harf ve 1 sayı ve en az 6 karakterden oluşmalıdır.
-                                                          """, preferredStyle: .alert)
-        
-            let action = UIAlertAction(title: "Tamam", style: .default, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
-        }
-    
-    
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        
-        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailPred.evaluate(with: email)
-    }
-    
-    func isValidUsername(_ name: String) -> Bool {
-        let allowedCharacterSet = NSCharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
-        let isAlphabetic = name.rangeOfCharacter(from: allowedCharacterSet.inverted) == nil
-        let isLengthValid = name.count >= 6
-        
-        if isAlphabetic && isLengthValid {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    func isValidPassword(_ password: String) -> Bool {
-        let letterCharacterSet = NSCharacterSet.letters
-        let digitCharacterSet = NSCharacterSet.decimalDigits
-        
-        let containsLetter = password.rangeOfCharacter(from: letterCharacterSet as CharacterSet) != nil
-        let containsDigit = password.rangeOfCharacter(from: digitCharacterSet as CharacterSet) != nil
-        
-        let isLengthValid = password.count >= 6
-        
-        return containsLetter && containsDigit && isLengthValid
-    }
-    
-    func updateLoginButtonState() {
-        let passwordsMatch = pass1View.Tf.text == pass2View.Tf.text
-        
-        if isEmail && isUsername && isPassword1 && isPassword2 && passwordsMatch {
-            lgnBtn.isEnabled = true
-            lgnBtn.backgroundColor = Color.systemGreen.chooseColor
-        } else {
-            lgnBtn.isEnabled = false
-            lgnBtn.backgroundColor = Color.systemgray.chooseColor
-        }
-    }
-    
-}
-
-extension SignUpVC : UITextFieldDelegate {
-    //    func textFieldDidEndEditing(_ textField: UITextField) {
-    //        updateLoginButtonState()
-    //    }
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        updateLoginButtonState()
-        return true
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        if textField == emailView.Tf {
-            
-            let updatedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
-            
-            isEmail = isValidEmail(updatedText)
-            print(isEmail)
-            
-        }
-        
-        if textField == usernameView.Tf {
-            let updatedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
-            
-            isUsername = isValidUsername(updatedText)
-            print(isUsername)
-            
-        }
-        
-        if textField == pass1View.Tf {
-            let updatedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
-            isPassword1 = isValidPassword(updatedText)
-            print(isPassword1)
-        }
-        
-        if textField == pass2View.Tf {
-            let updatedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
-            isPassword2 = isValidPassword(updatedText)
-            print(isPassword2)
-            
-        }
-        
-        return true
-    }
 }
 

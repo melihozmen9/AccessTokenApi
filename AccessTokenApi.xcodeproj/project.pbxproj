@@ -281,9 +281,6 @@
 				219258D02AA9E815000BFCBD /* CustomCvCell.swift */,
 				219258CE2AA9E810000BFCBD /* MenuVM.swift */,
 				219258CC2AA9E7ED000BFCBD /* MenuVC.swift */,
-				794C453B2AA0B89D008DD231 /* MenuVM.swift */,
-				213FD11F2A8FE155004D2024 /* MenuVC.swift */,
-				7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */,
 				21D000FC2AA8AB5E00FBB5D9 /* AboutUsVC.swift */,
 			);
 			name = TabBarVC;

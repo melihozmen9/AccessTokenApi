@@ -22,9 +22,11 @@ class DetailVM {
     
     var galleryImagesItem: [ImageItem]?
     
-    func getTravelItemByID (callback: @escaping (Place)->Void) {
+    
+    
+    func getVisit(callback: @escaping (Place)->Void) {
         guard let placeId = placeId else { return }
-        apiService.makeRequest(urlConvertible: Router.travelID(placeId: placeId)) { (result:Result<PlaceData,Error>) in
+        apiService.makeRequest(urlConvertible: Router.getVisitInfo(placeId: placeId)) { (result:Result<PlaceData,Error>) in
             switch result {
             case .success(let data):
                 callback(data.data.place)
@@ -36,11 +38,25 @@ class DetailVM {
     
     func getGalleryItems(callback: @escaping () -> Void) {
         guard let placeId = placeId else { return }
-        apiService.makeRequest(urlConvertible: Router.galleryID(placeId: placeId)) { (result:Result<GalleryData,Error>) in
+        
+        self.apiService.makeRequest(urlConvertible: Router.galleryID(placeId: placeId)) { (result:Result<GalleryData,Error>) in
             switch result {
             case .success(let success):
-                let value = success.data.images
-                self.galleryImagesItem = value
+                self.galleryImagesItem = success.data.images
+                callback()
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+        
+    }
+    
+    func deleteVisitItem(callback: @escaping ()->Void) {
+        guard let placeId = placeId else { return }
+        
+        self.apiService.makeRequest(urlConvertible: Router.deletePlace(placeId: placeId)) { (result:Result<DefaultResponse,Error>) in
+            switch result {
+            case .success(_):
                 callback()
             case .failure(let failure):
                 print(failure)
@@ -48,46 +64,39 @@ class DetailVM {
         }
     }
     
-    func deleteVisitItem(callback: @escaping ()->Void) {
+    
+    func checkVisit(callback: @escaping (Bool)->Void) {
         guard let placeId = placeId else { return }
-        DispatchQueue.global().async {
-            self.apiService.makeRequest(urlConvertible: Router.deletePlace(placeId: placeId)) { (result:Result<DeleteVisitResponse,Error>) in
-                switch result {
-                case .success(let success):
-                    if success.status == "success"{
-                        DispatchQueue.main.async {
-                            callback()
-                        }
-                    }
-                case .failure(let failure):
-                    print(failure)
+        print(placeId)
+        self.apiService.makeRequest(urlConvertible: Router.checkVisit(placeId: placeId)) { (result:Result<DefaultResponse,Error>) in
+            switch result {
+            case .success(let data):
+                if data.status == "success"{
+                    callback(true)
+                } else if data.status == "error" {
+                    callback(false)
                 }
+            case .failure(_):
+                break
             }
         }
     }
     
-    func checkVisit(callback: @escaping (Bool)->Void) {
+    
+    func postVisit(callback: @escaping ()->Void) {
         guard let placeId = placeId else { return }
-
-        DispatchQueue.global().async {
-            self.apiService.makeRequest(urlConvertible: Router.deletePlace(placeId: placeId)) { (result:Result<CheckVisitResponse,Error>) in
-                switch result {
-                case .success(let success):
-                    DispatchQueue.main.async {
-                        if success.message == true {
-                            callback(true)
-                        } else {
-                            callback(false)
-                        }
-                    }
-                case .failure(let failure):
-                    print(failure)
-                }
+        let param = ["place_id": placeId,
+                     "visited_at": "2023-08-10T00:00:00Z"]
+        apiService.makeRequest(urlConvertible: Router.postVisit(params: param)) { (result:Result<DefaultResponse,Error>) in
+            switch result {
+            case .success(_):
+                callback()
+            case .failure(let failure):
+                print(failure)
             }
         }
-        
-        
     }
+    
     
     
     //MARK: - Datasource Fonksiyonları

@@ -18,8 +18,9 @@ enum Router: URLRequestConvertible {
     //Travel
     case upload(image: [Data])
     case myAllVisits
-    case travelID (placeId:String)
+    case getVisitInfo(placeId:String)
     case postPlace(params:Parameters)
+    case postVisit(params:Parameters)
     case deletePlace(placeId:String)
     case checkVisit(placeId:String)
     // gallery Map
@@ -50,12 +51,14 @@ enum Router: URLRequestConvertible {
             return  "v1/visits"
         case .checkVisit(let placeId):
             return "v1/visits/user/\(placeId)"
-        case .travelID(let id):
-            return  "v1/places/" + "\(id)"
+        case .getVisitInfo(let placeId):
+            return  "v1/places/" + "\(placeId)"
         case .galleryID(let id):
             return "v1/galleries/" + "\(id)"
         case .places:
             return  "v1/places"
+        case .postVisit:
+            return "v1/visits"
         case .deletePlace(let placeId):
             return "v1/visits" + "/\(placeId)"
         case .postPlace:
@@ -77,9 +80,9 @@ enum Router: URLRequestConvertible {
     // query parametreler sorgu yapar.
     var method: HTTPMethod {
           switch self {
-          case .login, .register, .upload,.postPlace, .postGallery :
+          case .login, .register, .upload,.postPlace, .postGallery, .postVisit :
               return .post
-          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces, .checkVisit :
+          case .me,.myAllVisits,.places, .getVisitInfo , .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces, .checkVisit :
               return .get
           case .deletePlace:
               return .delete
@@ -90,7 +93,7 @@ enum Router: URLRequestConvertible {
     
     var parameters: Parameters {
             switch self {
-            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params):
+            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params), .postVisit(let params):
                 return params
             default:
                 return [:]

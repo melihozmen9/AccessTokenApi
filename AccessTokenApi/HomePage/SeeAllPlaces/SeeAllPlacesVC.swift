@@ -24,7 +24,6 @@ class SeeAllPlacesVC: UIViewController {
     
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
-        label.layer.cornerRadius = 3
         label.font = Font.semibold32.chooseFont
         label.textColor = Color.white.chooseColor
         return label

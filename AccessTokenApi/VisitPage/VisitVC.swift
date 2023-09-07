@@ -48,6 +48,12 @@ class VisitVC: UIViewController {
         super.viewDidLoad()
         setupView()
         initVM()
+        
+        NotificationCenterManager.shared.addObserver(observer: self, name: Notification.Name("visitChanged"), selector: #selector(visitChanged))
+    }
+    
+    deinit {
+        NotificationCenterManager.shared.removeObserver(observer: Notification.Name("visitChanged"))
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,9 +62,27 @@ class VisitVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+    }
+    
+    private func setupView() {
+        self.view.backgroundColor = Color.systemGreen.chooseColor
+        view.addSubViews(containerView,headerLabel,activity)
+        containerView.addSubViews(tableView)
+        setupLayout()
+    }
+    
+    private func setupLayout() {
+        headerLabel.edgesToSuperview(excluding:[.bottom,.right], insets: .left(24) + .top(24),usingSafeArea: true)
+        headerLabel.height(52)
+        headerLabel.width(165)
+        
+        activity.centerInSuperview()
+        activity.height(40)
+        activity.width(40)
+        
+        containerView.edgesToSuperview( insets: .top(129))
+        
+        tableView.edgesToSuperview( insets: .top(45) + .right(22) + .left(22) + .bottom(0), usingSafeArea: true)
     }
     
     func initVM() {
@@ -81,24 +105,12 @@ class VisitVC: UIViewController {
         }
     }
     
-    private func setupView() {
-        self.view.backgroundColor = Color.systemGreen.chooseColor
-        view.addSubViews(containerView,headerLabel,activity)
-        containerView.addSubViews(tableView)
-        setupLayout()
-    }
-    private func setupLayout() {
-        headerLabel.edgesToSuperview(excluding:[.bottom,.right], insets: .left(24) + .top(24),usingSafeArea: true)
-        headerLabel.height(52)
-        headerLabel.width(165)
-        
-        activity.centerInSuperview()
-        activity.height(40)
-        activity.width(40)
-        
-        containerView.edgesToSuperview( insets: .top(129))
-        
-        tableView.edgesToSuperview( insets: .top(45) + .right(22) + .left(22) + .bottom(0), usingSafeArea: true)
+    @objc func visitChanged() {
+        visitViewModal.fetchTravels {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func pushNav(visitId:String, placeId: String) {

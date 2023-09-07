@@ -53,7 +53,7 @@ class HomeVC: UIViewController {
         if button.tag == 0 {
             seeAllVC.fromWhere = "popularPlaces"
         } else if button.tag == 1 {
-            seeAllVC.fromWhere = "myAddedPlaces"
+            seeAllVC.fromWhere = "myVisits"
         } else if button.tag == 2 {
             seeAllVC.fromWhere = "newPlaces"
         }

@@ -129,7 +129,8 @@ class DetailVC: UIViewController {
         scrollView.contentSize = CGSize(width: self.view.frame.width, height: height)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+
+    override func viewWillLayoutSubviews() {
         mapView.roundCorners(corners: [.topLeft, .topRight ,.bottomLeft], radius: 16)
         visitedButton.roundCorners(corners: [.topLeft, .topRight ,.bottomLeft], radius: 16)
     }
@@ -138,6 +139,7 @@ class DetailVC: UIViewController {
         view.backgroundColor = Color.systemWhite.chooseColor
         view.addSubViews(collectionView,pageControl,visitedButton, scrollView,backButton)
         scrollView.addSubViews(contentView)
+        
         contentView.addSubViews(cityLabel,dateLabel,creatorLabel,mapView,descriptionLabel)
         setupLayout()
     }
@@ -195,39 +197,44 @@ class DetailVC: UIViewController {
     
     @objc func visitedButtonClicked () {
         
-    
-        self.detailViewModal.deleteVisitItem(){
-                DispatchQueue.main.async {
-                    self.navigationController?.popViewController(animated: true)
+        detailViewModal.checkVisit { check in
+            if check {
+                self.detailViewModal.deleteVisitItem {
+                    self.visitedButton.setImage(UIImage(named: "unvisited"), for: .normal)
                 }
+            } else {
+                self.detailViewModal.postVisit {
+                    self.visitedButton.setImage(UIImage(named: "visited"), for: .normal)
+                }
+            }
+            NotificationCenterManager.shared.postNotification(name: Notification.Name("visitChanged"))
         }
     }
+    
+    
+
    
     func initVM() {
         guard let placeId = placeId else { return }
         detailViewModal.placeId = placeId
         
-        
-        detailViewModal.getTravelItemByID() { place in
-            self.configure(place: place)
-        }
-
-        detailViewModal.getGalleryItems() {
-            let count = self.detailViewModal.getNumberOfRowsInSection()
-            self.pageControl.numberOfPages = count
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-        
         detailViewModal.checkVisit { check in
-            if check == true {
+            if check {
                 self.visitedButton.setImage(UIImage(named: "visited"), for: .normal)
             } else {
                 self.visitedButton.setImage(UIImage(named: "unvisited"), for: .normal)
             }
         }
         
+        detailViewModal.getVisit { place in
+            self.configure(place: place)
+        }
+
+        detailViewModal.getGalleryItems() {
+            let count = self.detailViewModal.getNumberOfRowsInSection()
+            self.pageControl.numberOfPages = count
+            self.collectionView.reloadData()
+        }
         
         
     }

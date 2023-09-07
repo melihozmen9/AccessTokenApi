@@ -14,7 +14,7 @@ class HomeVM {
         self.apiService = apiService
     }
     
-    let array = ["Popular Places", "My Added Places", "New Places"]
+    let array = ["Popular Places", "My Visits", "New Places"]
     var myVisitsArray: [Visits]?
     func getHeaderNameForSection(section:Int) -> String {
         return array[section]

@@ -21,10 +21,12 @@ func getPlaces (callback: @escaping ()->Void) {
         switch self.place {
         case "popularPlaces":
             router = Router.getPopularPlaces
-        case "myAddedPlaces":
+        case "myVisits":
             router = Router.getMyAddedPlaces
         case "newPlaces":
             router = Router.getLastPlaces
+        case "myAddedPlaces":
+            router = Router.getMyAddedPlaces
         default:
             fatalError("Invalid place value")
         }
@@ -33,9 +35,7 @@ func getPlaces (callback: @escaping ()->Void) {
             switch result {
             case .success(let data):
                 self.placeArray = data.data.places
-                DispatchQueue.main.async {
                     callback()
-                }
             case .failure(let failure):
                 print(failure)
             }
@@ -63,8 +63,8 @@ func getPlaces (callback: @escaping ()->Void) {
     func setTitle() -> String {
         if place == "popularPlaces" {
             return "Popular Places"
-        } else if place == "myAddedPlaces"{
-            return "My Added Places"
+        } else if place == "myVisits"{
+            return "My Visits"
         } else if place == "newPlaces" {
             return "New Places"
         }

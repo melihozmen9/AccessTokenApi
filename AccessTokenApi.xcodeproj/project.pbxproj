@@ -129,6 +129,7 @@
 		21F804782A93D7D40068CDAF /* TravelID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F804772A93D7D40068CDAF /* TravelID.swift */; };
 		794C453C2AA0B89D008DD231 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C453B2AA0B89D008DD231 /* MenuVM.swift */; };
 		7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */; };
+		A34F92F12AA9C2F700AED53B /* NotificationCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */; };
 		A3C32F5A2AA5D4CF005D558B /* SeeAllPlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F562AA5D4CF005D558B /* SeeAllPlacesVC.swift */; };
 		A3C32F5D2AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F592AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift */; };
 		A3C32F642AA66068005D558B /* SeeAllPlacesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F632AA66068005D558B /* SeeAllPlacesVM.swift */; };
@@ -233,6 +234,7 @@
 		21F804772A93D7D40068CDAF /* TravelID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelID.swift; sourceTree = "<group>"; };
 		794C453B2AA0B89D008DD231 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
 		7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCvCell.swift; sourceTree = "<group>"; };
+		A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHelper.swift; sourceTree = "<group>"; };
 		A3C32F562AA5D4CF005D558B /* SeeAllPlacesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesVC.swift; sourceTree = "<group>"; };
 		A3C32F592AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesCustomCell.swift; sourceTree = "<group>"; };
 		A3C32F632AA66068005D558B /* SeeAllPlacesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesVM.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 			children = (
 				214310D92A8F616E004B81A9 /* Enums.swift */,
 				214310DB2A8F66F1004B81A9 /* Extensions.swift */,
+				A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */,
 			);
 			path = "Extensions Enums";
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				21777B3F2AA6130C00ED5346 /* SecurityCell.swift in Sources */,
 				A3C32F642AA66068005D558B /* SeeAllPlacesVM.swift in Sources */,
 				217D7A492A8E3F7900274A30 /* DetailVC.swift in Sources */,
+				A34F92F12AA9C2F700AED53B /* NotificationCenterHelper.swift in Sources */,
 				21C20F832AA73A9400C87340 /* EditProfileVM.swift in Sources */,
 				21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */,
 				216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */,

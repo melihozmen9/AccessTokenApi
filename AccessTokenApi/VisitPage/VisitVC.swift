@@ -101,17 +101,13 @@ class VisitVC: UIViewController {
         }
 
         visitViewModal.fetchTravels {
-            DispatchQueue.main.async {
                 self.tableView.reloadData()
-            }
         }
     }
     
     @objc func visitChanged() {
         visitViewModal.fetchTravels {
-            DispatchQueue.main.async {
                 self.tableView.reloadData()
-            }
         }
     }
     
@@ -147,6 +143,4 @@ extension VisitVC: UITableViewDataSource {
         cell.configure(item: item.place)
         return cell
     }
-    
-    
 }

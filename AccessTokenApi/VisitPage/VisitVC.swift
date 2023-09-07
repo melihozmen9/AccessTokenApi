@@ -44,16 +44,18 @@ class VisitVC: UIViewController {
         return tableView
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         setupView()
         initVM()
         
-        NotificationCenterManager.shared.addObserver(observer: self, name: Notification.Name("visitChanged"), selector: #selector(visitChanged))
+        NotificationCenterManager.shared.addObserver(self, name: Notification.Name("visitChanged"), selector: #selector(visitChanged))
     }
     
     deinit {
-        NotificationCenterManager.shared.removeObserver(observer: Notification.Name("visitChanged"))
+        NotificationCenterManager.shared.removeObserver(self)
     }
     
     override func viewDidLayoutSubviews() {

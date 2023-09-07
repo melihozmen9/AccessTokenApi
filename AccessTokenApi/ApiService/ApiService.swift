@@ -35,6 +35,8 @@ class ApiService:ApiServiceProtocol {
     
     func makeRequest<T:Codable>(urlConvertible: Router, handler: @escaping (Result<T, Error>) -> Void) {
         DispatchQueue.global().async {
+            
+        
             AF.request(urlConvertible).responseDecodable(of:T.self) { response  in
                 switch response.result {
                 case .success:

@@ -11,19 +11,17 @@ final class NotificationCenterManager {
     
     static let shared = NotificationCenterManager()
 
-    private init() {}
 
     func postNotification(name: Notification.Name) {
         NotificationCenter.default.post(name: name, object: nil)
     }
 
-    func addObserver(observer:Any, name: Notification.Name, selector:Selector) {
+    func addObserver(_ observer: Any, name: Notification.Name, selector: Selector) {
         NotificationCenter.default.addObserver(observer, selector: selector, name: name, object: nil)
     }
 
-    func removeObserver(observer:Any) {
+    func removeObserver(_ observer: Any ) {
         NotificationCenter.default.removeObserver(observer)
     }
 }
-
 

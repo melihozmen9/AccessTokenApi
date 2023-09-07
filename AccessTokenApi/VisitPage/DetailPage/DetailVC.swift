@@ -201,13 +201,14 @@ class DetailVC: UIViewController {
             if check {
                 self.detailViewModal.deleteVisitItem {
                     self.visitedButton.setImage(UIImage(named: "unvisited"), for: .normal)
+                    NotificationCenterManager.shared.postNotification(name: Notification.Name("visitChanged"))
                 }
             } else {
                 self.detailViewModal.postVisit {
                     self.visitedButton.setImage(UIImage(named: "visited"), for: .normal)
+                    NotificationCenterManager.shared.postNotification(name: Notification.Name("visitChanged"))
                 }
             }
-            NotificationCenterManager.shared.postNotification(name: Notification.Name("visitChanged"))
         }
     }
     

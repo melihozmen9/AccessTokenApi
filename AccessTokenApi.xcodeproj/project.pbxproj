@@ -472,10 +472,10 @@
 		79E0954F2AA5D959004276D3 /* Help&Support */ = {
 			isa = PBXGroup;
 			children = (
-				79E095562AA6FFCE004276D3 /* Help&SupportVM.swift */,
 				79E095502AA5EC0D004276D3 /* Help&SupportVC.swift */,
 				79E095542AA6FC63004276D3 /* HelpSupportTableCell.swift */,
 				79E095582AA707A3004276D3 /* Help&SupportModel.swift */,
+				79E095562AA6FFCE004276D3 /* Help&SupportVM.swift */,
 			);
 			path = "Help&Support";
 			sourceTree = "<group>";

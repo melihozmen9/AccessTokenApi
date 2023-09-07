@@ -11,78 +11,84 @@ import TinyConstraints
 
 class CustomCvCell:UICollectionViewCell {
     
-    private lazy var imageView1:UIImageView = {
-       let imageView = UIImageView()
+    private lazy var shadowView:UIView = {
+        let shadowView = UIView()
+        shadowView.backgroundColor = .white
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOffset = CGSize(width: 0, height: 0) // Gölge yönü ve boyutu
+        shadowView.layer.shadowOpacity = 0.2 // Gölge opaklığı
+        shadowView.layer.shadowRadius = 4 // Gölge yarıçapı
+        shadowView.layer.cornerRadius = 12 // Hücrenin köşe yuvarlama miktarı
+        shadowView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
         
-        
-        return imageView
+        return shadowView
     }()
     
-    private lazy var label:UILabel = {
-      let label = UILabel()
-        label.font = Font.regular14.chooseFont
-        label.textColor = Color.systemblack.chooseColor
+    
+    private lazy var cellsLeftImageView:UIImageView = {
+       let cellsLeftImage = UIImageView()
         
-        return label
+        
+        return cellsLeftImage
     }()
     
-    private lazy var imageView2:UIImageView = {
-       let imageView2 = UIImageView()
-        imageView2.contentMode = .scaleAspectFit
-        return imageView2
+    private lazy var cellsLabel:UILabel = {
+      let cellLabel = UILabel()
+        cellLabel.font = Font.regular14.chooseFont
+        cellLabel.textColor = Color.systemblack.chooseColor
+        
+        return cellLabel
+    }()
+    
+    private lazy var cellsRightImageView:UIImageView = {
+       let cellsRightImage = UIImageView()
+        cellsRightImage.contentMode = .scaleAspectFit
+        return cellsRightImage
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
             setupView()
-            
         }
     
-//    override func layoutSubviews() {
-//        self.contentView.roundCorners(corners: [.topLeft,.topRight,.bottomLeft], radius: 16)
-//        contentView.layer.shadowRadius = 4
-//        contentView.layer.shadowOpacity = 0.2
-//        contentView.layer.shadowOffset = CGSize(width: 0, height: 0)
-//
-//    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(imgView1:UIImage, lbl:String, imgView2:UIImage) {
+    func configure(cellLeftImage:UIImage, cellLabel:String, cellRightImage:UIImage) {
         
-        imageView1.image = imgView1
-        label.text = lbl
-        imageView2.image = imgView2
+        cellsLeftImageView.image = cellLeftImage
+        cellsLabel.text = cellLabel
+        cellsRightImageView.image = cellRightImage
     }
     
     
     func setupView() {
-        
-        contentView.addSubview(imageView1)
-        contentView.addSubview(label)
-        contentView.addSubview(imageView2)
+        contentView.addSubview(shadowView)
+        shadowView.addSubviews(cellsLeftImageView, cellsLabel, cellsRightImageView)
         setupLayout()
     }
     
     func setupLayout() {
         
+        shadowView.topToSuperview(offset:3)
+        shadowView.leadingToSuperview(offset:3)
+        shadowView.trailingToSuperview(offset:-3)
+        shadowView.bottomToSuperview(offset:-3)
         
-        imageView1.leadingToSuperview(offset:16)
-   //     imageView1.topToSuperview(offset:18)
-  //      imageView1.bottomToSuperview(offset:18.5)
-        imageView1.height(17.5)
-        imageView1.width(20)
-        imageView1.centerYToSuperview()
+        cellsLeftImageView.leadingToSuperview(offset:16)
+        cellsLeftImageView.height(17.5)
+        cellsLeftImageView.width(20)
+        cellsLeftImageView.centerYToSuperview()
         
-        label.leadingToTrailing(of: imageView1, offset: 9.4)
-        label.centerY(to: imageView1)
+        cellsLabel.leadingToTrailing(of: cellsLeftImageView, offset: 9.4)
+        cellsLabel.centerY(to: cellsLeftImageView)
         
-      //  imageView2.trailingToSuperview(offset:-16)
-        imageView2.height(17.5)
-        imageView2.width(20)
-        imageView2.centerY(to: label)
-        imageView2.leading(to: imageView1, offset: 306)
+        cellsRightImageView.height(17.5)
+        cellsRightImageView.width(20)
+        cellsRightImageView.centerY(to: cellsLabel)
+        cellsRightImageView.edgesToSuperview(excluding: [.left, .bottom, .top], insets: .right(13))
     }
     
 }

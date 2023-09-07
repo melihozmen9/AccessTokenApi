@@ -124,6 +124,7 @@
 		21C2102A2AA756F400C87340 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C210292AA756F400C87340 /* UserStruct.swift */; };
 		21C2102B2AA756F400C87340 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C210292AA756F400C87340 /* UserStruct.swift */; };
 		21C2102C2AA756F400C87340 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C210292AA756F400C87340 /* UserStruct.swift */; };
+		21D000FD2AA8AB5E00FBB5D9 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D000FC2AA8AB5E00FBB5D9 /* AboutUsVC.swift */; };
 		21D0C58A2AA1B8D1004D2DFC /* SecuritySettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */; };
 		21D0C58D2AA1EC02004D2DFC /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */; };
 		21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */; };
@@ -228,6 +229,7 @@
 		21C20FEB2AA749FC00C87340 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		21C20FEC2AA749FC00C87340 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		21C210292AA756F400C87340 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
+		21D000FC2AA8AB5E00FBB5D9 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritySettingsVM.swift; sourceTree = "<group>"; };
 		21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -279,6 +281,10 @@
 				219258D02AA9E815000BFCBD /* CustomCvCell.swift */,
 				219258CE2AA9E810000BFCBD /* MenuVM.swift */,
 				219258CC2AA9E7ED000BFCBD /* MenuVC.swift */,
+				794C453B2AA0B89D008DD231 /* MenuVM.swift */,
+				213FD11F2A8FE155004D2024 /* MenuVC.swift */,
+				7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */,
+				21D000FC2AA8AB5E00FBB5D9 /* AboutUsVC.swift */,
 			);
 			name = TabBarVC;
 			sourceTree = "<group>";
@@ -764,6 +770,7 @@
 				21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */,
 				21B15DB72A913DBD0021938F /* AddTravelVC.swift in Sources */,
 				216A05EC2A9623AC001DC3D5 /* AddTravelCollectionCell.swift in Sources */,
+				21D000FD2AA8AB5E00FBB5D9 /* AboutUsVC.swift in Sources */,
 				21678CE72AA71E7C0029BA0E /* SecurityCellVM.swift in Sources */,
 				214310D72A8F5CC9004B81A9 /* CustomLabel.swift in Sources */,
 				A3C32F5D2AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift in Sources */,

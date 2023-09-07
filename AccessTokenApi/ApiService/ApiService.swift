@@ -34,22 +34,23 @@ class ApiService:ApiServiceProtocol {
     }
     
     func makeRequest<T:Codable>(urlConvertible: Router, handler: @escaping (Result<T, Error>) -> Void) {
-        AF.request(urlConvertible).responseDecodable(of:T.self) { response  in
-            switch response.result {
-                
-            case .success:
-                
-                if let data = response.data {
-                    do {
-                        let decodedData = try JSONDecoder().decode(T.self, from: data)
-                        handler(.success(decodedData as! T))
-                    } catch {
-                        print("Error: \(error)")
+        DispatchQueue.global().async {
+            AF.request(urlConvertible).responseDecodable(of:T.self) { response  in
+                switch response.result {
+                case .success:
+                    DispatchQueue.main.async {
+                        if let data = response.data {
+                            do {
+                                let decodedData = try JSONDecoder().decode(T.self, from: data)
+                                handler(.success(decodedData as! T))
+                            } catch {
+                                print("Error: \(error)")
+                            }
+                        }
                     }
+                case .failure(let error):
+                    print(error)
                 }
-                
-            case .failure(let error):
-                print(error)
             }
         }
     }

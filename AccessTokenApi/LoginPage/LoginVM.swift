@@ -16,20 +16,23 @@ class LoginVM {
     init(apiService: ApiServiceProtocol = ApiService()){
         self.apiService = apiService
     }
+    
+    var loginStatus: ((String)->())?
         
-    func login(params: [String:String],handler: @escaping (()->())) {
+    func login(params: [String:String],handler: @escaping ((String)->())) {
 
         apiService.objectRequest(urlConvertible: Router.login(params: params)) { 
-            (result:Result<LoginResponse,Error>) in
+            (result:Result<LoginResponse,ErrorResponse>) in
                 switch result {
 
                 case .success(let success):
                     let data = Data(success.accessToken.utf8)
                     self.saveToken(data: data)
-                    handler()
+                    handler("")
                 case .failure(let err):
-                    print(err)
+                    handler(err.message)
                 }
+            
         }
     }
     
@@ -38,17 +41,16 @@ class LoginVM {
         KeychainHelper.shared.save(data, service: "access-token", account: "api.Iosclass")
     }
     
-    func readToken() {
-        guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return}
-        let tokenstr = String(data: token, encoding: .utf8)
-        print("kaydedilen token : \(tokenstr)")
-    }
+//    func readToken() {
+//        guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return}
+//        let tokenstr = String(data: token, encoding: .utf8)
+//    }
     
-    func getTokenFromChain()->String {
-        guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return""}
-        guard let tokenstr = String(data: token, encoding: .utf8) else {return""}
-        return tokenstr
-    }
+//    func getTokenFromChain()->String {
+//        guard let token = KeychainHelper.shared.read(service: "access-token", account: "api.Iosclass") else {return""}
+//        guard let tokenstr = String(data: token, encoding: .utf8) else {return""}
+//        return tokenstr
+//    }
     
 }
     

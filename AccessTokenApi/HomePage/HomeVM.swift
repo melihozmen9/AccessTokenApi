@@ -25,7 +25,7 @@ class HomeVM {
     var lastPlaces: [PlaceItem]?
     
     func getPopularPlaces(handler: @escaping (()->())) {
-        apiService.objectRequest(urlConvertible: Router.getPopularPlaces(limit: 5)) { (result:Result<PlacesData,Error>) in
+        apiService.makeRequest(urlConvertible: Router.getPopularPlaces(limit: 5)) { (result:Result<PlacesData,Error>) in
             switch result {
             case .success(let success):
                 self.popularPlaces = success.data.places

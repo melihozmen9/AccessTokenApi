@@ -17,6 +17,11 @@ struct LoginResponse: Codable {
     var refreshToken : String
 }
 
+struct ErrorResponse: Error, Codable {
+    var message: String
+    var status: String
+}
+
 struct AddTravelResponse: Codable {
     var message: String
     var status: String

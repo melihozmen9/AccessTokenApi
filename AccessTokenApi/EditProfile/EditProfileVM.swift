@@ -26,7 +26,7 @@ class EditProfileVM {
     
     func getUserInfo() {
         self.onDataFetch?(true)
-        apiService.objectRequest(urlConvertible: Router.me) { (result:Result<User,Error>) in
+        apiService.makeRequest(urlConvertible: Router.me) { (result:Result<User,Error>) in
             switch result {
             case .success(let success):
                 guard let configureUserInfo = self.configureUserInfo else { return }
@@ -56,7 +56,7 @@ class EditProfileVM {
     
     func editProfile(body: [String:String]) {
         print(body)
-        apiService.objectRequest(urlConvertible: Router.editProfile(params: body)) { (result:Result<ProfileResponse,Error>) in
+        apiService.makeRequest(urlConvertible: Router.editProfile(params: body)) { (result:Result<ProfileResponse,Error>) in
             switch result {
             case .success(let success):
                 print(success)

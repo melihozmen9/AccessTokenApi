@@ -16,7 +16,7 @@ class RegisterVM {
     }
     
     func register(params: [String:String], handler: @escaping ((RegisterResponse)->())  ) {
-        apiService.objectRequest(urlConvertible: Router.register(params: params)) { (result:(Result<RegisterResponse,Error>)) in
+        apiService.objectRequest(urlConvertible: Router.register(params: params)) { (result:(Result<RegisterResponse,ErrorResponse>)) in
             
             switch result {
             case .success(let success):

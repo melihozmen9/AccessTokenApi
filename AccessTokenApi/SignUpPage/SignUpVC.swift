@@ -89,6 +89,7 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        showAlert()
     }
     
     override func viewDidLayoutSubviews() {
@@ -113,10 +114,10 @@ class SignUpVC: UIViewController {
         viewModal.register(params: body, handler: { response in
             if response.status == "fail" {
                 self.showErrorAlert(message: """
-                                        Lütfen tüm bilgileri doldurunuz.
-                                        Email formatına ve şifrenizin en az altı
-                                        karakterden oluşmasına dikkat edin.
-                                        """)
+                                                Username alanına sadece harf girmelisiniz.
+                                                Email alanına email formatı girmelisiniz.
+                                                Şifreniz en az 1 harf ve 1 sayı ve en az 6 karakterden oluşmalıdır.
+                                             """)
             } else {
                 self.showPositiveAlert()
             }
@@ -167,6 +168,19 @@ class SignUpVC: UIViewController {
         alert.addAction(action)
         present(alert, animated: true)
     }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Üye olurken;", message: """
+                                                            Username alanına sadece harf girmelisiniz.
+                                                            Email alanına email formatı girmelisiniz.
+                                                            Şifreniz en az 1 harf ve 1 sayı ve en az 6 karakterden oluşmalıdır.
+                                                          """, preferredStyle: .alert)
+        
+            let action = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        }
+    
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

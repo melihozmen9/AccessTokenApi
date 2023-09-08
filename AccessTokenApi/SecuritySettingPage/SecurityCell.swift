@@ -99,9 +99,8 @@ class SecurityCell: UITableViewCell {
         contentView.addGestureRecognizer(tapGesture)
         contentView.backgroundColor = Color.systemWhite.chooseColor
         contentView.addSubviews(passwordView,switchView)
-        //setupLayout()
+//        setupLayout()
     }
-    
     
     
 }

@@ -22,7 +22,7 @@ func getPlaces (callback: @escaping ()->Void) {
         case "popularPlaces":
             router = Router.getPopularPlaces(limit: nil)
         case "myAddedPlaces":
-            router = Router.getMyAddedPlaces(limit: nil)
+            router = Router.myAllVisits(limit: nil)
         case "newPlaces":
             router = Router.getLastPlaces(limit: nil)
         default:

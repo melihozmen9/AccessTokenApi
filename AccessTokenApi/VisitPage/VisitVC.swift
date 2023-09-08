@@ -100,7 +100,7 @@ class VisitVC: UIViewController {
         
         containerView.edgesToSuperview( insets: .top(129))
         
-        tableView.edgesToSuperview( insets: .top(45) + .right(22) + .left(22) + .bottom(0), usingSafeArea: true)
+        tableView.edgesToSuperview( insets: .top(45), usingSafeArea: true)
     }
     
     func pushNav(visitId:String, placeId: String) {

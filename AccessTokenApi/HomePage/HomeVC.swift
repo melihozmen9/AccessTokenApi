@@ -18,8 +18,9 @@ class HomeVC: UIViewController,GoToDetail {
     let viewModal = HomeVM()
     
     var popularArray: [PlaceItem]?
-    var lastPlaces: [PlaceItem]?
-    
+    var newPlaces: [PlaceItem]?
+    var myVisits: [PlaceItem]?
+    var myTravels: [Visits]?
     private lazy var activity: NVActivityIndicatorView = {
         let activity = NVActivityIndicatorView(frame: .zero, type: .pacman, color: Color.systemGreen.chooseColor, padding: 0)
         return activity
@@ -69,6 +70,8 @@ class HomeVC: UIViewController,GoToDetail {
             seeAllVC.fromWhere = "popularPlaces"
         } else if button.tag == 1 {
             seeAllVC.fromWhere = "newPlaces"
+        } else if button.tag == 2 {
+            seeAllVC.fromWhere == "myAddedPlaces"
         }
         navigationController?.pushViewController(seeAllVC, animated: true)
     }
@@ -76,34 +79,43 @@ class HomeVC: UIViewController,GoToDetail {
     func initVM() {
         
         activity.startAnimating()
-        
+
         let dispatchGroup = DispatchGroup()
-        
+
         dispatchGroup.enter()
         viewModal.getPopularPlaces {
             dispatchGroup.leave()
         }
-        
+
         dispatchGroup.enter()
         viewModal.getLastPlaces {
             dispatchGroup.leave()
         }
+
+        dispatchGroup.enter()
+        viewModal.getMyVisits {
+            dispatchGroup.leave()
+        }
         
-        dispatchGroup.notify(queue: .main) {
-            DispatchQueue.main.async {
-                guard let popularPlaces = self.viewModal.popularPlaces,
-                      let lastPlaces = self.viewModal.lastPlaces
-                else {return}
-                
-                self.popularArray = popularPlaces
-                self.lastPlaces = lastPlaces
-                self.activity.stopAnimating()
-                
+        viewModal.closure = { array in
+            dispatchGroup.notify(queue: .main) {
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
+                    guard let popularPlaces = self.viewModal.popularPlaces,
+                          let newPlaces = self.viewModal.newPlaces
+                    else {return}
+
+                    self.popularArray = popularPlaces
+                    self.newPlaces = newPlaces
+                    self.myVisits = array
+                    self.activity.stopAnimating()
+
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
             }
-        }
+    }
+       
     }
     
     func pushVC(vc: UIViewController) {
@@ -185,13 +197,15 @@ extension HomeVC: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as? HomeTableCell else {return UITableViewCell()}
         cell.delegate = self
         
-        guard let popularArray = popularArray, let lastPlaces = lastPlaces else {return cell}
+        guard let popularArray = popularArray, let newPlaces = newPlaces, let myVisits = myVisits else {return cell}
         
         switch indexPath.section {
         case 0:
             cell.configure(item: popularArray)
         case 1:
-            cell.configure(item: lastPlaces)
+            cell.configure(item: newPlaces)
+        case 2:
+            cell.configure(item: myVisits)
         default:
             break
         }

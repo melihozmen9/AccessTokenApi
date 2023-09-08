@@ -17,7 +17,7 @@ enum Router: URLRequestConvertible {
     case me
     //Travel
     case upload(image: [Data])
-    case myAllVisits
+    case myAllVisits(limit:Int?)
     case travelID (placeId:String)
     case postPlace(params:Parameters)
     case deletePlace(visitId:String)
@@ -27,7 +27,6 @@ enum Router: URLRequestConvertible {
     case postGallery(params:Parameters)
     // seeAllPlaces
     case getPopularPlaces(limit:Int?)
-    case getMyAddedPlaces(limit:Int?)
     case getLastPlaces(limit:Int?)
     
     
@@ -65,8 +64,6 @@ enum Router: URLRequestConvertible {
             return "v1/edit-profile"
         case .getPopularPlaces:
             return "v1/places/popular"
-        case .getMyAddedPlaces:
-            return "v1/places/user"
         case .getLastPlaces:
             return "v1/places/last"
         }
@@ -76,7 +73,7 @@ enum Router: URLRequestConvertible {
           switch self {
           case .login, .register, .upload,.postPlace, .postGallery :
               return .post
-          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces :
+          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getLastPlaces :
               return .get
           case .deletePlace:
               return .delete
@@ -89,7 +86,7 @@ enum Router: URLRequestConvertible {
             switch self {
             case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params), .editProfile(let params), .changePassword(let params):
                 return params
-            case .getPopularPlaces(let limit), .getLastPlaces(let limit), .getMyAddedPlaces(let limit):
+            case .getPopularPlaces(let limit), .getLastPlaces(let limit), .myAllVisits(let limit):
                 if let limit = limit {
                     return ["limit": limit]
                 }
@@ -101,7 +98,7 @@ enum Router: URLRequestConvertible {
     
     var headers: HTTPHeaders {
         switch self {
-        case .login, .register, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces :
+        case .login, .register, .getPopularPlaces, .getLastPlaces :
             return [:]
         case .upload:
             return ["Content-Type": "multipart/form-data"]

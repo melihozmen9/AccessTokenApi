@@ -11,6 +11,7 @@
 		213FD11A2A8FDE34004D2024 /* VisitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD1192A8FDE34004D2024 /* VisitVC.swift */; };
 		213FD11C2A8FDEEE004D2024 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD11B2A8FDEEE004D2024 /* HomeVC.swift */; };
 		213FD11E2A8FE141004D2024 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD11D2A8FE141004D2024 /* MapVC.swift */; };
+		213FD1202A8FE155004D2024 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD11F2A8FE155004D2024 /* MenuVC.swift */; };
 		213FD1222A8FEF5C004D2024 /* VisitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD1212A8FEF5C004D2024 /* VisitCell.swift */; };
 		214310AD2A8F57AA004B81A9 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310AC2A8F57AA004B81A9 /* CustomView.swift */; };
 		214310D72A8F5CC9004B81A9 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310D62A8F5CC9004B81A9 /* CustomLabel.swift */; };
@@ -130,16 +131,24 @@
 		21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */; };
 		21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C5902AA20977004D2DFC /* HomeVM.swift */; };
 		21F804782A93D7D40068CDAF /* TravelID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F804772A93D7D40068CDAF /* TravelID.swift */; };
-<<<<<<< HEAD
-=======
 		794C453C2AA0B89D008DD231 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C453B2AA0B89D008DD231 /* MenuVM.swift */; };
 		7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */; };
+<<<<<<< HEAD
 		A337464B2AAB03DF00CAD976 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A337464A2AAB03DF00CAD976 /* AlertHelper.swift */; };
 		A34F92F12AA9C2F700AED53B /* NotificationCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */; };
->>>>>>> Sprint2/DetailAddRemoveConfigureButton
 		A3C32F5A2AA5D4CF005D558B /* SeeAllPlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F562AA5D4CF005D558B /* SeeAllPlacesVC.swift */; };
 		A3C32F5D2AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F592AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift */; };
 		A3C32F642AA66068005D558B /* SeeAllPlacesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F632AA66068005D558B /* SeeAllPlacesVM.swift */; };
+=======
+		79E095512AA5EC0D004276D3 /* Help&SupportVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E095502AA5EC0D004276D3 /* Help&SupportVC.swift */; };
+		79E095552AA6FC63004276D3 /* HelpSupportTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E095542AA6FC63004276D3 /* HelpSupportTableCell.swift */; };
+		79E095572AA6FFCE004276D3 /* Help&SupportVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E095562AA6FFCE004276D3 /* Help&SupportVM.swift */; };
+		79E095592AA707A3004276D3 /* Help&SupportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E095582AA707A3004276D3 /* Help&SupportModel.swift */; };
+		A3C32F5A2AA5D4CF005D558B /* PopularPlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F562AA5D4CF005D558B /* PopularPlacesVC.swift */; };
+		A3C32F5B2AA5D4CF005D558B /* PopularPlacesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F572AA5D4CF005D558B /* PopularPlacesModel.swift */; };
+		A3C32F5C2AA5D4CF005D558B /* PopularPlacesVM .swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F582AA5D4CF005D558B /* PopularPlacesVM .swift */; };
+		A3C32F5D2AA5D4CF005D558B /* PopularPlacesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F592AA5D4CF005D558B /* PopularPlacesCustomCell.swift */; };
+>>>>>>> Spring2/HelpAndSupport
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,16 +251,24 @@
 		21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		21D0C5902AA20977004D2DFC /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		21F804772A93D7D40068CDAF /* TravelID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelID.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		794C453B2AA0B89D008DD231 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
 		7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCvCell.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		A337464A2AAB03DF00CAD976 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHelper.swift; sourceTree = "<group>"; };
->>>>>>> Sprint2/DetailAddRemoveConfigureButton
 		A3C32F562AA5D4CF005D558B /* SeeAllPlacesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesVC.swift; sourceTree = "<group>"; };
 		A3C32F592AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesCustomCell.swift; sourceTree = "<group>"; };
 		A3C32F632AA66068005D558B /* SeeAllPlacesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesVM.swift; sourceTree = "<group>"; };
+=======
+		79E095502AA5EC0D004276D3 /* Help&SupportVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Help&SupportVC.swift"; sourceTree = "<group>"; };
+		79E095542AA6FC63004276D3 /* HelpSupportTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpSupportTableCell.swift; sourceTree = "<group>"; };
+		79E095562AA6FFCE004276D3 /* Help&SupportVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Help&SupportVM.swift"; sourceTree = "<group>"; };
+		79E095582AA707A3004276D3 /* Help&SupportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Help&SupportModel.swift"; sourceTree = "<group>"; };
+		A3C32F562AA5D4CF005D558B /* PopularPlacesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularPlacesVC.swift; sourceTree = "<group>"; };
+		A3C32F572AA5D4CF005D558B /* PopularPlacesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularPlacesModel.swift; sourceTree = "<group>"; };
+		A3C32F582AA5D4CF005D558B /* PopularPlacesVM .swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PopularPlacesVM .swift"; sourceTree = "<group>"; };
+		A3C32F592AA5D4CF005D558B /* PopularPlacesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularPlacesCustomCell.swift; sourceTree = "<group>"; };
+>>>>>>> Spring2/HelpAndSupport
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,6 +439,14 @@
 			children = (
 				218C34AA2A8E0AFE008AC00B /* AppDelegate.swift */,
 				218C34AC2A8E0AFE008AC00B /* SceneDelegate.swift */,
+<<<<<<< HEAD
+=======
+				21D0C58B2AA1E4B2004D2DFC /* HomePage */,
+				79E0954F2AA5D959004276D3 /* Help&Support */,
+				2190396B2A9E1552007AE38C /* EditProfile */,
+				219039642A9DEC7D007AE38C /* SecuritySettingPage */,
+				216A05E52A95F20D001DC3D5 /* AddNewVisitPage */,
+>>>>>>> Spring2/HelpAndSupport
 				216A05DD2A95D72B001DC3D5 /* LoginPage */,
 				216A05DE2A95D75D001DC3D5 /* SignUpPage */,
 				2190396B2A9E1552007AE38C /* EditProfile */,
@@ -535,7 +560,22 @@
 			path = HomePage;
 			sourceTree = "<group>";
 		};
+<<<<<<< HEAD
 		A3C32F622AA6604A005D558B /* SeeAllPlaces */ = {
+=======
+		79E0954F2AA5D959004276D3 /* Help&Support */ = {
+			isa = PBXGroup;
+			children = (
+				79E095502AA5EC0D004276D3 /* Help&SupportVC.swift */,
+				79E095542AA6FC63004276D3 /* HelpSupportTableCell.swift */,
+				79E095582AA707A3004276D3 /* Help&SupportModel.swift */,
+				79E095562AA6FFCE004276D3 /* Help&SupportVM.swift */,
+			);
+			path = "Help&Support";
+			sourceTree = "<group>";
+		};
+		A3C32F552AA5D4CF005D558B /* PopularPlaces */ = {
+>>>>>>> Spring2/HelpAndSupport
 			isa = PBXGroup;
 			children = (
 				A3C32F562AA5D4CF005D558B /* SeeAllPlacesVC.swift */,
@@ -746,6 +786,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+=======
+				79E095512AA5EC0D004276D3 /* Help&SupportVC.swift in Sources */,
+				218C34AF2A8E0AFE008AC00B /* LoginVC.swift in Sources */,
+>>>>>>> Spring2/HelpAndSupport
 				215A16732AA06A9B007DC0C6 /* InfoCustomView.swift in Sources */,
 				216616A92A949CF200E0E3B9 /* MapVM.swift in Sources */,
 				218C34AF2A8E0AFE008AC00B /* LoginVC.swift in Sources */,
@@ -754,6 +799,7 @@
 				2190396A2A9DFF7F007AE38C /* CustomSwitchView.swift in Sources */,
 				213FD11C2A8FDEEE004D2024 /* HomeVC.swift in Sources */,
 				21B764302A9378380047CB92 /* TravelModal.swift in Sources */,
+				79E095592AA707A3004276D3 /* Help&SupportModel.swift in Sources */,
 				219039662A9DECD9007AE38C /* SecuritySettingsVC.swift in Sources */,
 				219258D12AA9E815000BFCBD /* CustomCvCell.swift in Sources */,
 				21D0C58D2AA1EC02004D2DFC /* HomeTableCell.swift in Sources */,
@@ -778,7 +824,11 @@
 				21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */,
 				216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */,
 				214310AD2A8F57AA004B81A9 /* CustomView.swift in Sources */,
+<<<<<<< HEAD
 				219258CD2AA9E7ED000BFCBD /* MenuVC.swift in Sources */,
+=======
+				79E095572AA6FFCE004276D3 /* Help&SupportVM.swift in Sources */,
+>>>>>>> Spring2/HelpAndSupport
 				214310DA2A8F616E004B81A9 /* Enums.swift in Sources */,
 				214310E02A8F9323004B81A9 /* SignUpVC.swift in Sources */,
 				21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */,
@@ -798,7 +848,12 @@
 				2190396D2A9E1583007AE38C /* EditProfileVC.swift in Sources */,
 				A3C32F5A2AA5D4CF005D558B /* SeeAllPlacesVC.swift in Sources */,
 				21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */,
+<<<<<<< HEAD
 				21678CE92AA71FD20029BA0E /* SecurityModal.swift in Sources */,
+=======
+				79E095552AA6FC63004276D3 /* HelpSupportTableCell.swift in Sources */,
+				7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */,
+>>>>>>> Spring2/HelpAndSupport
 				216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */,
 				217D7A4B2A8E44B100274A30 /* DetailVM.swift in Sources */,
 				214310DC2A8F66F1004B81A9 /* Extensions.swift in Sources */,
@@ -808,6 +863,7 @@
 				21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */,
 				21C2102A2AA756F400C87340 /* UserStruct.swift in Sources */,
 				213FD11A2A8FDE34004D2024 /* VisitVC.swift in Sources */,
+				794C453C2AA0B89D008DD231 /* MenuVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@ protocol Reloader: AnyObject {
 class MapVC: UIViewController, CLLocationManagerDelegate{
    
     let viewModal = MapVM()
-
+ 
     let addTravelVC = AddTravelVC()
     
     let locationManager = CLLocationManager()

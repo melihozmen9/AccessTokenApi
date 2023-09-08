@@ -200,13 +200,22 @@ class DetailVC: UIViewController {
         detailViewModal.checkVisit { check in
             if check {
                 self.detailViewModal.deleteVisitItem {
-                    self.visitedButton.setImage(UIImage(named: "unvisited"), for: .normal)
-                    NotificationCenterManager.shared.postNotification(name: Notification.Name("visitChanged"))
+                    
+                    AlertHelper.showAlert(in: self, title: "Information", message: "Are you sure you delete your visit ?", primaryButtonTitle: "No", primaryButtonAction: {
+                        self.dismiss(animated: true)
+                    }, secondaryButtonTitle: "Yes") {
+                        
+                        self.visitedButton.setImage(UIImage(named: "unvisited"), for: .normal)
+                        NotificationCenterManager.shared.postNotification(name: Notification.Name("visitChanged"))
+                        
+                    }
                 }
             } else {
                 self.detailViewModal.postVisit {
+                    
                     self.visitedButton.setImage(UIImage(named: "visited"), for: .normal)
                     NotificationCenterManager.shared.postNotification(name: Notification.Name("visitChanged"))
+                    AlertHelper.showAlert(in: self, title: "Information", message: "Your visit was added successfully!", primaryButtonTitle: "Okay")
                 }
             }
         }

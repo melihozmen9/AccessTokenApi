@@ -19,8 +19,11 @@ enum Router: URLRequestConvertible {
     case upload(image: [Data])
     case myAllVisits(limit:Int?)
     case travelID (placeId:String)
+    case getVisitInfo(placeId:String)
     case postPlace(params:Parameters)
-    case deletePlace(visitId:String)
+    case postVisit(params:Parameters)
+    case deletePlace(placeId:String)
+    case checkVisit(placeId:String)
     // gallery Map
     case galleryID(placeId:String)
     case places
@@ -46,14 +49,18 @@ enum Router: URLRequestConvertible {
             return  "upload"
         case .myAllVisits:
             return  "v1/visits"
-        case .travelID(let id):
-            return  "v1/places/" + "\(id)"
+        case .checkVisit(let placeId):
+            return "v1/visits/user/\(placeId)"
+        case .getVisitInfo(let placeId):
+            return  "v1/places/" + "\(placeId)"
         case .galleryID(let id):
             return "v1/galleries/" + "\(id)"
         case .places:
             return  "v1/places"
-        case .deletePlace(let visitId):
-            return "v1/visits" + "/\(visitId)"
+        case .postVisit:
+            return "v1/visits"
+        case .deletePlace(let placeId):
+            return "v1/visits" + "/\(placeId)"
         case .postPlace:
             return  "v1/places"
         case .postGallery:
@@ -71,9 +78,9 @@ enum Router: URLRequestConvertible {
    
     var method: HTTPMethod {
           switch self {
-          case .login, .register, .upload,.postPlace, .postGallery :
+          case .login, .register, .upload,.postPlace, .postGallery, .postVisit :
               return .post
-          case .me,.myAllVisits,.places,.travelID, .galleryID, .getPopularPlaces, .getLastPlaces :
+          case .me,.myAllVisits,.places, .getVisitInfo , .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces, .checkVisit, .travelID :
               return .get
           case .deletePlace:
               return .delete
@@ -84,7 +91,8 @@ enum Router: URLRequestConvertible {
     
     var parameters: Parameters {
             switch self {
-            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params), .editProfile(let params), .changePassword(let params):
+            case .login(let params), .register(let params), .postPlace(let params), .postGallery(let params), .editProfile(let params), .postVisit(let params), .changePassword(let params):
+
                 return params
             case .getPopularPlaces(let limit), .getLastPlaces(let limit), .myAllVisits(let limit):
                 if let limit = limit {

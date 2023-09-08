@@ -45,10 +45,18 @@ class VisitVC: UIViewController {
         return tableView
     }()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         setupView()
         initVM()
+        
+        NotificationCenterManager.shared.addObserver(self, name: Notification.Name("visitChanged"), selector: #selector(visitChanged))
+    }
+    
+    deinit {
+        NotificationCenterManager.shared.removeObserver(self)
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,9 +66,27 @@ class VisitVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+    }
+    
+    private func setupView() {
+        self.view.backgroundColor = Color.systemGreen.chooseColor
+        view.addSubViews(containerView,headerLabel,activity)
+        containerView.addSubViews(tableView)
+        setupLayout()
+    }
+    
+    private func setupLayout() {
+        headerLabel.edgesToSuperview(excluding:[.bottom,.right], insets: .left(24) + .top(24),usingSafeArea: true)
+        headerLabel.height(52)
+        headerLabel.width(165)
+        
+        activity.centerInSuperview()
+        activity.height(40)
+        activity.width(40)
+        
+        containerView.edgesToSuperview( insets: .top(129))
+        
+        tableView.edgesToSuperview( insets: .top(45) + .right(22) + .left(22) + .bottom(0), usingSafeArea: true)
     }
     
     func initVM() {
@@ -77,12 +103,11 @@ class VisitVC: UIViewController {
         }
 
         visitViewModal.fetchTravels {
-            DispatchQueue.main.async {
                 self.tableView.reloadData()
-            }
         }
     }
     
+<<<<<<< HEAD
     private func setupView() {
         self.view.backgroundColor = Color.systemGreen.chooseColor
         view.addSubViews(containerView,headerLabel,activity)
@@ -101,11 +126,16 @@ class VisitVC: UIViewController {
         containerView.edgesToSuperview( insets: .top(129))
         
         tableView.edgesToSuperview( insets: .top(45), usingSafeArea: true)
+=======
+    @objc func visitChanged() {
+        visitViewModal.fetchTravels {
+                self.tableView.reloadData()
+        }
+>>>>>>> Sprint2/DetailAddRemoveConfigureButton
     }
     
     func pushNav(visitId:String, placeId: String) {
         let detailVC = DetailVC()
-        detailVC.visitId = visitId
         detailVC.placeId = placeId
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -136,6 +166,4 @@ extension VisitVC: UITableViewDataSource {
         cell.configure(item: item.place)
         return cell
     }
-    
-    
 }

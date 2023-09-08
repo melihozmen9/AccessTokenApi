@@ -33,9 +33,7 @@ func getPlaces (callback: @escaping ()->Void) {
             switch result {
             case .success(let data):
                 self.placeArray = data.data.places
-                DispatchQueue.main.async {
                     callback()
-                }
             case .failure(let failure):
                 print(failure)
             }

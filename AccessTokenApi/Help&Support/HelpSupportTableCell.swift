@@ -24,13 +24,6 @@ class HelpSupportTableCell:UITableViewCell {
 //        return shadowView
 //    }()
     
-//    private lazy var containerView:UIView = {
-//       let containerView = UIView()
-//        containerView.translatesAutoresizingMaskIntoConstraints = false
-//        containerView.backgroundColor = .clear
-//        return containerView
-//    }()
-    
      private lazy var stackView:UIStackView = {
        let stackView = UIStackView()
          stackView.axis = .vertical
@@ -110,16 +103,11 @@ class HelpSupportTableCell:UITableViewCell {
     
     
     func setupView() {
-//        contentView.addSubviews(shadowView, stackView)
-//        shadowView.addSubviews(stackView)
-//        stackView.addArrangedSubviews(topStackView, extendView)
-//        topStackView.addArrangedSubviews(topLabel, buttonImageView)
-//        extendView.addSubviews(botLabel)
-        setupLayout()
         contentView.addSubviews(stackView)
         stackView.addArrangedSubviews(topStackView, extendView)
         topStackView.addArrangedSubviews(topLabel, buttonImageView)
         extendView.addSubview(botLabel)
+        setupLayout()
         }
     
     func setupLayout() {
@@ -134,13 +122,13 @@ class HelpSupportTableCell:UITableViewCell {
         stackView.leading(to: contentView)
         stackView.trailing(to: contentView)
         
-//        topLabel.edges(to: stackView,excluding: .none, insets: .top(16) + .bottom(15) + .left(12) + .right(46))
-        
-//        buttonImageView.leadingToTrailing(of: topLabel, offset: 12)
-//        buttonImageView.trailing(to: stackView, offset: -18)
-//        buttonImageView.centerY(to: topLabel)
+        topLabel.edges(to: topStackView, excluding: .none, insets: .left(12) + .top(16) + .bottom(4) + .right(46))
+    
         buttonImageView.height(10)
-        buttonImageView.width(15)
+        buttonImageView.width(7)
+        buttonImageView.leadingToTrailing(of: topLabel, offset: 12)
+        buttonImageView.centerY(to: topLabel)
+        
         
         botLabel.top(to: extendView, offset: 8)
         botLabel.bottom(to: extendView, offset: -8)

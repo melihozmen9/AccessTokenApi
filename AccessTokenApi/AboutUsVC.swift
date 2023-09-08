@@ -61,7 +61,7 @@ class AboutUsVC: UIViewController, WKUIDelegate {
     
     override func viewDidLayoutSubviews() {
         view1.roundCorners(corners: [.topLeft], radius: 80)
-        activity.startAnimating()
+        //activity.startAnimating()
     }
     
     @objc func backButtonTapped() {

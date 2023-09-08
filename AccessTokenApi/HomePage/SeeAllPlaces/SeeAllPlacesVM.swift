@@ -21,7 +21,7 @@ func getPlaces (callback: @escaping ()->Void) {
         switch self.place {
         case "popularPlaces":
             router = Router.getPopularPlaces(limit: nil)
-        case "myAddedPlaces":
+        case "myVisits":
             router = Router.myAllVisits(limit: nil)
         case "newPlaces":
             router = Router.getLastPlaces(limit: nil)
@@ -63,8 +63,8 @@ func getPlaces (callback: @escaping ()->Void) {
     func setTitle() -> String {
         if place == "popularPlaces" {
             return "Popular Places"
-        } else if place == "myAddedPlaces"{
-            return "My Added Places"
+        } else if place == "myVisits"{
+            return "My Places"
         } else if place == "newPlaces" {
             return "New Places"
         }

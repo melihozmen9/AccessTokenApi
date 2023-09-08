@@ -72,7 +72,7 @@ class SecurityCell: UITableViewCell {
             passwordView.edgesToSuperview(excluding: [.bottom])
             passwordView.height(72)
             passwordView.titleLabel.text = data
-          
+            passwordView.textField.isSecureTextEntry = true
             passwordView.textField.attributedPlaceholder = NSAttributedString(string: "******", attributes: passwordView.attributes)
         } else if section == 1 {
             switchView.edgesToSuperview(excluding: [.bottom])

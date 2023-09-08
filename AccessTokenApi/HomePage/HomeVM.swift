@@ -14,7 +14,7 @@ class HomeVM {
         self.apiService = apiService
     }
     
-    let sectionNames = ["Popular Places", "New Places", "My Visited Places"]
+    let sectionNames = ["Popular Places", "New Places", "My Places"]
     
     func getHeaderNameForSection(section:Int) -> String {
         return sectionNames[section]
@@ -33,42 +33,6 @@ class HomeVM {
     
     var closure: (([PlaceItem])->())?
 
-//    func getPopularPlaces() {
-//        apiService.makeRequest(urlConvertible: Router.getPopularPlaces(limit: 5)) { (result:Result<PlacesData,Error>) in
-//            switch result {
-//            case .success(let success):
-//
-//                self.popularPlaces = success.data.places
-//            case .failure(let failure):
-//                print(failure.localizedDescription)
-//            }
-//        }
-//    }
-//
-//    func getLastPlaces() {
-//        apiService.makeRequest(urlConvertible: Router.getLastPlaces(limit: 5)) { (result:Result<PlacesData,Error>) in
-//            switch result {
-//            case .success(let success):
-//
-//                self.newPlaces = success.data.places
-//            case .failure(let failure):
-//                print(failure.localizedDescription)
-//            }
-//        }
-//    }
-//
-//    func getMyVisits() {
-//        apiService.makeRequest(urlConvertible: Router.myAllVisits(limit: 5)) { (result:Result<TravelData,Error>) in
-//            switch result {
-//            case .success(let success):
-//
-//                let value = success.data.visits
-//                self.myTravels = value
-//            case .failure(let failure):
-//                print(failure.localizedDescription)
-//            }
-//        }
-//    }
     
     
     func convertPlaceItemArray(visitsArray: [Visits]) -> [PlaceItem] {

@@ -167,6 +167,8 @@ extension MenuVC:UICollectionViewDelegateFlowLayout {
         if labelsAtRow == "Security Settings" {
             let nav = SecuritySettingsVC()
             navigationController?.pushViewController(nav, animated: true)
+        } else if labelsAtRow == "Help&Support" {
+            self.present(HelpAndSupportVC(), animated: true)
         }
      
     }

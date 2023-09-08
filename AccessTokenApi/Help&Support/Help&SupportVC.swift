@@ -8,23 +8,9 @@
 import UIKit
 import TinyConstraints
 
-struct Collapsible {
-    var titleLabel:String
-    var descriptionLabel:String
-    var isOpened:Bool = false
-    
-}
-
 class HelpAndSupportVC: UIViewController {
     
-    var isStackViewHidden = true
-    
-    
-    let topLabelArray = ["How can I create a new account on Travio?", "How can I save a visit?", "How does Travio work?", "How does Travio work?", "How does Travio work?", "How does Travio work?", "How does Travio work?"]
-    
-    let botLabelArray = ["Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book", "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"]
-    
-    let downButtonArray = [#imageLiteral(resourceName: "helpAndSupportButton"), #imageLiteral(resourceName: "helpAndSupportButton"), #imageLiteral(resourceName: "helpAndSupportButton"), #imageLiteral(resourceName: "helpAndSupportButton"), #imageLiteral(resourceName: "helpAndSupportButton"), #imageLiteral(resourceName: "helpAndSupportButton"), #imageLiteral(resourceName: "helpAndSupportButton")]
+    var dataSource = CellDataModel.mockedData
     
 //    let viewModel = HelpAndSupportVM()
     
@@ -63,41 +49,33 @@ class HelpAndSupportVC: UIViewController {
     }()
     
         private lazy var faqTableView:UITableView = {
-           let faqTableView = UITableView()
+            let faqTableView = UITableView(frame: .zero, style: .plain)
             faqTableView.dataSource = self
             faqTableView.delegate = self
             faqTableView.register(HelpSupportTableCell.self, forCellReuseIdentifier: "customCell")
             faqTableView.isScrollEnabled = false
-//            faqTableView.estimatedRowHeight = 53
-            faqTableView.rowHeight = UITableView.automaticDimension
+//            faqTableView.estimatedRowHeight = 100
+//            faqTableView.rowHeight = UITableView.automaticDimension
             faqTableView.separatorStyle = .none
             faqTableView.backgroundColor = .clear
+            faqTableView.translatesAutoresizingMaskIntoConstraints = false
             return faqTableView
         }()
-    
-    var sections = [Collapsible(titleLabel: "How can I create a new account on Travio?", descriptionLabel: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"),
-    Collapsible(titleLabel: "How can I save a visit?", descriptionLabel: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"),
-    Collapsible(titleLabel: "How does Travio work?", descriptionLabel: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"),
-    Collapsible(titleLabel: "How does Travio work?", descriptionLabel: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"),
-    Collapsible(titleLabel: "How does Travio work?", descriptionLabel: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"),
-    Collapsible(titleLabel: "How does Travio work?", descriptionLabel: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"),
-    Collapsible(titleLabel: "How does Travio work?", descriptionLabel: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book")]
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Color.systemGreen.chooseColor
         setupView()
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidLayoutSubviews() {
         whiteView.roundCorners(corners: .topLeft, radius: 80)
     }
     
     @objc func backToSettings() {
         
-        let settingsPage = MenuVC()
-        navigationController?.popViewController(animated: true)
+//        navigationController?.popViewController(animated: true)
     }
 
     func setupView() {
@@ -129,51 +107,38 @@ class HelpAndSupportVC: UIViewController {
 
 extension HelpAndSupportVC:UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? HelpSupportTableCell else { return UITableViewCell() }
-    
-        let top = topLabelArray[indexPath.row]
-        let imageButton = downButtonArray[indexPath.row]
-        
-        cell.configureUp(title: top, buttonImage: imageButton)
-        return cell
+            cell.set(dataSource[indexPath.row])
+                return cell
     }
     
 }
 
 extension HelpAndSupportVC:UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let header = UIView()
-//        header.isUserInteractionEnabled = false
-//        header.backgroundColor = UIColor.clear
-//            return header
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 0
 //    }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//    
-//    }
+//
+//        return UITableView.automaticDimension
+    
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            UITableView.automaticDimension
+        }
+    
+    
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-//         tableView.deselectRow(at: indexPath, animated: true)
-//
-//         sections[indexPath.section].isOpened = !sections[indexPath.section].isOpened
-//         tableView.reloadSections([indexPath.section], with: .none)
-
+         dataSource[indexPath.row].isExpanded.toggle()
+         tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     
 

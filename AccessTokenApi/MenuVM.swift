@@ -10,7 +10,7 @@ import UIKit
 
 class MenuVM {
     
-    var collectionViewCellsLabels = ["Security Settings", "App Defaults", "My Added Places", "Helps&Support", "About", "Terms of Use"]
+    var collectionViewCellsLabels = ["Security Settings", "App Defaults", "My Added Places", "Help&Support", "About", "Terms of Use"]
     
     var collectionViewCellsLeftImages = [#imageLiteral(resourceName: "s"), #imageLiteral(resourceName: "Settings1"), #imageLiteral(resourceName: "Settings2"), #imageLiteral(resourceName: "s 1"), #imageLiteral(resourceName: "Settings3"), #imageLiteral(resourceName: "Settings4")]
     

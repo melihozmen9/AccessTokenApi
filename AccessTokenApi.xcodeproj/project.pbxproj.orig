@@ -130,6 +130,13 @@
 		21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */; };
 		21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C5902AA20977004D2DFC /* HomeVM.swift */; };
 		21F804782A93D7D40068CDAF /* TravelID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F804772A93D7D40068CDAF /* TravelID.swift */; };
+<<<<<<< HEAD
+=======
+		794C453C2AA0B89D008DD231 /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794C453B2AA0B89D008DD231 /* MenuVM.swift */; };
+		7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */; };
+		A337464B2AAB03DF00CAD976 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A337464A2AAB03DF00CAD976 /* AlertHelper.swift */; };
+		A34F92F12AA9C2F700AED53B /* NotificationCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */; };
+>>>>>>> Sprint2/DetailAddRemoveConfigureButton
 		A3C32F5A2AA5D4CF005D558B /* SeeAllPlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F562AA5D4CF005D558B /* SeeAllPlacesVC.swift */; };
 		A3C32F5D2AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F592AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift */; };
 		A3C32F642AA66068005D558B /* SeeAllPlacesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F632AA66068005D558B /* SeeAllPlacesVM.swift */; };
@@ -235,6 +242,13 @@
 		21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		21D0C5902AA20977004D2DFC /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		21F804772A93D7D40068CDAF /* TravelID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelID.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		794C453B2AA0B89D008DD231 /* MenuVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
+		7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCvCell.swift; sourceTree = "<group>"; };
+		A337464A2AAB03DF00CAD976 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
+		A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHelper.swift; sourceTree = "<group>"; };
+>>>>>>> Sprint2/DetailAddRemoveConfigureButton
 		A3C32F562AA5D4CF005D558B /* SeeAllPlacesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesVC.swift; sourceTree = "<group>"; };
 		A3C32F592AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesCustomCell.swift; sourceTree = "<group>"; };
 		A3C32F632AA66068005D558B /* SeeAllPlacesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesVM.swift; sourceTree = "<group>"; };
@@ -278,16 +292,10 @@
 				216A05DB2A95D6B1001DC3D5 /* MapPage */,
 				219039642A9DEC7D007AE38C /* SecuritySettingPage */,
 				213FD1162A8FDD73004D2024 /* MainTabBarController.swift */,
-<<<<<<< HEAD
 				219258D02AA9E815000BFCBD /* CustomCvCell.swift */,
 				219258CE2AA9E810000BFCBD /* MenuVM.swift */,
 				219258CC2AA9E7ED000BFCBD /* MenuVC.swift */,
-=======
-				794C453B2AA0B89D008DD231 /* MenuVM.swift */,
-				213FD11F2A8FE155004D2024 /* MenuVC.swift */,
-				7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */,
 				21D000FC2AA8AB5E00FBB5D9 /* AboutUsVC.swift */,
->>>>>>> Sprint2/AboutUsPage
 			);
 			name = TabBarVC;
 			sourceTree = "<group>";
@@ -317,6 +325,8 @@
 			children = (
 				214310D92A8F616E004B81A9 /* Enums.swift */,
 				214310DB2A8F66F1004B81A9 /* Extensions.swift */,
+				A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */,
+				A337464A2AAB03DF00CAD976 /* AlertHelper.swift */,
 			);
 			path = "Extensions Enums";
 			sourceTree = "<group>";
@@ -763,6 +773,7 @@
 				21777B3F2AA6130C00ED5346 /* SecurityCell.swift in Sources */,
 				A3C32F642AA66068005D558B /* SeeAllPlacesVM.swift in Sources */,
 				217D7A492A8E3F7900274A30 /* DetailVC.swift in Sources */,
+				A34F92F12AA9C2F700AED53B /* NotificationCenterHelper.swift in Sources */,
 				21C20F832AA73A9400C87340 /* EditProfileVM.swift in Sources */,
 				21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */,
 				216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */,
@@ -792,6 +803,7 @@
 				217D7A4B2A8E44B100274A30 /* DetailVM.swift in Sources */,
 				214310DC2A8F66F1004B81A9 /* Extensions.swift in Sources */,
 				216616AB2A94B28B00E0E3B9 /* CustomCollectionCell.swift in Sources */,
+				A337464B2AAB03DF00CAD976 /* AlertHelper.swift in Sources */,
 				214310DE2A8F8C6C004B81A9 /* CustomButton.swift in Sources */,
 				21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */,
 				21C2102A2AA756F400C87340 /* UserStruct.swift in Sources */,

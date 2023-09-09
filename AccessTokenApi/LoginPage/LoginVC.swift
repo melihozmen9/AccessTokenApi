@@ -9,10 +9,16 @@
 import UIKit
 
 import TinyConstraints
+import NVActivityIndicatorView
 
 class LoginVC: UIViewController {
     
     let viewModal = LoginVM()
+    
+    private lazy var activity: NVActivityIndicatorView = {
+        let activity = NVActivityIndicatorView(frame: .zero, type: .pacman, color: Color.systemGreen.chooseColor, padding: 0)
+        return activity
+    }()
     
     private lazy var imageview: UIImageView = {
         let iv = UIImageView()
@@ -38,18 +44,18 @@ class LoginVC: UIViewController {
     
     private lazy var emailView: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Email"
-        v.Tf.text = "Melihv3@gmail.com"
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "developer@bilgeadam.com", attributes: v.attributes)
+        v.titleLabel.text = "Email"
+        v.textField.text = "Melihv6@gmail.com"
+        v.textField.attributedPlaceholder = NSAttributedString(string: "developer@bilgeadam.com", attributes: v.attributes)
         return v
     }()
     
     private lazy var passwordView: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "Password"
-        v.Tf.text = "123456"
-        v.Tf.isSecureTextEntry = true
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
+        v.titleLabel.text = "Password"
+        v.textField.text = "123456"
+        v.textField.isSecureTextEntry = true
+        v.textField.attributedPlaceholder = NSAttributedString(string: "******", attributes: v.attributes)
         return v
     }()
     
@@ -74,27 +80,43 @@ class LoginVC: UIViewController {
         setupView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        view1.roundCorners(corners: .topLeft, radius: 80)
+    }
+    
     @objc func signLblTapped(_ sender: UITapGestureRecognizer) {
         let signVC = SignUpVC()
         navigationController?.pushViewController(signVC, animated: true)
     }
     
     @objc func loginTapped() {
-        guard let email = emailView.Tf.text, let password = passwordView.Tf.text else {return}
+        self.activity.startAnimating()
+        guard let email = emailView.textField.text, let password = passwordView.textField.text else {return}
         let body = ["email":email,"password":password]
-        viewModal.login(params: body) {
+        viewModal.login(params: body) { message in
+            if !message.isEmpty {
+                self.showAlert(message: message)
+            }
+            self.activity.stopAnimating()
             let vc = MainTabBarController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        view1.roundCorners(corners: .topLeft, radius: 80)
+    
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Üzgünüz", message: message, preferredStyle: .alert)
+        
+            let action = UIAlertAction(title: "Tamam", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
+        
     }
     
     private func setupView() {
         view.backgroundColor = Color.systemGreen.chooseColor
-        view.addSubViews(imageview,view1)
+        view.addSubViews(imageview,view1,activity)
         view1.addSubViews(emailView,passwordView,welcomeLbl,lgnBtn,signLbl)
         setupLayout()
         signUpGesture()
@@ -117,6 +139,10 @@ class LoginVC: UIViewController {
         
         signLbl.topToBottom(of: lgnBtn,offset: 141)
         signLbl.edgesToSuperview(excluding:[.top], insets: .right(30) + .left(30) + .bottom(21))
+        
+        activity.centerInSuperview()
+        activity.height(50)
+        activity.width(50)
     }
     
     func signUpGesture() {

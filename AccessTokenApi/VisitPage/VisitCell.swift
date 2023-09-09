@@ -23,30 +23,39 @@ class VisitCell: UITableViewCell {
         return iv
     }()
     
-    private lazy var Lbl: UILabel = {
+    private lazy var cityLbl: UILabel = {
         let l = UILabel()
         l.font = Font.regular16.chooseFont
         l.textColor = Color.white.chooseColor
         return l
     }()
     
+    private lazy var titleLbl: UILabel = {
+        let l = UILabel()
+        l.font = Font.bold24.chooseFont
+        l.textColor = Color.white.chooseColor
+        l.text = "Amsterdam"
+        return l
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
-            }
+        layoutIfNeeded()
+        contentView.roundCornersWithShadow( [.topLeft,.topRight,.bottomLeft], radius: 16)
+    }
     
-   
-    func configure(item: VisitPlace) {
+    func configure(item: PlaceItem) {
         
         imageview.layoutIfNeeded()
         imageview.roundCorners(corners: [.topLeft,.topRight,.bottomLeft], radius: 16)
-        Lbl.text = item.title
+        titleLbl.text = item.title
+        cityLbl.text = item.place
         guard let safeUrl = item.cover_image_url else {return}
         let url = URL(string: safeUrl)
         imageview.kf.setImage(with: url)
         imageview.kf.indicatorType = .activity
         
-
     }
     
     required init?(coder: NSCoder) {
@@ -54,22 +63,28 @@ class VisitCell: UITableViewCell {
     }
     
     private func setupView() {
-        self.backgroundColor = Color.systemWhite.chooseColor
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
         self.contentView.addSubViews(imageview)
-        imageview.addSubViews(Lbl,iconView)
+        imageview.addSubViews(titleLbl,iconView,cityLbl)
         setupLayout()
     }
     
     private func setupLayout() {
-        imageview.edgesToSuperview(insets: .bottom(16))
-       
+        imageview.edgesToSuperview(insets: .bottom(16) + .right(22) + .left(22))
         
         iconView.edgesToSuperview(excluding: [.top,.right], insets: .bottom(8) + .left(10))
         iconView.height(20)
         iconView.width(15)
         
-        Lbl.edgesToSuperview(excluding: [.top,.right], insets: .bottom(8) + .left(29))
-        Lbl.height(24)
-        Lbl.width(100)
+        cityLbl.height(24)
+        cityLbl.rightToSuperview(offset: -10)
+        cityLbl.bottomToSuperview(offset: -8)
+        cityLbl.leftToRight(of: iconView, offset: 6)
+        
+        titleLbl.left(to: iconView)
+        titleLbl.bottomToTop(of: iconView, offset: 2)
+        titleLbl.height(45)
+        titleLbl.rightToSuperview(offset: -10)
     }
 }

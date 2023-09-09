@@ -11,7 +11,6 @@
 		213FD11A2A8FDE34004D2024 /* VisitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD1192A8FDE34004D2024 /* VisitVC.swift */; };
 		213FD11C2A8FDEEE004D2024 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD11B2A8FDEEE004D2024 /* HomeVC.swift */; };
 		213FD11E2A8FE141004D2024 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD11D2A8FE141004D2024 /* MapVC.swift */; };
-		213FD1202A8FE155004D2024 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD11F2A8FE155004D2024 /* MenuVC.swift */; };
 		213FD1222A8FEF5C004D2024 /* VisitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213FD1212A8FEF5C004D2024 /* VisitCell.swift */; };
 		214310AD2A8F57AA004B81A9 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310AC2A8F57AA004B81A9 /* CustomView.swift */; };
 		214310D72A8F5CC9004B81A9 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 214310D62A8F5CC9004B81A9 /* CustomLabel.swift */; };
@@ -49,6 +48,9 @@
 		219039682A9DF03F007AE38C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219039672A9DF03F007AE38C /* Router.swift */; };
 		2190396A2A9DFF7F007AE38C /* CustomSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219039692A9DFF7F007AE38C /* CustomSwitchView.swift */; };
 		2190396D2A9E1583007AE38C /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190396C2A9E1583007AE38C /* EditProfileVC.swift */; };
+		219258CD2AA9E7ED000BFCBD /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219258CC2AA9E7ED000BFCBD /* MenuVC.swift */; };
+		219258CF2AA9E810000BFCBD /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219258CE2AA9E810000BFCBD /* MenuVM.swift */; };
+		219258D12AA9E815000BFCBD /* CustomCvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219258D02AA9E815000BFCBD /* CustomCvCell.swift */; };
 		21B15DB72A913DBD0021938F /* AddTravelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB62A913DBD0021938F /* AddTravelVC.swift */; };
 		21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB82A913DE70021938F /* AddTravelVM.swift */; };
 		21B5E5442AA769DD00651CD0 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 21B5E5432AA769DD00651CD0 /* JWTDecode */; };
@@ -122,6 +124,7 @@
 		21C2102A2AA756F400C87340 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C210292AA756F400C87340 /* UserStruct.swift */; };
 		21C2102B2AA756F400C87340 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C210292AA756F400C87340 /* UserStruct.swift */; };
 		21C2102C2AA756F400C87340 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C210292AA756F400C87340 /* UserStruct.swift */; };
+		21D000FD2AA8AB5E00FBB5D9 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D000FC2AA8AB5E00FBB5D9 /* AboutUsVC.swift */; };
 		21D0C58A2AA1B8D1004D2DFC /* SecuritySettingsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */; };
 		21D0C58D2AA1EC02004D2DFC /* HomeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */; };
 		21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */; };
@@ -158,7 +161,6 @@
 		213FD1192A8FDE34004D2024 /* VisitVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitVC.swift; sourceTree = "<group>"; };
 		213FD11B2A8FDEEE004D2024 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		213FD11D2A8FE141004D2024 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
-		213FD11F2A8FE155004D2024 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		213FD1212A8FEF5C004D2024 /* VisitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitCell.swift; sourceTree = "<group>"; };
 		214310AC2A8F57AA004B81A9 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		214310D62A8F5CC9004B81A9 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
@@ -202,6 +204,9 @@
 		219039672A9DF03F007AE38C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		219039692A9DFF7F007AE38C /* CustomSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchView.swift; sourceTree = "<group>"; };
 		2190396C2A9E1583007AE38C /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
+		219258CC2AA9E7ED000BFCBD /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuVC.swift; path = ../../../Downloads/MenuVC.swift; sourceTree = "<group>"; };
+		219258CE2AA9E810000BFCBD /* MenuVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
+		219258D02AA9E815000BFCBD /* CustomCvCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCvCell.swift; sourceTree = "<group>"; };
 		21B15DB62A913DBD0021938F /* AddTravelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelVC.swift; sourceTree = "<group>"; };
 		21B15DB82A913DE70021938F /* AddTravelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelVM.swift; sourceTree = "<group>"; };
 		21B7642D2A9375590047CB92 /* VisitVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitVM.swift; sourceTree = "<group>"; };
@@ -228,6 +233,7 @@
 		21C20FEB2AA749FC00C87340 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
 		21C20FEC2AA749FC00C87340 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		21C210292AA756F400C87340 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
+		21D000FC2AA8AB5E00FBB5D9 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		21D0C5892AA1B8D1004D2DFC /* SecuritySettingsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuritySettingsVM.swift; sourceTree = "<group>"; };
 		21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableCell.swift; sourceTree = "<group>"; };
 		21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -280,9 +286,10 @@
 				216A05DB2A95D6B1001DC3D5 /* MapPage */,
 				219039642A9DEC7D007AE38C /* SecuritySettingPage */,
 				213FD1162A8FDD73004D2024 /* MainTabBarController.swift */,
-				794C453B2AA0B89D008DD231 /* MenuVM.swift */,
-				213FD11F2A8FE155004D2024 /* MenuVC.swift */,
-				7983AB1C2A9E04A300D9B105 /* CustomCvCell.swift */,
+				219258D02AA9E815000BFCBD /* CustomCvCell.swift */,
+				219258CE2AA9E810000BFCBD /* MenuVM.swift */,
+				219258CC2AA9E7ED000BFCBD /* MenuVC.swift */,
+				21D000FC2AA8AB5E00FBB5D9 /* AboutUsVC.swift */,
 			);
 			name = TabBarVC;
 			sourceTree = "<group>";
@@ -514,9 +521,9 @@
 			isa = PBXGroup;
 			children = (
 				213FD11B2A8FDEEE004D2024 /* HomeVC.swift */,
+				21D0C5902AA20977004D2DFC /* HomeVM.swift */,
 				21D0C58C2AA1EC02004D2DFC /* HomeTableCell.swift */,
 				21D0C58E2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift */,
-				21D0C5902AA20977004D2DFC /* HomeVM.swift */,
 				A3C32F622AA6604A005D558B /* SeeAllPlaces */,
 			);
 			path = HomePage;
@@ -742,10 +749,12 @@
 				213FD11C2A8FDEEE004D2024 /* HomeVC.swift in Sources */,
 				21B764302A9378380047CB92 /* TravelModal.swift in Sources */,
 				219039662A9DECD9007AE38C /* SecuritySettingsVC.swift in Sources */,
+				219258D12AA9E815000BFCBD /* CustomCvCell.swift in Sources */,
 				21D0C58D2AA1EC02004D2DFC /* HomeTableCell.swift in Sources */,
 				219039682A9DF03F007AE38C /* Router.swift in Sources */,
 				218C34E32A8E0DFE008AC00B /* ApiService.swift in Sources */,
 				21C20F852AA73A9F00C87340 /* EditModal.swift in Sources */,
+				219258CF2AA9E810000BFCBD /* MenuVM.swift in Sources */,
 				213FD1172A8FDD73004D2024 /* MainTabBarController.swift in Sources */,
 				21793EB52A98D42D001CA74D /* UploadResponse.swift in Sources */,
 				216A05E22A95D91C001DC3D5 /* Extension.swift in Sources */,
@@ -763,11 +772,13 @@
 				21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */,
 				216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */,
 				214310AD2A8F57AA004B81A9 /* CustomView.swift in Sources */,
+				219258CD2AA9E7ED000BFCBD /* MenuVC.swift in Sources */,
 				214310DA2A8F616E004B81A9 /* Enums.swift in Sources */,
 				214310E02A8F9323004B81A9 /* SignUpVC.swift in Sources */,
 				21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */,
 				21B15DB72A913DBD0021938F /* AddTravelVC.swift in Sources */,
 				216A05EC2A9623AC001DC3D5 /* AddTravelCollectionCell.swift in Sources */,
+				21D000FD2AA8AB5E00FBB5D9 /* AboutUsVC.swift in Sources */,
 				21678CE72AA71E7C0029BA0E /* SecurityCellVM.swift in Sources */,
 				214310D72A8F5CC9004B81A9 /* CustomLabel.swift in Sources */,
 				A3C32F5D2AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift in Sources */,
@@ -780,9 +791,7 @@
 				214310E22A8FA0DB004B81A9 /* RegisterVM.swift in Sources */,
 				2190396D2A9E1583007AE38C /* EditProfileVC.swift in Sources */,
 				A3C32F5A2AA5D4CF005D558B /* SeeAllPlacesVC.swift in Sources */,
-				213FD1202A8FE155004D2024 /* MenuVC.swift in Sources */,
 				21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */,
-				7983AB1D2A9E04A300D9B105 /* CustomCvCell.swift in Sources */,
 				21678CE92AA71FD20029BA0E /* SecurityModal.swift in Sources */,
 				216A05E42A95E21C001DC3D5 /* PlacesModal.swift in Sources */,
 				217D7A4B2A8E44B100274A30 /* DetailVM.swift in Sources */,
@@ -793,7 +802,6 @@
 				21B7642E2A9375590047CB92 /* VisitVM.swift in Sources */,
 				21C2102A2AA756F400C87340 /* UserStruct.swift in Sources */,
 				213FD11A2A8FDE34004D2024 /* VisitVC.swift in Sources */,
-				794C453C2AA0B89D008DD231 /* MenuVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

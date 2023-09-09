@@ -41,6 +41,7 @@ class VisitVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(VisitCell.self, forCellReuseIdentifier: "VisitCell")
+        tableView.backgroundColor = .clear
         return tableView
     }()
     
@@ -60,6 +61,7 @@ class VisitVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         containerView.roundCorners(corners: .topLeft, radius: 80)
+        tableView.roundCornersWithShadow([.topLeft,.topRight,.bottomLeft], radius: 16)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,10 +107,31 @@ class VisitVC: UIViewController {
         }
     }
     
+<<<<<<< HEAD
     @objc func visitChanged() {
         visitViewModal.fetchTravels {
                 self.tableView.reloadData()
         }
+=======
+    private func setupView() {
+        self.view.backgroundColor = Color.systemGreen.chooseColor
+        view.addSubViews(containerView,headerLabel,activity)
+        containerView.addSubViews(tableView)
+        setupLayout()
+    }
+    private func setupLayout() {
+        headerLabel.edgesToSuperview(excluding:[.bottom,.right], insets: .left(24) + .top(24),usingSafeArea: true)
+        headerLabel.height(52)
+        headerLabel.width(165)
+        
+        activity.centerInSuperview()
+        activity.height(40)
+        activity.width(40)
+        
+        containerView.edgesToSuperview( insets: .top(129))
+        
+        tableView.edgesToSuperview( insets: .top(45), usingSafeArea: true)
+>>>>>>> Sprint2/LoginSingUpRefaktor
     }
     
     func pushNav(visitId:String, placeId: String) {

@@ -107,53 +107,45 @@ class VisitVC: UIViewController {
         }
     }
     
-<<<<<<< HEAD
     @objc func visitChanged() {
         visitViewModal.fetchTravels {
                 self.tableView.reloadData()
         }
-=======
-    private func setupView() {
-        self.view.backgroundColor = Color.systemGreen.chooseColor
-        view.addSubViews(containerView,headerLabel,activity)
-        containerView.addSubViews(tableView)
-        setupLayout()
     }
-    private func setupLayout() {
-        headerLabel.edgesToSuperview(excluding:[.bottom,.right], insets: .left(24) + .top(24),usingSafeArea: true)
-        headerLabel.height(52)
-        headerLabel.width(165)
-        
-        activity.centerInSuperview()
-        activity.height(40)
-        activity.width(40)
-        
-        containerView.edgesToSuperview( insets: .top(129))
-        
-        tableView.edgesToSuperview( insets: .top(45), usingSafeArea: true)
->>>>>>> Sprint2/LoginSingUpRefaktor
-    }
+        func pushNav(visitId:String, placeId: String) {
+            let detailVC = DetailVC()
+            detailVC.placeId = placeId
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+
+//     func setupView() {
+//        self.view.backgroundColor = Color.systemGreen.chooseColor
+//        view.addSubViews(containerView,headerLabel,activity)
+//        containerView.addSubViews(tableView)
+//        setupLayout()
+//    }
+//     func setupLayout() {
+//        headerLabel.edgesToSuperview(excluding:[.bottom,.right], insets: .left(24) + .top(24),usingSafeArea: true)
+//        headerLabel.height(52)
+//        headerLabel.width(165)
+//        
+//        activity.centerInSuperview()
+//        activity.height(40)
+//        activity.width(40)
+//        
+//        containerView.edgesToSuperview( insets: .top(129))
+//        
+//        tableView.edgesToSuperview( insets: .top(45), usingSafeArea: true)
+//
+//    }
     
-    func pushNav(visitId:String, placeId: String) {
-        let detailVC = DetailVC()
-        detailVC.placeId = placeId
-        navigationController?.pushViewController(detailVC, animated: true)
-    }
+  
 }
 
 
-extension VisitVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 219
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        guard let visitInfo = visitViewModal.getObjectForRowAt(indexpath: indexPath) else {return}
-        pushNav(visitId:visitInfo.id ,placeId: visitInfo.place_id)
-        
-    }
-}
+
+
+
 
 extension VisitVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -165,5 +157,17 @@ extension VisitVC: UITableViewDataSource {
         guard let item = visitViewModal.getObjectForRowAt(indexpath: indexPath) else {return UITableViewCell()}
         cell.configure(item: item.place)
         return cell
+    }
+}
+extension VisitVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 219
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let visitInfo = visitViewModal.getObjectForRowAt(indexpath: indexPath) else {return}
+        self.pushNav(visitId:visitInfo.id ,placeId: visitInfo.place_id)
+        
     }
 }

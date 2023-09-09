@@ -18,7 +18,7 @@ enum Router: URLRequestConvertible {
     //Travel
     case upload(image: [Data])
     case myAllVisits(limit:Int?)
-    case travelID (placeId:String)
+    case getVisitInfo(placeId:String)
     case postPlace(params:Parameters)
     case postVisit(params:Parameters)
     case deletePlace(placeId:String)
@@ -79,7 +79,7 @@ enum Router: URLRequestConvertible {
           switch self {
           case .login, .register, .upload,.postPlace, .postGallery, .postVisit :
               return .post
-          case .me,.myAllVisits,.places, .getVisitInfo , .galleryID,.travelID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces, .checkVisit :
+          case .me,.myAllVisits,.places , .galleryID,.getVisitInfo, .getPopularPlaces , .getLastPlaces, .checkVisit :
               return .get
           case .deletePlace:
               return .delete

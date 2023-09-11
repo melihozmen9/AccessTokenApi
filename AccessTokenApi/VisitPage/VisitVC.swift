@@ -41,6 +41,7 @@ class VisitVC: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(VisitCell.self, forCellReuseIdentifier: "VisitCell")
+        tableView.backgroundColor = .clear
         return tableView
     }()
     
@@ -60,6 +61,7 @@ class VisitVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         containerView.roundCorners(corners: .topLeft, radius: 80)
+        tableView.roundCornersWithShadow([.topLeft,.topRight,.bottomLeft], radius: 16)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +86,7 @@ class VisitVC: UIViewController {
         
         containerView.edgesToSuperview( insets: .top(129))
         
-        tableView.edgesToSuperview( insets: .top(45) + .right(22) + .left(22) + .bottom(0), usingSafeArea: true)
+        tableView.edgesToSuperview( insets: .top(45), usingSafeArea: true)
     }
     
     func initVM() {

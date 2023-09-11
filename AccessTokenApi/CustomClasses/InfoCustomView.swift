@@ -31,7 +31,7 @@ class InfoCustomView: UIView {
     }
     
     override func layoutSubviews() {
-        self.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 16)
+        self.roundCornersWithShadow([.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 16)
     }
     
     required init?(coder: NSCoder) {

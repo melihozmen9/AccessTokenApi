@@ -81,7 +81,7 @@ class SecuritySettingsVC: UIViewController, CellFunctions {
     
     
     @objc func backButtonTapped() {
-        dismiss(animated: true, completion: nil)
+       dismiss(animated: true)
     }
     
     
@@ -125,10 +125,6 @@ class SecuritySettingsVC: UIViewController, CellFunctions {
         present(alert, animated: true)
     }
 
-  
-    
- 
-    
     private func setupView() {
         self.navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Color.systemGreen.chooseColor

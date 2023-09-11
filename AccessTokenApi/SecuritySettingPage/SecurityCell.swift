@@ -20,7 +20,7 @@ class SecurityCell: UITableViewCell {
     
      lazy var passwordView: CustomView = {
         let v = CustomView()
-         v.Tf.delegate = self
+         v.textField.delegate = self
         return v
     }()
     
@@ -56,7 +56,7 @@ class SecurityCell: UITableViewCell {
     
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
             // Ekranın herhangi bir yerine tıklandığında çalışır
-        passwordView.Tf.resignFirstResponder() // Klavyeyi kapat
+        passwordView.textField.resignFirstResponder() // Klavyeyi kapat
         }
     
     func openAppSettings() {
@@ -71,9 +71,9 @@ class SecurityCell: UITableViewCell {
         if section == 0 {
             passwordView.edgesToSuperview(excluding: [.bottom])
             passwordView.height(72)
-            passwordView.Lbl.text = data
+            passwordView.titleLabel.text = data
           
-            passwordView.Tf.attributedPlaceholder = NSAttributedString(string: "******", attributes: passwordView.attributes)
+            passwordView.textField.attributedPlaceholder = NSAttributedString(string: "******", attributes: passwordView.attributes)
         } else if section == 1 {
             switchView.edgesToSuperview(excluding: [.bottom])
             switchView.height(72)
@@ -99,9 +99,8 @@ class SecurityCell: UITableViewCell {
         contentView.addGestureRecognizer(tapGesture)
         contentView.backgroundColor = Color.systemWhite.chooseColor
         contentView.addSubviews(passwordView,switchView)
-        //setupLayout()
+//        setupLayout()
     }
-    
     
     
 }
@@ -109,7 +108,7 @@ class SecurityCell: UITableViewCell {
 
 extension SecurityCell: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if passwordView.Lbl.text == "New Password" {
+        if passwordView.titleLabel.text == "New Password" {
             textField.resignFirstResponder() // Klavyeyi kapat
             if let text = textField.text {
                 delegate?.textFieldFunctions(text: text, number: 1)

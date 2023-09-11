@@ -20,13 +20,11 @@ func getPlaces (callback: @escaping ()->Void) {
         let router: Router
         switch self.place {
         case "popularPlaces":
-            router = Router.getPopularPlaces
-        case "myVisits":
-            router = Router.getMyAddedPlaces
-        case "newPlaces":
-            router = Router.getLastPlaces
+            router = Router.getPopularPlaces(limit: nil)
         case "myAddedPlaces":
-            router = Router.getMyAddedPlaces
+            router = Router.myAllVisits(limit: nil)
+        case "newPlaces":
+            router = Router.getLastPlaces(limit: nil)
         default:
             fatalError("Invalid place value")
         }

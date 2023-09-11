@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class RegisterVM {
     
@@ -16,7 +17,7 @@ class RegisterVM {
     }
     
     func register(params: [String:String], handler: @escaping ((RegisterResponse)->())  ) {
-        apiService.objectRequest(urlConvertible: Router.register(params: params)) { (result:(Result<RegisterResponse,Error>)) in
+        apiService.objectRequest(urlConvertible: Router.register(params: params)) { (result:(Result<RegisterResponse,ErrorResponse>)) in
             
             switch result {
             case .success(let success):
@@ -26,4 +27,15 @@ class RegisterVM {
             }
         }
     }
+    
+    func updateLoginButtonState(isEmail: Bool, isUsername: Bool, isPassword: Bool, isPassword2: Bool, password1Text: String, password2Text:String) -> Bool {
+        
+        if isEmail && isUsername && isPassword && isPassword2 && password1Text == password2Text{
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    
 }

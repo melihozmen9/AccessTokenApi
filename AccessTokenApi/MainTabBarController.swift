@@ -56,7 +56,7 @@ class MainTabBarController: UITabBarController {
         let map = MapVC()
         map.tabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "map"), tag: 2)
                                      
-        let menu = MenuVC()
+        let menu = AboutUsVC()
         menu.tabBarItem = UITabBarItem(title: "Menu", image: UIImage(named: "menu"), tag: 3)
         
         self.viewControllers = [home,visit,map,menu]

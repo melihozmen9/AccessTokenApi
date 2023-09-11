@@ -62,6 +62,7 @@ class CustomView: UIView {
         self.backgroundColor = Color.white.chooseColor
         self.addSubViews(Lbl,Tf)
         setupLayout()
+        print("deneme")
     }
     private func setupLayout() {
         

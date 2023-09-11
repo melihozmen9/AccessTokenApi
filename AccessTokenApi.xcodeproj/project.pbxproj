@@ -132,6 +132,7 @@
 		A337464B2AAB03DF00CAD976 /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A337464A2AAB03DF00CAD976 /* AlertHelper.swift */; };
 		A34F92F12AA9C2F700AED53B /* NotificationCenterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */; };
 		A3592B7A2AAF139A003FA6A3 /* UserMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3592B792AAF139A003FA6A3 /* UserMenuVC.swift */; };
+		A3592B7C2AAF142E003FA6A3 /* Dneeeeee.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3592B7B2AAF142E003FA6A3 /* Dneeeeee.swift */; };
 		A3C32F5A2AA5D4CF005D558B /* SeeAllPlacesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F562AA5D4CF005D558B /* SeeAllPlacesVC.swift */; };
 		A3C32F5D2AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F592AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift */; };
 		A3C32F642AA66068005D558B /* SeeAllPlacesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C32F632AA66068005D558B /* SeeAllPlacesVM.swift */; };
@@ -239,6 +240,7 @@
 		A337464A2AAB03DF00CAD976 /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		A34F92F02AA9C2F700AED53B /* NotificationCenterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterHelper.swift; sourceTree = "<group>"; };
 		A3592B792AAF139A003FA6A3 /* UserMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuVC.swift; sourceTree = "<group>"; };
+		A3592B7B2AAF142E003FA6A3 /* Dneeeeee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dneeeeee.swift; sourceTree = "<group>"; };
 		A3C32F562AA5D4CF005D558B /* SeeAllPlacesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesVC.swift; sourceTree = "<group>"; };
 		A3C32F592AA5D4CF005D558B /* SeeAllPlacesCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesCustomCell.swift; sourceTree = "<group>"; };
 		A3C32F632AA66068005D558B /* SeeAllPlacesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllPlacesVM.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				214310DD2A8F8C6C004B81A9 /* CustomButton.swift */,
 				219039692A9DFF7F007AE38C /* CustomSwitchView.swift */,
 				215A16722AA06A9B007DC0C6 /* InfoCustomView.swift */,
+				A3592B7B2AAF142E003FA6A3 /* Dneeeeee.swift */,
 			);
 			path = CustomClasses;
 			sourceTree = "<group>";
@@ -736,6 +739,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3592B7C2AAF142E003FA6A3 /* Dneeeeee.swift in Sources */,
 				215A16732AA06A9B007DC0C6 /* InfoCustomView.swift in Sources */,
 				216616A92A949CF200E0E3B9 /* MapVM.swift in Sources */,
 				218C34AF2A8E0AFE008AC00B /* LoginVC.swift in Sources */,

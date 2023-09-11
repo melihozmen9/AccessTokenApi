@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "visited.png",
+      "filename" : "unvisited.png",
       "idiom" : "universal",
       "scale" : "1x"
     },

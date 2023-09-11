@@ -10,7 +10,7 @@ import Alamofire
 
 protocol ApiServiceProtocol {
     
-    func objectRequest<T:Codable>(urlConvertible: Router,handler: @escaping (Result<T,Error>) -> Void)
+    func objectRequest<T:Codable>(urlConvertible: Router,handler: @escaping (Result<T,ErrorResponse>) -> Void)
     func makeRequest<T:Codable>(urlConvertible:Router,handler: @escaping (Result<T,Error>) -> Void)
     func uploadImage<T:Codable>(route:Router, callback: @escaping (Result<T,Error>) -> Void)
 }
@@ -34,28 +34,29 @@ class ApiService:ApiServiceProtocol {
     }
     
     func makeRequest<T:Codable>(urlConvertible: Router, handler: @escaping (Result<T, Error>) -> Void) {
-        AF.request(urlConvertible).responseDecodable(of:T.self) { response  in
-            switch response.result {
-                
-            case .success:
-                
-                if let data = response.data {
-                    do {
-                        let decodedData = try JSONDecoder().decode(T.self, from: data)
-                        handler(.success(decodedData as! T))
-                    } catch {
-                        print("Error: \(error)")
+        DispatchQueue.global(qos: .utility).async {
+            AF.request(urlConvertible).responseDecodable(of:T.self) { response  in
+                switch response.result {
+                case .success:
+                    if let data = response.data {
+                        do {
+                            let decodedData = try JSONDecoder().decode(T.self, from: data)
+                            DispatchQueue.main.async {
+                                handler(.success(decodedData as! T))
+                            }
+                        } catch {
+                            print("Error: \(error)")
+                        }
                     }
+                case .failure(let error):
+                    print(error)
                 }
-                
-            case .failure(let error):
-                print(error)
             }
         }
     }
     
     
-    func objectRequest<T:Codable>(urlConvertible: Router, handler: @escaping (Result<T, Error>) -> Void) {
+    func objectRequest<T:Codable>(urlConvertible: Router, handler: @escaping (Result<T, ErrorResponse>) -> Void) {
         AF.request(urlConvertible).responseDecodable(of:T.self) { response  in
             
             switch response.result {
@@ -71,7 +72,14 @@ class ApiService:ApiServiceProtocol {
                     }
                 }
             case .failure(let error):
-                print(error)
+                if let data = response.data {
+                    do {
+                        let decodedData = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                        handler(.failure(decodedData as! ErrorResponse))
+                    } catch {
+                        print("Error: \(error)")
+                    }
+                }
             }
         }
     }

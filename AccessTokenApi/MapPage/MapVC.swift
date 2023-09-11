@@ -3,7 +3,7 @@
 //  AccessTokenApi
 //
 //  Created by Kullanici on 18.08.2023.
-//Scroll To Item collectin view'da istediğim index'deki cell'e götürecek.
+
 
 import UIKit
 import MapKit
@@ -17,16 +17,12 @@ protocol Reloader: AnyObject {
 class MapVC: UIViewController, CLLocationManagerDelegate{
    
     let viewModal = MapVM()
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
     let addTravelVC = AddTravelVC()
->>>>>>> Sprint1/addTravel
     
-=======
-    let addTravelVC = AddTravelVC()
     let locationManager = CLLocationManager()
->>>>>>> HomeVC_fix
+
+    
     private lazy var mapView: MKMapView = {
         let mv = MKMapView()
         mv.mapType = MKMapType.standard
@@ -95,7 +91,6 @@ class MapVC: UIViewController, CLLocationManagerDelegate{
         viewModal.getLocations()
         
         viewModal.fillMapp = { locations in
-            
             self.configure(locations: locations)
         }
         
@@ -178,7 +173,7 @@ extension MapVC: MKMapViewDelegate {
 
 
 extension MapVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {// size vermemiz gereikyor çünkkü ve genişlik ve yükseklik değerlerinie ihiyacımız var.
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = CGSize(width: 309, height: (collectionView.frame.height))
         return size
     }

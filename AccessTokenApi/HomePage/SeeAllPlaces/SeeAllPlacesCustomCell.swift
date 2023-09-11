@@ -3,18 +3,17 @@ import Foundation
 import UIKit
 import TinyConstraints
 
-class PopularPlacesCustomCell:UICollectionViewCell {
+class SeeAllPlacesCustomCell:UICollectionViewCell {
     
     
     private lazy var cellImage:UIImageView = {
         let cellImage = UIImageView()
-        cellImage.contentMode = .center
+        cellImage.contentMode = .scaleToFill
         return cellImage
     }()
     
     private lazy var nameLabel:UILabel = {
         let label = UILabel()
-        label.text = "Kız Kulesi"
         label.font = Font.semibold24.chooseFont
         label.textColor = .black
         return label
@@ -22,7 +21,6 @@ class PopularPlacesCustomCell:UICollectionViewCell {
     
     private lazy var cityNameLabel:UILabel = {
         let label = UILabel()
-        label.text = "Istanbul"
         label.font = Font.regular14.chooseFont
         label.textColor = .black
         return label
@@ -66,6 +64,7 @@ class PopularPlacesCustomCell:UICollectionViewCell {
         
         nameLabel.leadingToTrailing(of: cellImage, offset: 8)
         nameLabel.topToSuperview(offset:16)
+        nameLabel.trailingToSuperview(offset:16)
         
         locationSymbolImage.leadingToTrailing(of: cellImage, offset: 8)
         locationSymbolImage.topToBottom(of: nameLabel, offset: 4)
@@ -76,13 +75,21 @@ class PopularPlacesCustomCell:UICollectionViewCell {
         cityNameLabel.leadingToTrailing(of: locationSymbolImage, offset: 6)
     }
     
+    func configure(item: PlaceItem){
+        
+        nameLabel.text = item.title
+        cityNameLabel.text = item.place
+        guard let url = item.cover_image_url else {return}
+        cellImage.kf.setImage(with: URL(string: url ))
+    }
+    
     
     private func addShadowRadius() {
         layer.shadowColor = Color.systemgray.chooseColor.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 0)
         layer.shadowOpacity = 0.25
         layer.shadowRadius = 4
-        clipsToBounds = false
+        clipsToBounds = true
         layer.cornerRadius = 16
         layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMinYCorner]
     }

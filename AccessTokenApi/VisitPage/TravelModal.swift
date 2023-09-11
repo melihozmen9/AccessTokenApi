@@ -22,20 +22,20 @@ struct Visits: Codable {
     let visited_at: String
     let created_at: String
     let updated_at: String
-    let place: VisitPlace
+    let place: PlaceItem
     
 }
-struct VisitPlace: Codable {
-    let id: String
-    let creator: String
-    let place: String
-    let title: String
-    let description: String?
-    let cover_image_url: String?
-    let latitude: Double
-    let longitude: Double
-    let created_at: String
-    let updated_at: String
-}
+//struct PlaceItem: Codable {
+//    let id: String
+//    let creator: String
+//    let place: String
+//    let title: String
+//    let description: String?
+//    let cover_image_url: String?
+//    let latitude: Double
+//    let longitude: Double
+//    let created_at: String
+//    let updated_at: String
+//}
 
 

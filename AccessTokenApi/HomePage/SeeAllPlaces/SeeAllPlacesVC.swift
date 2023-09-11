@@ -9,18 +9,21 @@ import UIKit
 import TinyConstraints
 import Kingfisher
 
-class PopularPlacesVC: UIViewController {
+class SeeAllPlacesVC: UIViewController {
+    
+    var fromWhere:String!
+    let seeAllPlacesVM = SeeAllPlacesVM()
+    var buttonToggle:Bool = false
     
     private lazy var backButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(named: "vector"), for: .normal)
+        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
-        label.layer.cornerRadius = 3
-        label.text = "Popular Places"
         label.font = Font.semibold32.chooseFont
         label.textColor = Color.white.chooseColor
         return label
@@ -32,9 +35,10 @@ class PopularPlacesVC: UIViewController {
         return containerView
     }()
     
-    private lazy var ascendingDescendingButton:UIButton = {
+    private lazy var sortButton:UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "AscendingPlace"), for: .normal)
+        button.setImage(UIImage(named: "ascending"), for: .normal)
+        button.addTarget(self, action: #selector(sortButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -43,25 +47,25 @@ class PopularPlacesVC: UIViewController {
         layout.minimumLineSpacing = 16
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 70, left: 24, bottom: 0, right: 24)
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.isPagingEnabled = false
-        cv.backgroundColor = .clear
-        cv.delegate = self
-        cv.dataSource = self
-        cv.showsVerticalScrollIndicator = false
-        cv.showsHorizontalScrollIndicator = false
-        cv.register(PopularPlacesCustomCell.self, forCellWithReuseIdentifier: "PopularPlacesCustomCell")
-        return cv
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isPagingEnabled = false
+        collectionView.backgroundColor = .clear
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(SeeAllPlacesCustomCell.self, forCellWithReuseIdentifier: "PopularPlacesCustomCell")
+        return collectionView
     }()
     
     override func viewWillLayoutSubviews() {
         containerView.roundCorners(corners: [.topLeft], radius: 80)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+        getData()
         setupViews()
     }
     
@@ -69,9 +73,9 @@ class PopularPlacesVC: UIViewController {
         
         navigationController?.isNavigationBarHidden = true
         view.backgroundColor = Color.systemGreen.chooseColor
-
         
-        self.containerView.addSubviews(collectionView, ascendingDescendingButton)
+        
+        self.containerView.addSubviews(collectionView, sortButton)
         
         view.addSubviews(backButton,
                          headerLabel,
@@ -93,18 +97,44 @@ class PopularPlacesVC: UIViewController {
         containerView.topToBottom(of: headerLabel, offset: 60)
         containerView.edgesToSuperview(excluding: [.top])
         
-        ascendingDescendingButton.edgesToSuperview(excluding: [.left, .bottom], insets: .top(24) + .right(24))
-        ascendingDescendingButton.height(22)
-        ascendingDescendingButton.width(25)
-
+        sortButton.edgesToSuperview(excluding: [.left, .bottom], insets: .top(24) + .right(24))
+        sortButton.height(22)
+        sortButton.width(25)
+        
         collectionView.edgesToSuperview()
-
+        
         
     }
+    
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func sortButtonTapped() {
+                
+        buttonToggle.toggle()
+        if buttonToggle {
+            sortButton.setImage(UIImage(named: "descending"), for: .normal)
+            seeAllPlacesVM.sortArray(ascending: true)
+        } else {
+            sortButton.setImage(UIImage(named: "ascending"), for: .normal)
+            seeAllPlacesVM.sortArray(ascending: false)
+        }
+        self.collectionView.reloadData()
+    }
+    
+    private func getData() {
 
+        seeAllPlacesVM.place = fromWhere
+        
+        seeAllPlacesVM.getPlaces() {
+            self.headerLabel.text = self.seeAllPlacesVM.setTitle()
+            self.collectionView.reloadData()
+        }
+    }
 }
 
-extension PopularPlacesVC:UICollectionViewDelegateFlowLayout {
+extension SeeAllPlacesVC:UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -117,24 +147,30 @@ extension PopularPlacesVC:UICollectionViewDelegateFlowLayout {
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let detailVC = DetailVC()
+        let item = seeAllPlacesVM.getPlacesIndex(index: indexPath.row)
+        detailVC.placeId = item.id
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
 
 
-extension PopularPlacesVC:UICollectionViewDataSource {
+extension SeeAllPlacesVC:UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return seeAllPlacesVM.countOfPlaces()
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularPlacesCustomCell", for: indexPath) as? PopularPlacesCustomCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularPlacesCustomCell", for: indexPath) as? SeeAllPlacesCustomCell else { return UICollectionViewCell() }
         
+
+        let item = seeAllPlacesVM.getPlacesIndex(index: indexPath.row)
+        cell.configure(item: item)
         return cell
     }
     

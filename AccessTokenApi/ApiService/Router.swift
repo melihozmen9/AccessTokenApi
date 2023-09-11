@@ -79,7 +79,7 @@ enum Router: URLRequestConvertible {
           switch self {
           case .login, .register, .upload,.postPlace, .postGallery, .postVisit :
               return .post
-          case .me,.myAllVisits,.places, .getVisitInfo , .galleryID, .getPopularPlaces, .getMyAddedPlaces , .getLastPlaces, .checkVisit :
+          case .me,.myAllVisits,.places, .getVisitInfo , .galleryID, .getPopularPlaces , .getLastPlaces, .checkVisit :
               return .get
           case .deletePlace:
               return .delete

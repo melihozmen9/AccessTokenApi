@@ -59,7 +59,7 @@ class CustomView: UIView {
         
         titleLabel.edgesToSuperview(excluding: [.bottom], insets: .left(12) + .top(8) + .right(12))
         titleLabel.height(21)
-        
+        print("deneme")
         textField.topToBottom(of: titleLabel,offset: 8)
         textField.edgesToSuperview(excluding: [.bottom,.top], insets: .left(12) + .right(12))
         textField.height(18)

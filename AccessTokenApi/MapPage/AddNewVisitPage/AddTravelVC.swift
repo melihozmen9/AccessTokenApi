@@ -29,21 +29,21 @@ class AddTravelVC: UIViewController{
     
     private lazy var placeView: CustomView = {
         let v = CustomView()
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "date", attributes: v.attributes)
-        v.Lbl.text = "Place Name"
+        v.textField.attributedPlaceholder = NSAttributedString(string: "date", attributes: v.attributes)
+        v.titleLabel.text = "Place Name"
         return v
     }()
     
     private lazy var descView: CustomView = {
         let v = CustomView()
-        v.Tf.attributedPlaceholder = NSAttributedString(string: "Lorem ipsum blah blah", attributes: v.attributes)
-        v.Lbl.text = "Visit Description"
+        v.textField.attributedPlaceholder = NSAttributedString(string: "Lorem ipsum blah blah", attributes: v.attributes)
+        v.titleLabel.text = "Visit Description"
         return v
     }()
     
     private lazy var countryView: CustomView = {
         let v = CustomView()
-        v.Lbl.text = "City, Country"
+        v.titleLabel.text = "City, Country"
         return v
     }()
     
@@ -57,7 +57,7 @@ class AddTravelVC: UIViewController{
         cv.delegate = self
         cv.dataSource = self
         cv.isPagingEnabled = false
-        cv.backgroundColor = Color.systemWhite.chooseColor
+        cv.backgroundColor = .clear
         return cv
     }()
 
@@ -73,11 +73,17 @@ class AddTravelVC: UIViewController{
         super.viewDidLoad()
         
         setupView()
+        
         guard let latitude = latitude, let longitude = longitude else { return}
 
         getCityAndCountryName(latitude: latitude, longitude: longitude)
+        
         iniVM()
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+        collectionView.roundCornersWithShadow([.topLeft, .bottomLeft], radius: 16)
     }
     
     @objc func addTapped() {
@@ -86,7 +92,7 @@ class AddTravelVC: UIViewController{
         
         viewModal.uploadImage(images: imageData)
         var body = [String:Any]()
-        guard let place = countryView.Tf.text, let title = placeView.Tf.text, let desc = descView.Tf.text else {return}
+        guard let place = countryView.textField.text, let title = placeView.textField.text, let desc = descView.textField.text else {return}
 
         body["place"] = place
         body["title"] = title
@@ -101,10 +107,7 @@ class AddTravelVC: UIViewController{
     
     func iniVM() {
         viewModal.dismiss = {
-           
-          
             self.dismiss(animated: true) {
-              
                 self.delegate?.reloadMap()
             }
         }
@@ -120,7 +123,7 @@ class AddTravelVC: UIViewController{
                 
                 let city = placemark.locality ?? ""
                 let country = placemark.country ?? ""
-                self.countryView.Tf.text = city + ", " + country
+                self.countryView.textField.text = city + ", " + country
                
             } else {
             }

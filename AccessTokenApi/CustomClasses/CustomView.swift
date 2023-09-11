@@ -10,22 +10,27 @@ import TinyConstraints
 
 class CustomView: UIView {
     
+    var isEmail = false
+    var isUsername = false
+    var isPassword = false
+    
     let attributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: Color.systemgray.chooseColor,
         .font: Font.regular12.chooseFont
     ]
     
-    lazy var Lbl: UILabel = {
+    lazy var titleLabel: UILabel = {
         let l = UILabel()
         l.layer.cornerRadius = 3
         l.font = Font.semibold14.chooseFont
         return l
     }()
     
-    lazy var Tf: UITextField = {
+    lazy var textField: UITextField = {
         let tf = UITextField()
         tf.layer.cornerRadius = 3
         tf.backgroundColor = .white
+        tf.delegate = self
         return tf
     }()
     
@@ -36,21 +41,7 @@ class CustomView: UIView {
     }
     
     override func layoutSubviews() {
-        self.roundCorners(corners: [.topLeft, .topRight, .bottomLeft], radius: 16)
-//        let demoPath = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 342, height: 74), byRoundingCorners:[.topLeft, .topRight, .bottomLeft], cornerRadii: CGSize(width: 16.0, height: 16.0)).cgPath
-//        
-//        let shadowLayer = CAShapeLayer()
-//        shadowLayer.path = demoPath
-//        shadowLayer.fillColor = UIColor.white.cgColor
-//        
-//        shadowLayer.shadowColor = UIColor.black.cgColor
-//        shadowLayer.shadowPath = shadowLayer.path
-//        shadowLayer.shadowOffset = CGSize(width: 0, height: 0)
-//        shadowLayer.shadowOpacity = 0.8
-//        shadowLayer.shadowRadius = 1
-//        
-//        self.layer.insertSublayer(shadowLayer, at: 0)
-        
+        self.roundCornersWithShadow([.topLeft, .topRight, .bottomLeft], radius: 16)
         
     }
     
@@ -60,18 +51,64 @@ class CustomView: UIView {
     
     private func setupView() {
         self.backgroundColor = Color.white.chooseColor
-        self.addSubViews(Lbl,Tf)
+        self.addSubViews(titleLabel,textField)
         setupLayout()
     }
     private func setupLayout() {
         
-        Lbl.edgesToSuperview(excluding: [.bottom,.right], insets: .left(12) + .top(8))
-        Lbl.height(21)
-        Lbl.width(250)
+        titleLabel.edgesToSuperview(excluding: [.bottom], insets: .left(12) + .top(8) + .right(12))
+        titleLabel.height(21)
         
-        Tf.topToBottom(of: Lbl,offset: 8)
-        Tf.left(to: Lbl)
-        Tf.height(18)
+        textField.topToBottom(of: titleLabel,offset: 8)
+        textField.edgesToSuperview(excluding: [.bottom,.top], insets: .left(12) + .right(12))
+        textField.height(18)
+        
     }
     
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    func isValidUsername(_ name: String) -> Bool {
+        let allowedCharacterSet = NSCharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
+        let isAlphabetic = name.rangeOfCharacter(from: allowedCharacterSet.inverted) == nil
+        let isLengthValid = name.count >= 6
+        
+        if isAlphabetic && isLengthValid {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func isValidPassword(_ password: String) -> Bool {
+        let letterCharacterSet = NSCharacterSet.letters
+        let digitCharacterSet = NSCharacterSet.decimalDigits
+        
+        let containsLetter = password.rangeOfCharacter(from: letterCharacterSet as CharacterSet) != nil
+        let containsDigit = password.rangeOfCharacter(from: digitCharacterSet as CharacterSet) != nil
+        
+        let isLengthValid = password.count >= 6
+        
+        return containsLetter && containsDigit && isLengthValid
+    }
+    
+}
+
+
+extension CustomView: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == textField {
+            
+            let updatedText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+            isEmail = isValidEmail(updatedText)
+            isUsername = isValidUsername(updatedText)
+            isPassword = isValidPassword(updatedText)
+            
+        }
+        return true
+    }
 }

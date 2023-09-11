@@ -33,6 +33,7 @@ class LoginVC: UIViewController {
         l.text = "Welcome to Travio"
         l.textAlignment = .center
         l.font = Font.semibold24.chooseFont
+        
         return l
     }()
     

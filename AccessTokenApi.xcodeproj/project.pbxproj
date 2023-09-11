@@ -48,9 +48,9 @@
 		219039682A9DF03F007AE38C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219039672A9DF03F007AE38C /* Router.swift */; };
 		2190396A2A9DFF7F007AE38C /* CustomSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219039692A9DFF7F007AE38C /* CustomSwitchView.swift */; };
 		2190396D2A9E1583007AE38C /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2190396C2A9E1583007AE38C /* EditProfileVC.swift */; };
-		219258CD2AA9E7ED000BFCBD /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219258CC2AA9E7ED000BFCBD /* MenuVC.swift */; };
 		219258CF2AA9E810000BFCBD /* MenuVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219258CE2AA9E810000BFCBD /* MenuVM.swift */; };
 		219258D12AA9E815000BFCBD /* CustomCvCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 219258D02AA9E815000BFCBD /* CustomCvCell.swift */; };
+		21936AE42AAF096D00251E52 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21936AE32AAF096D00251E52 /* MenuViewController.swift */; };
 		21B15DB72A913DBD0021938F /* AddTravelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB62A913DBD0021938F /* AddTravelVC.swift */; };
 		21B15DB92A913DE70021938F /* AddTravelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B15DB82A913DE70021938F /* AddTravelVM.swift */; };
 		21B5E5442AA769DD00651CD0 /* JWTDecode in Frameworks */ = {isa = PBXBuildFile; productRef = 21B5E5432AA769DD00651CD0 /* JWTDecode */; };
@@ -200,9 +200,9 @@
 		219039672A9DF03F007AE38C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		219039692A9DFF7F007AE38C /* CustomSwitchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitchView.swift; sourceTree = "<group>"; };
 		2190396C2A9E1583007AE38C /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
-		219258CC2AA9E7ED000BFCBD /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuVC.swift; path = ../../../Downloads/MenuVC.swift; sourceTree = "<group>"; };
 		219258CE2AA9E810000BFCBD /* MenuVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVM.swift; sourceTree = "<group>"; };
 		219258D02AA9E815000BFCBD /* CustomCvCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCvCell.swift; sourceTree = "<group>"; };
+		21936AE32AAF096D00251E52 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		21B15DB62A913DBD0021938F /* AddTravelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelVC.swift; sourceTree = "<group>"; };
 		21B15DB82A913DE70021938F /* AddTravelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelVM.swift; sourceTree = "<group>"; };
 		21B7642D2A9375590047CB92 /* VisitVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitVM.swift; sourceTree = "<group>"; };
@@ -278,9 +278,9 @@
 				216A05DB2A95D6B1001DC3D5 /* MapPage */,
 				219039642A9DEC7D007AE38C /* SecuritySettingPage */,
 				213FD1162A8FDD73004D2024 /* MainTabBarController.swift */,
+				21936AE32AAF096D00251E52 /* MenuViewController.swift */,
 				219258D02AA9E815000BFCBD /* CustomCvCell.swift */,
 				219258CE2AA9E810000BFCBD /* MenuVM.swift */,
-				219258CC2AA9E7ED000BFCBD /* MenuVC.swift */,
 				21D000FC2AA8AB5E00FBB5D9 /* AboutUsVC.swift */,
 			);
 			name = TabBarVC;
@@ -761,7 +761,7 @@
 				21D0C5912AA20977004D2DFC /* HomeVM.swift in Sources */,
 				216A05EA2A961422001DC3D5 /* MapCollectionCell.swift in Sources */,
 				214310AD2A8F57AA004B81A9 /* CustomView.swift in Sources */,
-				219258CD2AA9E7ED000BFCBD /* MenuVC.swift in Sources */,
+				21936AE42AAF096D00251E52 /* MenuViewController.swift in Sources */,
 				214310DA2A8F616E004B81A9 /* Enums.swift in Sources */,
 				214310E02A8F9323004B81A9 /* SignUpVC.swift in Sources */,
 				21D0C58F2AA1F8CB004D2DFC /* HomeCollectionViewCell.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MenuVM {
+class UserMenuVM {
     
     var collectionViewCellsLabels = ["Security Settings", "App Defaults", "My Added Places", "Helps&Support", "About", "Terms of Use"]
     

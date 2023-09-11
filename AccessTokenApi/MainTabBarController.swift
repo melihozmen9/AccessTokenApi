@@ -32,7 +32,7 @@ class MainTabBarController: UITabBarController {
         let map = UINavigationController(rootViewController: MapVC())
         map.tabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "map"), tag: 2)
                                      
-        let menu = UINavigationController(rootViewController: MenuVC())
+        let menu = UINavigationController(rootViewController: AboutUsVC())
         menu.tabBarItem = UITabBarItem(title: "Menu", image: UIImage(named: "menu"), tag: 3)
         
         self.viewControllers = [home,visit,map,menu]
